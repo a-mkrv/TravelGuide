@@ -26,6 +26,8 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         viewControllers = controllers as? [UIViewController]
         
         // Loading all data before view
-        viewControllers?.forEach { $0.view }
+        for viewController in self.viewControllers! {
+            let _ = viewController.view
+        }
     }
 }

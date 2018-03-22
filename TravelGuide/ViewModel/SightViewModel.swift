@@ -32,7 +32,7 @@ class SightViewModel {
         cell.pName.text = sight.name
         cell.pType.text = sight.type
         cell.pDistance.text = "10 km"
-        cell.pImage.image = UIImage(named: sight.imageURL)
+        cell.pImage.imageFromUrl(urlString: sight.imageURL.first!)
         
         return cell
     }

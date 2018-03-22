@@ -17,7 +17,7 @@ fileprivate struct DataKeys {
     static let cost = "cost"
     static let tags = "tags"
     static let coordinate = "coordinate"
-    static let imageURL = "imageURL"
+    static let imageURL = "photo_urls"
 }
 
 struct Sight {
@@ -27,7 +27,9 @@ struct Sight {
     let rating: Double
     let cost: Double
     let tags: [String]
-    let imageURL: String
+    
+    //TODO: Change to image storage, not URL
+    let imagesURL: [String]
     let coordinate: CLLocationCoordinate2D
     let reuseIdentifier = "SightCell"
 }
@@ -41,7 +43,8 @@ extension Sight {
             let name = json[DataKeys.name] as? String,
             let type = json[DataKeys.type] as? String,
             let rating = json[DataKeys.rating] as? Double,
-            let coordinate = json[DataKeys.coordinate] as? Json
+            let coordinate = json[DataKeys.coordinate] as? Json,
+            let images = json[DataKeys.imageURL] as? [String]
             else {
                 return nil
         }
@@ -52,7 +55,7 @@ extension Sight {
         self.rating = rating
         self.cost = json[DataKeys.cost] as? Double ?? 0
         self.tags = json[DataKeys.tags] as? [String] ?? []
-        self.imageURL = json[DataKeys.imageURL] as? String ?? "nn"
+        self.imagesURL = images
         
         let lat = (coordinate["lat"] as! NSString).doubleValue
         let long = (coordinate["long"]  as! NSString).doubleValue
