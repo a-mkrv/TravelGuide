@@ -9,20 +9,26 @@
 import Foundation
 import Alamofire
 
+typealias completeRequest = (NSDictionary?, Error?) -> ()
+
 final class APIService {
     
     static let shared = APIService()
-    
-    let endpoint = "http://188.225.82.179:5000/api_v1.0/get_sights"
-    
-    func getOrders(completionHandler: @escaping (NSDictionary?, Error?) -> ()) {
-        makeCall("orders", completionHandler: completionHandler)
+    let endpoint = "http://188.225.82.179:5000/api_v1.0/"
+
+    func getCities(completionHandler: @escaping completeRequest) {
+        let params:Json = ["id_town" : "1" as AnyObject]
+        makeRequest("get_towns", with: params, completionHandler: completionHandler)
     }
     
-    func makeCall(_ section: String, completionHandler: @escaping (NSDictionary?, Error?) -> ()) {
-        let params = ["id_town":"1"]
+    func getSights(completionHandler: @escaping completeRequest) {
+        let params:Json = ["id_town" : "1" as AnyObject]
+        makeRequest("get_sights", with: params, completionHandler: completionHandler)
+    }
 
-        Alamofire.request(endpoint, method: .get, parameters: params, encoding: URLEncoding.default, headers: nil)
+    func makeRequest(_ url: String, with parameters: Json, completionHandler: @escaping completeRequest) {
+
+        Alamofire.request(endpoint + url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil)
             .responseJSON { response in
                 
                 switch response.result {

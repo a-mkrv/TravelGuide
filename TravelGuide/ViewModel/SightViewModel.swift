@@ -12,12 +12,8 @@ class SightViewModel {
     
     var sights = [Sight]()
     
-    init() {
-        getAllSights()
-    }
-    
-    func getAllSights() {
-        APIService.shared.getOrders() { responseObject, error in
+    func getAllSights(completion: @escaping () -> ()) {
+        APIService.shared.getSights{ responseObject, error in
             if let jsonObject = responseObject {
                 for object in jsonObject {
                     if let sight = Sight(json: (object.value as! Json)) {
@@ -25,6 +21,7 @@ class SightViewModel {
                     }
                 }
             }
+            completion()
         }
     }
     

@@ -9,13 +9,13 @@
 import Foundation
 
 fileprivate struct DataKeys {
-    static let id = "place_id"
+    static let id = "id_town"
     static let name = "name"
     static let country = "country"
     static let sight = "sight"
 }
 
-struct City: JsonObject {
+struct City {
     let id: NSNumber
     let name: String
     let country: String
@@ -27,16 +27,14 @@ extension City {
     init?(json: Json?) {
         guard let json = json,
             let id = json[DataKeys.id] as? NSNumber,
-            let name = json[DataKeys.name] as? String,
-            let country = json[DataKeys.country] as? String,
-            let sights = json[DataKeys.sight] as? [Sight]
+            let name = json[DataKeys.name] as? String
             else {
                 return nil
         }
         
         self.id = id
         self.name = name
-        self.country = country
-        self.sights = sights
+        self.country = json[DataKeys.country] as? String ?? "Russia"
+        self.sights = []
     }
 }

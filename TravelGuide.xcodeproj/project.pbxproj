@@ -15,7 +15,6 @@
 		77397B6A205EBDCA008BFCBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77397B69205EBDCA008BFCBA /* Assets.xcassets */; };
 		77B8B282205FF12B00BDAA75 /* SightCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B8B281205FF12B00BDAA75 /* SightCollectionViewCell.swift */; };
 		77B8B286205FF53B00BDAA75 /* SightModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B8B285205FF53B00BDAA75 /* SightModel.swift */; };
-		77B8B288205FF59300BDAA75 /* JsonObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B8B287205FF59300BDAA75 /* JsonObject.swift */; };
 		77B8B28A2061082A00BDAA75 /* CityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B8B2892061082A00BDAA75 /* CityModel.swift */; };
 		77B8B28C20610D9C00BDAA75 /* TripModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B8B28B20610D9C00BDAA75 /* TripModel.swift */; };
 		77B8B28E2061377A00BDAA75 /* TripCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B8B28D2061377A00BDAA75 /* TripCollectionViewCell.swift */; };
@@ -24,6 +23,12 @@
 		77B8B2A220614A1000BDAA75 /* RequestMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B8B2A120614A1000BDAA75 /* RequestMethod.swift */; };
 		77B8B2A720614D9A00BDAA75 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B8B2A620614D9A00BDAA75 /* APIService.swift */; };
 		77B8B2AF20615A5800BDAA75 /* SightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B8B2AE20615A5800BDAA75 /* SightViewController.swift */; };
+		77DF6927206284830094B962 /* MainCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DF6926206284830094B962 /* MainCityViewController.swift */; };
+		77DF692920628DA80094B962 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DF692820628DA80094B962 /* TabBarViewController.swift */; };
+		77DF692D2062946A0094B962 /* CityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DF692C2062946A0094B962 /* CityListViewController.swift */; };
+		77E9E14B206298EC0092E70A /* CityListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E9E14A206298EC0092E70A /* CityListTableViewCell.swift */; };
+		77E9E14D206306940092E70A /* CityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E9E14C206306940092E70A /* CityViewModel.swift */; };
+		77E9E1522063AD800092E70A /* Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E9E1512063AD800092E70A /* Typealias.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +42,6 @@
 		77397B69205EBDCA008BFCBA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		77B8B281205FF12B00BDAA75 /* SightCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightCollectionViewCell.swift; sourceTree = "<group>"; };
 		77B8B285205FF53B00BDAA75 /* SightModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightModel.swift; sourceTree = "<group>"; };
-		77B8B287205FF59300BDAA75 /* JsonObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonObject.swift; sourceTree = "<group>"; };
 		77B8B2892061082A00BDAA75 /* CityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityModel.swift; sourceTree = "<group>"; };
 		77B8B28B20610D9C00BDAA75 /* TripModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripModel.swift; sourceTree = "<group>"; };
 		77B8B28D2061377A00BDAA75 /* TripCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -46,6 +50,12 @@
 		77B8B2A120614A1000BDAA75 /* RequestMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMethod.swift; sourceTree = "<group>"; };
 		77B8B2A620614D9A00BDAA75 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		77B8B2AE20615A5800BDAA75 /* SightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightViewController.swift; sourceTree = "<group>"; };
+		77DF6926206284830094B962 /* MainCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCityViewController.swift; sourceTree = "<group>"; };
+		77DF692820628DA80094B962 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		77DF692C2062946A0094B962 /* CityListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListViewController.swift; sourceTree = "<group>"; };
+		77E9E14A206298EC0092E70A /* CityListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListTableViewCell.swift; sourceTree = "<group>"; };
+		77E9E14C206306940092E70A /* CityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewModel.swift; sourceTree = "<group>"; };
+		77E9E1512063AD800092E70A /* Typealias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealias.swift; sourceTree = "<group>"; };
 		D2615D3197D8C4962EF42A31 /* Pods-TravelGuide.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelGuide.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TravelGuide/Pods-TravelGuide.debug.xcconfig"; sourceTree = "<group>"; };
 		ED542BF07C5CCC04E99B2E0B /* Pods-TravelGuide.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelGuide.release.xcconfig"; path = "Pods/Target Support Files/Pods-TravelGuide/Pods-TravelGuide.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -89,7 +99,7 @@
 				77B8B28F2061386600BDAA75 /* ViewModel */,
 				77B8B2932061390300BDAA75 /* ViewControllers */,
 				77B8B283205FF4FA00BDAA75 /* Views */,
-				77B8B292206138EA00BDAA75 /* Extensions */,
+				77B8B292206138EA00BDAA75 /* Helpers */,
 				77B8B29520613B8F00BDAA75 /* Enums */,
 				77397B60205E747B008BFCBA /* Resources */,
 			);
@@ -119,8 +129,8 @@
 		77B8B283205FF4FA00BDAA75 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				77B8B281205FF12B00BDAA75 /* SightCollectionViewCell.swift */,
-				77B8B28D2061377A00BDAA75 /* TripCollectionViewCell.swift */,
+				77E9E14E20637DD20092E70A /* Cell */,
+				77DF692820628DA80094B962 /* TabBarViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -128,7 +138,6 @@
 		77B8B284205FF50D00BDAA75 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				77B8B287205FF59300BDAA75 /* JsonObject.swift */,
 				77B8B2892061082A00BDAA75 /* CityModel.swift */,
 				77B8B285205FF53B00BDAA75 /* SightModel.swift */,
 				77B8B28B20610D9C00BDAA75 /* TripModel.swift */,
@@ -139,22 +148,27 @@
 		77B8B28F2061386600BDAA75 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				77B8B2AD2061508100BDAA75 /* SightViewModel */,
+				77B8B2902061388800BDAA75 /* SightViewModel.swift */,
+				77E9E14C206306940092E70A /* CityViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		77B8B292206138EA00BDAA75 /* Extensions */ = {
+		77B8B292206138EA00BDAA75 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				77E9E1512063AD800092E70A /* Typealias.swift */,
+				77E9E1532063AD990092E70A /* Extensions */,
 			);
-			name = Extensions;
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 		77B8B2932061390300BDAA75 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				77B8B2AE20615A5800BDAA75 /* SightViewController.swift */,
+				77DF6926206284830094B962 /* MainCityViewController.swift */,
+				77DF692C2062946A0094B962 /* CityListViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -184,12 +198,21 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		77B8B2AD2061508100BDAA75 /* SightViewModel */ = {
+		77E9E14E20637DD20092E70A /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				77B8B2902061388800BDAA75 /* SightViewModel.swift */,
+				77B8B28D2061377A00BDAA75 /* TripCollectionViewCell.swift */,
+				77B8B281205FF12B00BDAA75 /* SightCollectionViewCell.swift */,
+				77E9E14A206298EC0092E70A /* CityListTableViewCell.swift */,
 			);
-			path = SightViewModel;
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		77E9E1532063AD990092E70A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		A63A28434089F4B2A6AE0A8E /* Pods */ = {
@@ -333,17 +356,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77E9E14D206306940092E70A /* CityViewModel.swift in Sources */,
 				77B8B28C20610D9C00BDAA75 /* TripModel.swift in Sources */,
 				77B8B2AF20615A5800BDAA75 /* SightViewController.swift in Sources */,
 				77B8B29720613B9F00BDAA75 /* HTTPStatusCode.swift in Sources */,
 				77B8B28A2061082A00BDAA75 /* CityModel.swift in Sources */,
+				77DF692920628DA80094B962 /* TabBarViewController.swift in Sources */,
 				77B8B2912061388800BDAA75 /* SightViewModel.swift in Sources */,
-				77B8B288205FF59300BDAA75 /* JsonObject.swift in Sources */,
+				77DF6927206284830094B962 /* MainCityViewController.swift in Sources */,
+				77DF692D2062946A0094B962 /* CityListViewController.swift in Sources */,
 				77B8B2A720614D9A00BDAA75 /* APIService.swift in Sources */,
 				77B8B282205FF12B00BDAA75 /* SightCollectionViewCell.swift in Sources */,
 				77B8B286205FF53B00BDAA75 /* SightModel.swift in Sources */,
 				77B8B2A220614A1000BDAA75 /* RequestMethod.swift in Sources */,
+				77E9E1522063AD800092E70A /* Typealias.swift in Sources */,
 				77397B43205E5345008BFCBA /* AppDelegate.swift in Sources */,
+				77E9E14B206298EC0092E70A /* CityListTableViewCell.swift in Sources */,
 				77B8B28E2061377A00BDAA75 /* TripCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -18,7 +18,7 @@ fileprivate struct DataKeys {
 }
 
 // Trip Model
-struct Trip: JsonObject {
+struct Trip {
     let id: NSNumber
     let name: String
     let descript: String

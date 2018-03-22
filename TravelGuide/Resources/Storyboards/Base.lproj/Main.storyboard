@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MNp-Wf-HAj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,17 +10,38 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Helvetica.ttc">
+            <string>Helvetica</string>
+        </array>
+    </customFonts>
     <scenes>
+        <!--View Controller-->
+        <scene sceneID="0Xx-YO-mAd">
+            <objects>
+                <viewController id="Hh5-gK-Bua" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TOM-Rx-rWe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="ZwG-wm-tVO"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="j7T-4Z-68I"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p0x-9O-Rac" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="481" y="1142"/>
+        </scene>
         <!--Места города-->
         <scene sceneID="1oS-3U-nNe">
             <objects>
-                <viewController id="P9Z-I6-hl8" customClass="SightViewController" customModule="TravelGuide" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SightBoard" id="P9Z-I6-hl8" customClass="SightViewController" customModule="TravelGuide" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UqE-kc-zeg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="SightCell" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Efa-zM-Osq">
-                                <rect key="frame" x="5" y="201" width="365" height="417"/>
+                                <rect key="frame" x="16" y="201" width="354" height="417"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="VVI-GJ-8BN">
@@ -100,9 +121,6 @@
                                 <rect key="frame" x="16" y="68" width="164" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Изменить фильтрацию"/>
-                                <connections>
-                                    <action selector="changeFilters:" destination="P9Z-I6-hl8" eventType="touchUpInside" id="04e-vb-OCY"/>
-                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ruble" translatesAutoresizingMaskIntoConstraints="NO" id="mcf-K6-weM">
                                 <rect key="frame" x="16" y="106" width="21" height="21"/>
@@ -150,7 +168,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aL2-DY-FKe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1416.8" y="317.99100449775113"/>
+            <point key="canvasLocation" x="481" y="425"/>
         </scene>
         <!--Прогулки-->
         <scene sceneID="a69-q1-62s">
@@ -161,7 +179,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WQe-5V-JBS">
-                                <rect key="frame" x="0.0" y="216" width="375" height="402"/>
+                                <rect key="frame" x="0.0" y="172" width="375" height="495"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="100" id="G4A-Ag-w3e">
@@ -246,7 +264,7 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Нижний Новгород" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aiU-iy-fT4">
-                                <rect key="frame" x="16" y="74" width="343" height="34"/>
+                                <rect key="frame" x="16" y="30" width="343" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="EEn-FN-WMW"/>
                                 </constraints>
@@ -255,21 +273,21 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="info" translatesAutoresizingMaskIntoConstraints="NO" id="wdW-1Q-nlP">
-                                <rect key="frame" x="16" y="115" width="25" height="25"/>
+                                <rect key="frame" x="16" y="71" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="MiO-XD-ERG"/>
                                     <constraint firstAttribute="height" constant="25" id="Rje-1R-BJT"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="umbrella" translatesAutoresizingMaskIntoConstraints="NO" id="aEe-gf-F2m">
-                                <rect key="frame" x="16" y="148" width="25" height="25"/>
+                                <rect key="frame" x="16" y="104" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="hRd-Or-hsc"/>
                                     <constraint firstAttribute="width" constant="25" id="sBj-jo-Aah"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Информация о городе" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Esy-za-QpL">
-                                <rect key="frame" x="57" y="117" width="180" height="21"/>
+                                <rect key="frame" x="57" y="73" width="180" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="O14-t4-2LR"/>
                                 </constraints>
@@ -277,7 +295,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+10°С, 3 м/с" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aHn-ap-Qpf">
-                                <rect key="frame" x="57" y="150" width="98" height="21"/>
+                                <rect key="frame" x="57" y="106" width="98" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="oBX-t7-TQ0"/>
                                 </constraints>
@@ -285,14 +303,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="info" translatesAutoresizingMaskIntoConstraints="NO" id="PyS-g5-HDI">
-                                <rect key="frame" x="16" y="183" width="25" height="25"/>
+                                <rect key="frame" x="16" y="139" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="d2W-gf-hJH"/>
                                     <constraint firstAttribute="height" constant="25" id="hQ8-au-Md2"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Готовые маршруты по городу:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D7r-v0-738">
-                                <rect key="frame" x="57" y="185" width="242" height="21"/>
+                                <rect key="frame" x="57" y="141" width="242" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="6Ud-eh-pma"/>
                                 </constraints>
@@ -331,69 +349,219 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UBF-jQ-Seq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1417" y="-348"/>
+            <point key="canvasLocation" x="481" y="-287"/>
         </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="1US-8b-oeq">
+        <!--Main City View Controller-->
+        <scene sceneID="r9C-6W-GSd">
             <objects>
-                <tabBarController id="MNp-Wf-HAj" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lZU-2z-rof">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBar>
+                <viewController storyboardIdentifier="CityBoard" id="HNT-Lx-q8i" customClass="MainCityViewController" customModule="TravelGuide" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iEg-qB-qqE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="nn2" translatesAutoresizingMaskIntoConstraints="NO" id="2ly-Jj-x9k">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <visualEffectView opaque="NO" contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cbc-V9-JD4">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="676"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="7G1-4j-GIg">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="676"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KjI-Ju-X2D">
+                                            <rect key="frame" x="46" y="142" width="282" height="377"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="nn2" translatesAutoresizingMaskIntoConstraints="NO" id="HP5-9c-jaa">
+                                                    <rect key="frame" x="0.0" y="0.0" width="282" height="210"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Население:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zZ5-5I-ybd">
+                                                    <rect key="frame" x="8" y="257" width="93" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Погода:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VNw-cE-4sy">
+                                                    <rect key="frame" x="8" y="228" width="63" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Наличие метро:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fpI-As-6mB">
+                                                    <rect key="frame" x="8" y="286" width="128" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Достопримечательностей:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chp-iw-GQ3">
+                                                    <rect key="frame" x="8" y="315" width="214" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Нижний Новгород" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uRE-hX-Eb5">
+                                            <rect key="frame" x="25" y="68" width="324" height="45"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
+                                            <color key="textColor" red="0.20392156862745098" green="0.29803921568627451" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F3Q-OG-GGg">
+                                            <rect key="frame" x="46" y="562" width="282" height="41"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <state key="normal" title="Сменить город"/>
+                                            <connections>
+                                                <action selector="changeCity:" destination="HNT-Lx-q8i" eventType="touchUpInside" id="fnM-3A-kfL"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="2XE-6f-XT8"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="cHg-OQ-579"/>
                     <connections>
-                        <segue destination="ixM-cc-FTt" kind="relationship" relationship="viewControllers" id="hkt-gu-FKg"/>
-                        <segue destination="fYV-mp-Dtu" kind="relationship" relationship="viewControllers" id="SOT-yt-dkG"/>
+                        <outlet property="cityNameLabel" destination="uRE-hX-Eb5" id="pNq-uq-gyD"/>
+                        <outlet property="imageCity" destination="HP5-9c-jaa" id="Sbe-CG-Ch3"/>
+                        <outlet property="metroLabel" destination="fpI-As-6mB" id="BYD-Lo-WPC"/>
+                        <outlet property="populationLabel" destination="zZ5-5I-ybd" id="MKX-7i-zXK"/>
+                        <outlet property="sightsCountLabel" destination="chp-iw-GQ3" id="fSQ-ri-hiT"/>
+                        <outlet property="weatherLabel" destination="VNw-cE-4sy" id="Yr4-tU-5eT"/>
                     </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FOl-Us-ZrM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qko-GX-mAQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-335" y="-30"/>
+            <point key="canvasLocation" x="482" y="-991"/>
         </scene>
-        <!--Item 1-->
-        <scene sceneID="bhc-bH-pUq">
+        <!--City List View Controller-->
+        <scene sceneID="YVz-BI-Qbz">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ixM-cc-FTt" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 1" id="Sbg-us-iu4"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2BV-PR-OPO">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
+                <viewController storyboardIdentifier="CitiesBoard" id="ftp-Nc-eAJ" customClass="CityListViewController" customModule="TravelGuide" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xt7-93-1Nt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ниже приведен список городов, которые вы можете выбрать и найти интересные маршруты и достопримечательности!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pyS-mV-Uf0">
+                                <rect key="frame" x="16" y="44" width="343" height="54"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Города для путешествий" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GA8-OY-wwQ">
+                                <rect key="frame" x="16" y="20" width="343" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="JXe-iE-3GC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="178" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EM0-v4-dL0">
+                                <rect key="frame" x="0.0" y="106" width="375" height="561"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CityCell" rowHeight="178" id="9VO-QW-mWP" customClass="CityListTableViewCell" customModule="TravelGuide" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="178"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9VO-QW-mWP" id="0Jf-db-MDU">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="177.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nn2" translatesAutoresizingMaskIntoConstraints="NO" id="mPb-I5-qxY">
+                                                    <rect key="frame" x="9" y="0.0" width="358" height="167"/>
+                                                </imageView>
+                                                <view alpha="0.45000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aOu-74-BQS">
+                                                    <rect key="frame" x="9" y="131" width="358" height="36"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="36" id="Jhm-5e-pnK"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="28" id="Ucv-ES-zXN"/>
+                                                    </constraints>
+                                                </view>
+                                                <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HLn-D2-eu3">
+                                                    <rect key="frame" x="9" y="0.0" width="358" height="167"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Нижний Новгород" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ce-OZ-Z08">
+                                                    <rect key="frame" x="9" y="131" width="358" height="36"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="36" id="3ur-PB-kYx"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="36" id="vAi-LU-X37"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                                    <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="HLn-D2-eu3" secondAttribute="trailing" constant="8" id="2c7-7s-1S2"/>
+                                                <constraint firstAttribute="trailing" secondItem="5Ce-OZ-Z08" secondAttribute="trailing" constant="8" id="BLV-t8-ZRF"/>
+                                                <constraint firstAttribute="bottom" secondItem="mPb-I5-qxY" secondAttribute="bottom" constant="10.5" id="Fc6-Qb-4Ey"/>
+                                                <constraint firstAttribute="bottom" secondItem="5Ce-OZ-Z08" secondAttribute="bottom" constant="10.5" id="UTk-9p-1LT"/>
+                                                <constraint firstItem="aOu-74-BQS" firstAttribute="leading" secondItem="0Jf-db-MDU" secondAttribute="leading" constant="9" id="VWe-GX-taQ"/>
+                                                <constraint firstAttribute="bottom" secondItem="HLn-D2-eu3" secondAttribute="bottom" constant="10.5" id="YJU-sb-aNu"/>
+                                                <constraint firstAttribute="trailing" secondItem="mPb-I5-qxY" secondAttribute="trailing" constant="8" id="ZrZ-tL-WIR"/>
+                                                <constraint firstAttribute="trailing" secondItem="aOu-74-BQS" secondAttribute="trailing" constant="8" id="bRP-D1-oJP"/>
+                                                <constraint firstItem="mPb-I5-qxY" firstAttribute="top" secondItem="0Jf-db-MDU" secondAttribute="top" id="bcL-Pi-OrI"/>
+                                                <constraint firstItem="5Ce-OZ-Z08" firstAttribute="leading" secondItem="0Jf-db-MDU" secondAttribute="leading" constant="9" id="kOj-yj-Q18"/>
+                                                <constraint firstAttribute="bottom" secondItem="aOu-74-BQS" secondAttribute="bottom" constant="10.5" id="nkZ-N5-jms"/>
+                                                <constraint firstItem="HLn-D2-eu3" firstAttribute="leading" secondItem="0Jf-db-MDU" secondAttribute="leading" constant="9" id="oz9-AP-mia"/>
+                                                <constraint firstItem="mPb-I5-qxY" firstAttribute="leading" secondItem="0Jf-db-MDU" secondAttribute="leading" constant="9" id="qS6-SA-Ft4"/>
+                                                <constraint firstItem="HLn-D2-eu3" firstAttribute="top" secondItem="0Jf-db-MDU" secondAttribute="top" id="uE6-MX-1f4"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cityImage" destination="mPb-I5-qxY" id="BHm-yX-JMX"/>
+                                            <outlet property="cityName" destination="5Ce-OZ-Z08" id="lsn-HB-2SL"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="EM0-v4-dL0" firstAttribute="bottom" secondItem="aZe-dA-JwS" secondAttribute="bottom" id="B1W-Cv-Agq"/>
+                            <constraint firstItem="pyS-mV-Uf0" firstAttribute="top" secondItem="GA8-OY-wwQ" secondAttribute="bottom" constant="3" id="N4c-W3-L59"/>
+                            <constraint firstItem="EM0-v4-dL0" firstAttribute="leading" secondItem="aZe-dA-JwS" secondAttribute="leading" id="QGX-7a-jVp"/>
+                            <constraint firstItem="EM0-v4-dL0" firstAttribute="trailing" secondItem="aZe-dA-JwS" secondAttribute="trailing" id="WLg-MZ-nwb"/>
+                            <constraint firstItem="EM0-v4-dL0" firstAttribute="top" secondItem="pyS-mV-Uf0" secondAttribute="bottom" constant="8" id="dnw-Ak-wup"/>
+                            <constraint firstItem="EM0-v4-dL0" firstAttribute="top" secondItem="pyS-mV-Uf0" secondAttribute="bottom" constant="8" id="iXH-l9-e8a"/>
+                            <constraint firstItem="aZe-dA-JwS" firstAttribute="trailing" secondItem="GA8-OY-wwQ" secondAttribute="trailing" constant="16" id="mpR-gV-Xc8"/>
+                            <constraint firstItem="GA8-OY-wwQ" firstAttribute="top" secondItem="aZe-dA-JwS" secondAttribute="top" id="qlH-IH-lX9"/>
+                            <constraint firstItem="GA8-OY-wwQ" firstAttribute="leading" secondItem="aZe-dA-JwS" secondAttribute="leading" constant="16" id="s7k-e8-hyL"/>
+                            <constraint firstItem="pyS-mV-Uf0" firstAttribute="leading" secondItem="aZe-dA-JwS" secondAttribute="leading" constant="16" id="uQu-oG-T1M"/>
+                            <constraint firstItem="aZe-dA-JwS" firstAttribute="trailing" secondItem="pyS-mV-Uf0" secondAttribute="trailing" constant="16" id="xwm-z2-alt"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="aZe-dA-JwS"/>
+                    </view>
                     <connections>
-                        <segue destination="9ma-Ku-Xe6" kind="relationship" relationship="rootViewController" id="yrp-94-k7y"/>
+                        <outlet property="tableView" destination="EM0-v4-dL0" id="W3o-wt-34x"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lWt-3X-J2s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RwE-7F-dZ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="648" y="-347.22638680659674"/>
-        </scene>
-        <!--Item 2-->
-        <scene sceneID="j6r-ZD-lyn">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fYV-mp-Dtu" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 2" id="Hgn-rX-x01"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hWn-w4-hTp">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="P9Z-I6-hl8" kind="relationship" relationship="rootViewController" id="Rwq-B1-0Gg"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="N7X-UL-e8a" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="648" y="318.44077961019491"/>
+            <point key="canvasLocation" x="1392.8" y="-991.75412293853083"/>
         </scene>
     </scenes>
     <resources>
         <image name="clock" width="256" height="256"/>
         <image name="info" width="256" height="256"/>
         <image name="nn" width="800" height="600"/>
+        <image name="nn2" width="800" height="420"/>
         <image name="place-localizer" width="256" height="256"/>
         <image name="route" width="256" height="256"/>
         <image name="ruble" width="256" height="256"/>

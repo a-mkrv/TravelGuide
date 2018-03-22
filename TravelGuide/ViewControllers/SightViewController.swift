@@ -16,18 +16,20 @@ class SightViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.sightViewModel = SightViewModel()
         self.sightsCollectionView.delegate = self
         self.sightsCollectionView.dataSource = self
         
-        self.sightViewModel = SightViewModel()
-        self.sightsCollectionView.reloadData()
+        self.setupViewModel()
     }
     
     
-    @IBAction func changeFilters(_ sender: Any) {
-        sightsCollectionView.reloadData()
+    func setupViewModel() {
+        sightViewModel?.getAllSights(completion: {
+            self.sightsCollectionView.reloadData()
+        })
     }
+    
 }
 
 

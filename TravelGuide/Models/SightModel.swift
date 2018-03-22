@@ -20,7 +20,7 @@ fileprivate struct DataKeys {
     static let imageURL = "imageURL"
 }
 
-struct Sight: JsonObject {
+struct Sight {
     let id: NSNumber
     let name: String
     let type: String
@@ -40,8 +40,8 @@ extension Sight {
             let id = json[DataKeys.id] as? NSNumber,
             let name = json[DataKeys.name] as? String,
             let type = json[DataKeys.type] as? String,
-            let rating = json[DataKeys.rating] as? Double
-            //let coordinate = json[DataKeys.coordinate] as? CLLocationCoordinate2D,
+            let rating = json[DataKeys.rating] as? Double,
+            let coordinate = json[DataKeys.coordinate] as? Json
             else {
                 return nil
         }
@@ -53,7 +53,10 @@ extension Sight {
         self.cost = json[DataKeys.cost] as? Double ?? 0
         self.tags = json[DataKeys.tags] as? [String] ?? []
         self.imageURL = json[DataKeys.imageURL] as? String ?? "nn"
-        self.coordinate = CLLocationCoordinate2D()
+        
+        let lat = (coordinate["lat"] as! NSString).doubleValue
+        let long = (coordinate["long"]  as! NSString).doubleValue
+        self.coordinate = CLLocationCoordinate2D(latitude: lat as CLLocationDegrees, longitude: long as CLLocationDegrees)
     }
 }
 
