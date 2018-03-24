@@ -21,7 +21,8 @@ class WelcomeViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var skipButton: UIButton!
     
-    @IBOutlet weak var pageControlBottomnextTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var startButtonConstraint: NSLayoutConstraint!
+    @IBOutlet weak var pageControlBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var skipTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var nextTopConstraint: NSLayoutConstraint!
     
@@ -37,21 +38,22 @@ class WelcomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.collectionView.delegate = self
-        self.collectionView.dataSource = self
+        startButtonConstraint.constant = -50
+        collectionView.delegate = self
+        collectionView.dataSource = self
     }
     
     @IBAction func skipPages(_ sender: Any) {
-        pageControl.currentPage = pages.count - 1
+        pageControl.currentPage = pages.count - 2
         nextPage(sender)
     }
     
     @IBAction func nextPage(_ sender: Any) {
-        if pageControl.currentPage == pages.count {
+        if pageControl.currentPage == pages.count - 1 {
             return
         }
         
-        if pageControl.currentPage == pages.count - 1 {
+        if pageControl.currentPage == pages.count - 2 {
             moveControlConstraintsOffScreen()
             
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
@@ -64,10 +66,23 @@ class WelcomeViewController: UIViewController {
         pageControl.currentPage += 1
     }
     
+    @IBAction func presentLoginScreen(_ sender: Any) {
+        let rootViewController = UIApplication.shared.keyWindow?.rootViewController
+        
+        guard let mainNavigationController = rootViewController as? MaintNavigationController else { return }
+        
+        let loginController = UIStoryboard.loadViewController(from: "Auth", named: "AuthBoard") as? LoginViewController
+        mainNavigationController.viewControllers = [loginController!]
+        
+        //UserDefaults.standard.setIsFirstStart(value: true)
+        dismiss(animated: true, completion: nil)
+    }
+    
     fileprivate func moveControlConstraintsOffScreen() {
-        pageControlBottomnextTopConstraint.constant = -30
-        skipTopConstraint.constant = -40
-        nextTopConstraint.constant = -40
+        startButtonConstraint?.constant = 60
+        pageControlBottomConstraint?.constant = -30
+        skipTopConstraint?.constant = -(skipButton.frame.height * 2)
+        nextTopConstraint?.constant = -(nextButton.frame.height * 2)
     }
 }
 
@@ -89,24 +104,25 @@ extension WelcomeViewController: UICollectionViewDelegate, UICollectionViewDataS
         return cell
     }
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: view.frame.width, height: view.frame.height)
-//    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width, height: view.frame.height)
+    }
     
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        view.endEditing(true)
-//    }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        view.endEditing(true)
+    }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         let pageNumber = Int(targetContentOffset.pointee.x / view.frame.width)
         pageControl.currentPage = pageNumber
         
-        if pageNumber == pages.count {
+        if pageNumber == pages.count - 1 {
             moveControlConstraintsOffScreen()
         } else {
-            pageControlBottomnextTopConstraint.constant = 30
-            skipTopConstraint.constant = 0
-            nextTopConstraint.constant = 0
+            pageControlBottomConstraint?.constant = 30
+            skipTopConstraint?.constant = 10
+            nextTopConstraint?.constant = 10
+            startButtonConstraint?.constant = -50
         }
         
         UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
