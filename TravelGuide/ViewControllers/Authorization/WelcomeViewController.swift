@@ -74,8 +74,8 @@ class WelcomeViewController: UIViewController {
         let loginController = UIStoryboard.loadViewController(from: "Auth", named: "AuthBoard") as? LoginViewController
         mainNavigationController.viewControllers = [loginController!]
         
-        //UserDefaults.standard.setIsFirstStart(value: true)
-        dismiss(animated: true, completion: nil)
+        UserDefaults.standard.setIsFirstStart(value: true)
+        self.dismissWindow()
     }
     
     fileprivate func moveControlConstraintsOffScreen() {

@@ -10,7 +10,7 @@ import UIKit
 import SkyFloatingLabelTextField
 import SCLAlertView
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, ValidityFields {
 
     @IBOutlet var loginTextField: SkyFloatingLabelTextField!
     @IBOutlet var passwordTextField: SkyFloatingLabelTextField!
@@ -31,8 +31,22 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func signInAction(_ sender: Any) {
-    
+        guard let login = loginTextField.text, isLoginValid(login)  else {
+            let alertView = SCLAlertView(appearance: SCLAlertView.SCLAppearance(showCloseButton: false))
+            alertView.addButton("Понятно") { }
+            alertView.showWarning("Упс", subTitle: "Кажется вы допустили ошибку в логине")
+            return
+        }
+        
+        guard let password = passwordTextField.text, isPasswordValid(password) else {
+            let alertView = SCLAlertView(appearance: SCLAlertView.SCLAppearance(showCloseButton: false))
+            alertView.addButton("Понятно") { }
+            alertView.showWarning("Упс", subTitle: "Такой пароль нам не подходит")
+            return
+        }
+        
+        UserDefaults.standard.setIsLoggedIn(value: true)
+        MaintNavigationController.shared.goToMainViewAfterLogin()
+        UIApplication.shared.keyWindow?.switchRootViewController(MaintNavigationController.shared)
     }
-
-    
 }

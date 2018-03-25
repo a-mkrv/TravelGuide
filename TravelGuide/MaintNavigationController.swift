@@ -10,17 +10,19 @@ import UIKit
 
 class MaintNavigationController: UINavigationController {
 
+    static let shared = MaintNavigationController()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        if isFirstStart() {
-            let loginController = UIStoryboard.loadViewController(from: "Auth", named: "AuthBoard") as? LoginViewController
-            viewControllers = [loginController!]
-        }
-        else if isLoggedIn() {
+        if isLoggedIn() {
             let homeController = TabBarViewController()
             viewControllers = [homeController]
+        }
+        else if isFirstStart() {
+            let loginController = UIStoryboard.loadViewController(from: "Auth", named: "AuthBoard") as? LoginViewController
+            viewControllers = [loginController!]
         }
         else {
             perform(#selector(showWelcomeScreen), with: nil, afterDelay: 0.05)
@@ -35,10 +37,20 @@ class MaintNavigationController: UINavigationController {
         return UserDefaults.standard.isLoggedIn()
     }
     
-    @objc func showWelcomeScreen() {
+    @objc fileprivate func showWelcomeScreen() {
         let welcomeVC = UIStoryboard.loadViewController(from: "Auth", named: "WelcomeBoard") as? WelcomeViewController
         present(welcomeVC!, animated: true, completion: {
             
         })
+    }
+    
+    func goToMainViewAfterLogin() {
+        let homeController = TabBarViewController()
+        viewControllers.removeAll()
+        viewControllers = [homeController]
+    }
+    
+    deinit {
+        print("MaintNavigationController - deinit")
     }
 }

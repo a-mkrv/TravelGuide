@@ -16,7 +16,7 @@ enum AlertType {
     case WARNING
 }
 
-class RegistrationViewController: UIViewController {
+class RegistrationViewController: UIViewController, ValidityFields {
     
     @IBOutlet weak var loginTextField: SkyFloatingLabelTextField!
     @IBOutlet weak var confirmPasswordTextField: SkyFloatingLabelTextField!
@@ -107,7 +107,7 @@ class RegistrationViewController: UIViewController {
     }
     
     @IBAction func cancelAction(_ sender: Any) {
-        customDismissView()
+        self.dismissWindow()
     }
     
     func showAlert(title: String, description: String, type: AlertType) {
@@ -120,7 +120,7 @@ class RegistrationViewController: UIViewController {
             
         case .SUCCESS:
             alertView.addButton("Понятно") {
-                self.customDismissView()
+                self.dismissWindow()
             }
             alertView.showSuccess(title, subTitle: description)
             
@@ -128,25 +128,5 @@ class RegistrationViewController: UIViewController {
             alertView.addButton("Понятно") { }
             alertView.showWarning(title, subTitle: description)
         }
-    }
-    
-    func isPasswordValid(_ password : String) -> Bool {
-        let validPassword = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{5,}")
-        return validPassword.evaluate(with: password)
-    }
-    
-    func isLoginValid(_ login : String) -> Bool {
-        let validLogin = NSPredicate(format: "SELF MATCHES %@", "[A-Z0-9a-z._]{5,}")
-        return validLogin.evaluate(with: login)
-    }
-    
-    func customDismissView() {
-        let transition: CATransition = CATransition()
-        transition.duration = 0.6
-        transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        transition.type = kCATransitionReveal
-        transition.subtype = kCATransitionFromLeft
-        self.view.window!.layer.add(transition, forKey: nil)
-        self.dismiss(animated: false, completion: nil)
     }
 }

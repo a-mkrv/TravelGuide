@@ -27,6 +27,8 @@
 		77B8B2A220614A1000BDAA75 /* RequestMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B8B2A120614A1000BDAA75 /* RequestMethod.swift */; };
 		77B8B2A720614D9A00BDAA75 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B8B2A620614D9A00BDAA75 /* APIService.swift */; };
 		77B8B2AF20615A5800BDAA75 /* SightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B8B2AE20615A5800BDAA75 /* SightViewController.swift */; };
+		77C0FA8720681F8900A94A8F /* UIWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C0FA8620681F8900A94A8F /* UIWindow.swift */; };
+		77C0FA8920682A8500A94A8F /* ValidityFieldsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C0FA8820682A8500A94A8F /* ValidityFieldsProtocol.swift */; };
 		77DF6927206284830094B962 /* MainCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DF6926206284830094B962 /* MainCityViewController.swift */; };
 		77DF692920628DA80094B962 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DF692820628DA80094B962 /* TabBarViewController.swift */; };
 		77DF692D2062946A0094B962 /* CityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DF692C2062946A0094B962 /* CityListViewController.swift */; };
@@ -63,6 +65,8 @@
 		77B8B2A120614A1000BDAA75 /* RequestMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMethod.swift; sourceTree = "<group>"; };
 		77B8B2A620614D9A00BDAA75 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		77B8B2AE20615A5800BDAA75 /* SightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightViewController.swift; sourceTree = "<group>"; };
+		77C0FA8620681F8900A94A8F /* UIWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindow.swift; sourceTree = "<group>"; };
+		77C0FA8820682A8500A94A8F /* ValidityFieldsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidityFieldsProtocol.swift; sourceTree = "<group>"; };
 		77DF6926206284830094B962 /* MainCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCityViewController.swift; sourceTree = "<group>"; };
 		77DF692820628DA80094B962 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		77DF692C2062946A0094B962 /* CityListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListViewController.swift; sourceTree = "<group>"; };
@@ -151,6 +155,7 @@
 				77F4DA542063F6DD0048B768 /* WelcomeViewController.swift */,
 				779DD95620662F3F00F08676 /* LoginViewController.swift */,
 				774D998D2067E13900CA0C22 /* RegistrationViewController.swift */,
+				77C0FA8820682A8500A94A8F /* ValidityFieldsProtocol.swift */,
 			);
 			path = Authorization;
 			sourceTree = "<group>";
@@ -246,6 +251,7 @@
 				77F4DA5E2065AB610048B768 /* UserDefaults.swift */,
 				779DD9582066331800F08676 /* UIStoryboard.swift */,
 				774D998B2067DDCA00CA0C22 /* UIViewController.swift */,
+				77C0FA8620681F8900A94A8F /* UIWindow.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -391,6 +397,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77C0FA8720681F8900A94A8F /* UIWindow.swift in Sources */,
 				77E9E14D206306940092E70A /* CityViewModel.swift in Sources */,
 				77B8B28C20610D9C00BDAA75 /* TripModel.swift in Sources */,
 				77B8B2AF20615A5800BDAA75 /* SightViewController.swift in Sources */,
@@ -404,6 +411,7 @@
 				77DF6927206284830094B962 /* MainCityViewController.swift in Sources */,
 				77DF692D2062946A0094B962 /* CityListViewController.swift in Sources */,
 				77F4DA552063F6DD0048B768 /* WelcomeViewController.swift in Sources */,
+				77C0FA8920682A8500A94A8F /* ValidityFieldsProtocol.swift in Sources */,
 				77B8B2A720614D9A00BDAA75 /* APIService.swift in Sources */,
 				779DD9592066331800F08676 /* UIStoryboard.swift in Sources */,
 				77F4DA5D2065AAB50048B768 /* MaintNavigationController.swift in Sources */,
