@@ -10,5 +10,7 @@ target 'TravelGuide' do
   # Pods for TravelGuide
   pod 'Alamofire'
   pod 'SwiftyJSON'
+  pod 'SkyFloatingLabelTextField'
+  pod 'SCLAlertView'
   
 end

@@ -17,15 +17,19 @@ final class APIService {
     let endpoint = "http://188.225.82.179:5000/api_v1.0/"
 
     func getCities(completionHandler: @escaping completeRequest) {
-        let params:Json = ["id_town" : "1" as AnyObject]
-        makeRequest("get_towns", with: params, completionHandler: completionHandler)
+        let parameters: Json = ["id_town" : "1" as AnyObject]
+        makeRequest("get_towns", with: parameters, completionHandler: completionHandler)
     }
     
     func getSights(completionHandler: @escaping completeRequest) {
-        let params:Json = ["id_town" : "1" as AnyObject]
-        makeRequest("get_sights", with: params, completionHandler: completionHandler)
+        let parameters: Json = ["id_town" : "1" as AnyObject]
+        makeRequest("get_sights", with: parameters, completionHandler: completionHandler)
     }
 
+    func createUser(with parameters: Json, completionHandler: @escaping completeRequest) {
+        makeRequest("create_user", with: parameters, completionHandler: completionHandler)
+    }
+    
     func makeRequest(_ url: String, with parameters: Json, completionHandler: @escaping completeRequest) {
 
         Alamofire.request(endpoint + url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil)
