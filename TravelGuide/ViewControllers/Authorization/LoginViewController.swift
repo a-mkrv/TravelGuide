@@ -45,8 +45,30 @@ class LoginViewController: UIViewController, ValidityFields {
             return
         }
         
-        UserDefaults.standard.setIsLoggedIn(value: true)
-        MaintNavigationController.shared.goToMainViewAfterLogin()
-        UIApplication.shared.keyWindow?.switchRootViewController(MaintNavigationController.shared)
+        let parameters: Json = ["name" : login as AnyObject, "password" : passwordTextField.text  as AnyObject]
+        
+        APIService.shared.doLogin(with: parameters) { (response, error) in
+            let alertView = SCLAlertView(appearance: SCLAlertView.SCLAppearance(showCloseButton: false))
+
+            guard error == nil || response != nil else {
+                alertView.addButton("Попробовать позже") { }
+                alertView.showError("Ошибка сервера", subTitle: "Сервер выключен или ведутся тех.работы. ")
+                return
+            }
+            
+            if response!["status"] as? String == "error" {
+                alertView.addButton("Еще разок") { }
+                alertView.showError("Ошибка авторизации", subTitle: "Неправильный логин / пароль")
+                return
+            }
+            
+            if response!["status"] as? String == "success" {
+                let token = response!["data"] as! Json
+                UserDefaults.standard.setUserToken(token: token["token"] as! String)
+                UserDefaults.standard.setIsLoggedIn(value: true)
+                MaintNavigationController.shared.goToMainViewAfterLogin()
+                UIApplication.shared.keyWindow?.switchRootViewController(MaintNavigationController.shared)
+            }
+        }
     }
 }

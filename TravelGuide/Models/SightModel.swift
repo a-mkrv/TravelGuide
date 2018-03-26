@@ -6,7 +6,7 @@
 //  Copyright © 2018 Anton Makarov. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import CoreLocation
 
 fileprivate struct DataKeys {
@@ -29,6 +29,7 @@ struct Sight {
     let tags: [String]
     
     //TODO: Change to image storage, not URL
+    var images: [UIImageView]
     let imagesURL: [String]
     let coordinate: CLLocationCoordinate2D
     let reuseIdentifier = "SightCell"
@@ -44,7 +45,7 @@ extension Sight {
             let type = json[DataKeys.type] as? String,
             let rating = json[DataKeys.rating] as? Double,
             let coordinate = json[DataKeys.coordinate] as? Json,
-            let images = json[DataKeys.imageURL] as? [String]
+            let imagesUrl = json[DataKeys.imageURL] as? [String]
             else {
                 return nil
         }
@@ -55,8 +56,15 @@ extension Sight {
         self.rating = rating
         self.cost = json[DataKeys.cost] as? Double ?? 0
         self.tags = json[DataKeys.tags] as? [String] ?? []
-        self.imagesURL = images
+        self.images = []
+        self.imagesURL = imagesUrl
         
+        for image in imagesURL {
+            let img = UIImageView()
+            img.imageFromUrl(urlString: image)
+            self.images.append(img)
+        }
+    
         let lat = (coordinate["lat"] as! NSString).doubleValue
         let long = (coordinate["long"]  as! NSString).doubleValue
         self.coordinate = CLLocationCoordinate2D(latitude: lat as CLLocationDegrees, longitude: long as CLLocationDegrees)

@@ -80,13 +80,14 @@ class RegistrationViewController: UIViewController, ValidityFields {
     // Button Handler
 
     @IBAction func registerAction(_ sender: Any) {
+       
         guard let login = loginTextField.text, isLoginValid(login)  else {
             self.showAlert(title: "Упс", description: "Попробуйте в логине использовать буквы или цифры", type: .WARNING)
             return
         }
         
         guard let password = passwordTextField.text, isPasswordValid(password) else {
-            self.showAlert(title: "Упс", description: "Такой пароль нам не подходит", type: .WARNING)
+            self.showAlert(title: "Упс", description: "Такой пароль не подходит", type: .WARNING)
             return
         }
         
@@ -97,11 +98,19 @@ class RegistrationViewController: UIViewController, ValidityFields {
         
         let parameters: Json = ["name" : login as AnyObject, "password" : password as AnyObject]
         
-        APIService.shared.createUser(with: parameters) { (nil, error) in
-            if error == nil {
-                self.showAlert(title: "Регистрация завершена", description: "Вернуться на экран авторизации", type: .SUCCESS)
-            } else {
+        APIService.shared.createUser(with: parameters) { (response, error) in
+            guard error == nil || response != nil else {
                 self.showAlert(title: "Ошибка регистрации", description: "Попробуйте еще раз", type: .SUCCESS)
+                return
+            }
+            
+            if response!["status"] as? String == "error" {
+                self.showAlert(title: "Ошибка регистрации", description: "Такой пользователь уже существует", type: .ERROR)
+                return
+            }
+            
+            if response!["status"] as? String == "success" {
+                self.showAlert(title: "Регистрация завершена", description: "Вернуться на экран авторизации", type: .SUCCESS)
             }
         }
     }
@@ -116,7 +125,8 @@ class RegistrationViewController: UIViewController, ValidityFields {
         
         switch type {
         case .ERROR:
-            alertView.showError("Registration error", subTitle: "Try again")
+            alertView.addButton("Понятно") { }
+            alertView.showError(title, subTitle: description)
             
         case .SUCCESS:
             alertView.addButton("Понятно") {

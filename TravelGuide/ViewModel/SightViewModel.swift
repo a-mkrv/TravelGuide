@@ -13,12 +13,15 @@ class SightViewModel {
     var sights = [Sight]()
     
     func getAllSights(completion: @escaping () -> ()) {
-        APIService.shared.getSights{ responseObject, error in
-            if let jsonObject = responseObject {
-                for object in jsonObject {
-                    if let sight = Sight(json: (object.value as! Json)) {
-                        self.sights.append(sight)
-                    }
+        APIService.shared.getSights{ response, error in
+            
+            guard error == nil || response != nil || response!["status"] as? String == "error" else {
+                return
+            }
+            
+            for object in (response!["data"] as? Json)! {
+                if let sight = Sight(json: object.value as? Json) {
+                    self.sights.append(sight)
                 }
             }
             completion()
@@ -32,7 +35,7 @@ class SightViewModel {
         cell.pName.text = sight.name
         cell.pType.text = sight.type
         cell.pDistance.text = "10 km"
-        cell.pImage.imageFromUrl(urlString: sight.imagesURL.first!)
+        cell.pImage.image = sight.images.first?.image ?? UIImage(named: "nn")
         
         return cell
     }

@@ -13,12 +13,15 @@ class CityViewModel {
     var cities = [City]()
     
     func getAllCity(completion: @escaping () -> ()) {
-        APIService.shared.getCities{ responseObject, error in
-            if let jsonObject = responseObject {
-                for object in jsonObject {
-                    if let city = City(json: (object.value as! Json)) {
-                        self.cities.append(city)
-                    }
+        APIService.shared.getCities{ response, error in
+            
+            guard error == nil || response != nil || response!["status"] as? String == "error" else {
+                return
+            }
+            
+            for object in (response!["data"] as? Json)! {
+                if let city = City(json: (object.value as! Json)) {
+                    self.cities.append(city)
                 }
             }
             completion()

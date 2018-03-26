@@ -30,6 +30,10 @@ final class APIService {
         makeRequest("create_user", with: parameters, completionHandler: completionHandler)
     }
     
+    func doLogin(with parameters: Json, completionHandler: @escaping completeRequest) {
+        makeRequest("login", with: parameters, completionHandler: completionHandler)
+    }
+    
     func makeRequest(_ url: String, with parameters: Json, completionHandler: @escaping completeRequest) {
 
         Alamofire.request(endpoint + url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil)

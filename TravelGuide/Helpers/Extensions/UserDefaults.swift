@@ -17,6 +17,7 @@ extension UserDefaults {
     enum UserDefaultsKeys: String {
         case isLoggedIn
         case isFirstStart
+        case userToken
     }
     
     func createKey(_ key: String) -> String {
@@ -34,6 +35,11 @@ extension UserDefaults {
         synchronize()
     }
     
+    func setUserToken(token: Any) {
+        set(token, forKey: createKey(UserDefaultsKeys.userToken.rawValue))
+        synchronize()
+    }
+    
     // Chech exist keys
     func isLoggedIn() -> Bool {
         return bool(forKey: createKey(UserDefaultsKeys.isLoggedIn.rawValue))
@@ -41,5 +47,9 @@ extension UserDefaults {
     
     func isFirstStart() -> Bool {
         return bool(forKey: createKey(UserDefaultsKeys.isFirstStart.rawValue))
+    }
+    
+    func getUserToken() -> Any {
+        return createKey(UserDefaultsKeys.userToken.rawValue)
     }
 }
