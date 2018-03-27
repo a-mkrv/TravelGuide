@@ -32,10 +32,11 @@ class SightViewModel {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SightCell", for: indexPath) as! SightCollectionViewCell
         
         let sight = self.sights[indexPath.row]
+        cell.sightId = sight.id
         cell.pName.text = sight.name
         cell.pType.text = sight.type
         cell.pDistance.text = "10 km"
-        cell.pImage.image = sight.images.first?.image ?? UIImage(named: "nn")
+        cell.pImages = sight.images
         
         return cell
     }
