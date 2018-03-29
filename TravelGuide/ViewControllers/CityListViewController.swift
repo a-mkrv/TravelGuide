@@ -17,6 +17,7 @@ class CityListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.isNavigationBarHidden = false;
         self.cityViewModel = CityViewModel()
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -24,6 +25,20 @@ class CityListViewController: UIViewController {
         self.setupViewModel()
     }
     
+    @IBAction func confirmСityPushButton(_ sender: Any) {
+        if UserDefaults.standard.getCurrentCity() == nil {
+            UserDefaults.standard.setCurrentCity(city: "NN")
+            let navigationVC = UINavigationController(rootViewController: TabBarViewController())
+            navigationVC.modalTransitionStyle = .flipHorizontal
+            self.present(navigationVC, animated: true, completion: nil)
+        } else {
+            UIView.animate(withDuration: 0.5, animations: {
+                UIView.setAnimationCurve(.easeInOut)
+                UIView.setAnimationTransition(.flipFromLeft, for: (self.navigationController?.view)!, cache: false)
+            })
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
     
     func setupViewModel() {
         cityViewModel?.getAllCity(completion: {

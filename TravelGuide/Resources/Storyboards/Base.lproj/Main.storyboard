@@ -522,7 +522,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="178" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EM0-v4-dL0">
-                                <rect key="frame" x="0.0" y="106" width="375" height="561"/>
+                                <rect key="frame" x="0.0" y="174" width="375" height="493"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CityCell" rowHeight="178" id="9VO-QW-mWP" customClass="CityListTableViewCell" customModule="TravelGuide" customModuleProvider="target">
@@ -582,6 +582,14 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IpV-ad-fJH">
+                                <rect key="frame" x="105" y="128" width="164" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Подтвердить город"/>
+                                <connections>
+                                    <action selector="confirmСityPushButton:" destination="ftp-Nc-eAJ" eventType="touchUpInside" id="dSn-3k-0oC"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -589,8 +597,8 @@
                             <constraint firstItem="pyS-mV-Uf0" firstAttribute="top" secondItem="GA8-OY-wwQ" secondAttribute="bottom" constant="3" id="N4c-W3-L59"/>
                             <constraint firstItem="EM0-v4-dL0" firstAttribute="leading" secondItem="aZe-dA-JwS" secondAttribute="leading" id="QGX-7a-jVp"/>
                             <constraint firstItem="EM0-v4-dL0" firstAttribute="trailing" secondItem="aZe-dA-JwS" secondAttribute="trailing" id="WLg-MZ-nwb"/>
-                            <constraint firstItem="EM0-v4-dL0" firstAttribute="top" secondItem="pyS-mV-Uf0" secondAttribute="bottom" constant="8" id="dnw-Ak-wup"/>
-                            <constraint firstItem="EM0-v4-dL0" firstAttribute="top" secondItem="pyS-mV-Uf0" secondAttribute="bottom" constant="8" id="iXH-l9-e8a"/>
+                            <constraint firstItem="EM0-v4-dL0" firstAttribute="top" secondItem="pyS-mV-Uf0" secondAttribute="bottom" constant="76" id="dnw-Ak-wup"/>
+                            <constraint firstItem="EM0-v4-dL0" firstAttribute="top" secondItem="pyS-mV-Uf0" secondAttribute="bottom" constant="76" id="iXH-l9-e8a"/>
                             <constraint firstItem="aZe-dA-JwS" firstAttribute="trailing" secondItem="GA8-OY-wwQ" secondAttribute="trailing" constant="16" id="mpR-gV-Xc8"/>
                             <constraint firstItem="GA8-OY-wwQ" firstAttribute="top" secondItem="aZe-dA-JwS" secondAttribute="top" id="qlH-IH-lX9"/>
                             <constraint firstItem="GA8-OY-wwQ" firstAttribute="leading" secondItem="aZe-dA-JwS" secondAttribute="leading" constant="16" id="s7k-e8-hyL"/>
@@ -605,7 +613,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RwE-7F-dZ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-193" y="-993"/>
+            <point key="canvasLocation" x="-194.40000000000001" y="-993.55322338830592"/>
         </scene>
     </scenes>
     <resources>

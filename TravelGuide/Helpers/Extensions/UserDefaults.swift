@@ -16,7 +16,7 @@ extension UserDefaults {
 
     enum UserDefaultsKeys: String {
         case isLoggedIn
-        case isFirstStart
+        case currentCity
         case userToken
     }
     
@@ -30,8 +30,8 @@ extension UserDefaults {
         synchronize()
     }
     
-    func setIsFirstStart(value: Bool) {
-        set(value, forKey: createKey(UserDefaultsKeys.isFirstStart.rawValue))
+    func setCurrentCity(city: String) {
+        set(city, forKey: createKey(UserDefaultsKeys.currentCity.rawValue))
         synchronize()
     }
     
@@ -45,8 +45,8 @@ extension UserDefaults {
         return bool(forKey: createKey(UserDefaultsKeys.isLoggedIn.rawValue))
     }
     
-    func isFirstStart() -> Bool {
-        return bool(forKey: createKey(UserDefaultsKeys.isFirstStart.rawValue))
+    func getCurrentCity() -> String? {
+        return string(forKey: createKey(UserDefaultsKeys.currentCity.rawValue))
     }
     
     func getUserToken() -> Any {
