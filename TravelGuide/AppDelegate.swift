@@ -17,12 +17,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
+        window?.backgroundColor = UIColor.white
+        
+        var initialViewController = UIViewController();
+        if (isLoggedIn()) {
+            initialViewController = TabBarViewController()
+        } else {
+            initialViewController = (UIStoryboard.loadViewController(from: "Auth", named: "WelcomeBoard") as? WelcomeViewController)!
+        }
+        
+        let navigationController = UINavigationController(rootViewController: initialViewController);
+        navigationController.isNavigationBarHidden = true;
+        self.window?.rootViewController = navigationController;
         self.window?.makeKeyAndVisible()
-        self.window?.rootViewController = MaintNavigationController.shared
         
         return true
     }
 
+    private func isLoggedIn() -> Bool {
+        return UserDefaults.standard.isLoggedIn()
+    }
+    
     func applicationWillResignActive(_ application: UIApplication) {
     }
 

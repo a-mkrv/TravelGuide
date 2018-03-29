@@ -67,15 +67,8 @@ class WelcomeViewController: UIViewController {
     }
     
     @IBAction func presentLoginScreen(_ sender: Any) {
-        let rootViewController = UIApplication.shared.keyWindow?.rootViewController
-        
-        guard let mainNavigationController = rootViewController as? MaintNavigationController else { return }
-        
-        let loginController = UIStoryboard.loadViewController(from: "Auth", named: "AuthBoard") as? LoginViewController
-        mainNavigationController.viewControllers = [loginController!]
-        
-        UserDefaults.standard.setIsFirstStart(value: true)
-        self.dismissWindow()
+        let loginController = UIStoryboard.loadViewController(from: "Auth", named: "ChooseLoginBoard") as? ChooseLoginViewController
+        self.navigationController?.pushViewController(loginController!, animated: true);
     }
     
     fileprivate func moveControlConstraintsOffScreen() {

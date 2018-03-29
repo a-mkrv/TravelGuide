@@ -24,7 +24,7 @@ extension UIViewController {
     
     func dismissWindow() {
         let transition: CATransition = CATransition()
-        transition.duration = 1
+        transition.duration = 0.6
         transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         transition.type = kCATransition
         transition.subtype = kCATransitionFade

@@ -22,14 +22,6 @@ class LoginViewController: UIViewController, ValidityFields {
         self.hideKeyboard()
     }
     
-    
-    @IBAction func registrationAction(_ sender: Any) {
-        let registrationVC = UIStoryboard.loadViewController(from: "Auth", named: "RegistrationBoard") as? RegistrationViewController
-        present(registrationVC!, animated: true, completion: {
-            
-        })
-    }
-    
     @IBAction func signInAction(_ sender: Any) {
         guard let login = loginTextField.text, isLoginValid(login)  else {
             let alertView = SCLAlertView(appearance: SCLAlertView.SCLAppearance(showCloseButton: false))
@@ -66,9 +58,17 @@ class LoginViewController: UIViewController, ValidityFields {
                 let token = response!["data"] as! Json
                 UserDefaults.standard.setUserToken(token: token["token"] as! String)
                 UserDefaults.standard.setIsLoggedIn(value: true)
-                MaintNavigationController.shared.goToMainViewAfterLogin()
-                UIApplication.shared.keyWindow?.switchRootViewController(MaintNavigationController.shared)
+                self.navigationToChooseCityView()
             }
         }
+    }
+    
+    func navigationToChooseCityView() {
+        let citiesVC = UIStoryboard.loadViewController(from: "Main", named: "CitiesBoard") as? CityListViewController
+        self.present(citiesVC!, animated: true, completion: nil)
+    }
+    
+    @IBAction func cancelAfction(_ sender: Any) {
+        self.dismissWindow()
     }
 }
