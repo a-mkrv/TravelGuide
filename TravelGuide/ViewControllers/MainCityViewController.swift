@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainCityViewController: UIViewController {
+class MainCityViewController: UIViewController, ChangeCity {
 
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var imageCity: UIImageView!
@@ -24,8 +24,15 @@ class MainCityViewController: UIViewController {
         
     }
 
+    func setNewCity(id: NSNumber) {
+        let vc = self.tabBarController?.viewControllers![1] as! SightViewController
+        vc.setNewCity(id: id)
+    }
+
+    
     @IBAction func changeCity(_ sender: Any) {
         let citiesVC = storyboard?.instantiateViewController(withIdentifier: "CitiesBoard") as? CityListViewController
+            citiesVC?.delegate = self
         self.navigationController?.pushViewController(citiesVC!, animated: true)
 
     }

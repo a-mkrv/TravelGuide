@@ -142,6 +142,10 @@
                                                         <constraint firstAttribute="height" constant="37" id="aXD-Fg-fGk"/>
                                                     </constraints>
                                                 </pageControl>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="04l-LL-eeQ">
+                                                    <rect key="frame" x="85" y="129" width="50" height="48"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                         </view>
                                         <constraints>
@@ -166,6 +170,7 @@
                                             <outlet property="pName" destination="jCF-np-rR6" id="Kg5-8q-fvH"/>
                                             <outlet property="pType" destination="CTl-6Y-Qeo" id="NnF-WN-Ik6"/>
                                             <outlet property="pageImageControl" destination="Xwv-sY-p1j" id="smU-wh-5jk"/>
+                                            <outlet property="testImg" destination="04l-LL-eeQ" id="XpW-BU-DHE"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

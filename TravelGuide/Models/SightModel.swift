@@ -27,9 +27,6 @@ struct Sight {
     let rating: Double
     let cost: Double
     let tags: [String]
-    
-    //TODO: Change to image storage, not URL
-    var images: [UIImageView]
     let imagesURL: [String]
     let coordinate: CLLocationCoordinate2D
     let reuseIdentifier = "SightCell"
@@ -43,9 +40,7 @@ extension Sight {
             let id = json[DataKeys.id] as? NSNumber,
             let name = json[DataKeys.name] as? String,
             let type = json[DataKeys.type] as? String,
-            let rating = json[DataKeys.rating] as? Double,
-            let coordinate = json[DataKeys.coordinate] as? Json,
-            let imagesUrl = json[DataKeys.imageURL] as? [String]
+            let coordinate = json[DataKeys.coordinate] as? Json
             else {
                 return nil
         }
@@ -53,18 +48,11 @@ extension Sight {
         self.id = id
         self.name = name
         self.type = type
-        self.rating = rating
+        self.rating = json[DataKeys.rating] as? Double ?? 4.0
         self.cost = json[DataKeys.cost] as? Double ?? 0
         self.tags = json[DataKeys.tags] as? [String] ?? []
-        self.images = []
-        self.imagesURL = imagesUrl
+        self.imagesURL = json[DataKeys.imageURL] as? [String] ?? []
         
-        for image in imagesURL {
-            let img = UIImageView()
-            img.imageFromUrl(urlString: image)
-            self.images.append(img)
-        }
-    
         let lat = (coordinate["lat"] as! NSString).doubleValue
         let long = (coordinate["long"]  as! NSString).doubleValue
         self.coordinate = CLLocationCoordinate2D(latitude: lat as CLLocationDegrees, longitude: long as CLLocationDegrees)

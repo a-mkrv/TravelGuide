@@ -17,12 +17,13 @@ final class APIService {
     let endpoint = "http://188.225.82.179:5000/api_v1.0/"
 
     func getCities(completionHandler: @escaping completeRequest) {
+        // 1 - id country, while always 1 - Russia
         let parameters: Json = ["id_town" : "1" as AnyObject]
         makeRequest("get_towns", with: parameters, completionHandler: completionHandler)
     }
     
-    func getSights(completionHandler: @escaping completeRequest) {
-        let parameters: Json = ["id_town" : "1" as AnyObject]
+    func getSights(_ city_id: NSNumber, completionHandler: @escaping completeRequest) {
+        let parameters: Json = ["id_town" : city_id as AnyObject]
         makeRequest("get_sights", with: parameters, completionHandler: completionHandler)
     }
 

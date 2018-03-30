@@ -8,11 +8,17 @@
 
 import UIKit
 
+protocol ChangeCity {
+    func setNewCity(id: NSNumber)
+}
+
 class CityListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
+    var selectedIndex: Int?
     var cityViewModel: CityViewModel?
+    var delegate: ChangeCity?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,18 +32,24 @@ class CityListViewController: UIViewController {
     }
     
     @IBAction func confirmСityPushButton(_ sender: Any) {
+        guard let index = selectedIndex else {
+            return
+        }
+        
         if UserDefaults.standard.getCurrentCity() == nil {
-            UserDefaults.standard.setCurrentCity(city: "NN")
             let navigationVC = UINavigationController(rootViewController: TabBarViewController())
             navigationVC.modalTransitionStyle = .flipHorizontal
             self.present(navigationVC, animated: true, completion: nil)
         } else {
+            delegate?.setNewCity(id: (cityViewModel?.cities[index].id)!)
             UIView.animate(withDuration: 0.5, animations: {
                 UIView.setAnimationCurve(.easeInOut)
                 UIView.setAnimationTransition(.flipFromLeft, for: (self.navigationController?.view)!, cache: false)
             })
             self.navigationController?.popViewController(animated: true)
         }
+        
+        UserDefaults.standard.setCurrentCity(city: (cityViewModel?.cities[index].name)!)
     }
     
     func setupViewModel() {
@@ -49,6 +61,10 @@ class CityListViewController: UIViewController {
 
 
 extension CityListViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedIndex = indexPath.row as Int
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let count = cityViewModel?.cities.count {
             return count

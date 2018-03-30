@@ -12,5 +12,6 @@ target 'TravelGuide' do
   pod 'SwiftyJSON'
   pod 'SkyFloatingLabelTextField'
   pod 'SCLAlertView'
-  
+  pod 'Nuke'
+
 end

@@ -13,6 +13,7 @@ class SightViewController: UIViewController {
     @IBOutlet weak var sightsCollectionView: UICollectionView!
     
     var sightViewModel: SightViewModel?
+    var city_id: NSNumber = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,12 +25,17 @@ class SightViewController: UIViewController {
     }
     
     
+    func setNewCity(id: NSNumber) {
+        city_id = id
+        self.setupViewModel()
+    }
+    
+    
     func setupViewModel() {
-        sightViewModel?.getAllSights(completion: {
+        sightViewModel?.getAllSights(city_id, completion: {
             self.sightsCollectionView.reloadData()
         })
     }
-    
 }
 
 
