@@ -7,13 +7,17 @@
 //
 
 import UIKit
+import Nuke
 
 class SightViewModel {
     
     var sights = [Sight]()
+    var manager = Nuke.Manager.shared
     
-    func getAllSights(completion: @escaping () -> ()) {
-        APIService.shared.getSights{ response, error in
+    func getAllSights(_ city_id: NSNumber, completion: @escaping () -> ()) {
+        sights.removeAll()
+        
+        APIService.shared.getSights(city_id){ response, error in
             
             guard error == nil || response != nil || response!["status"] as? String == "error" else {
                 return
@@ -35,8 +39,13 @@ class SightViewModel {
         cell.sightId = sight.id
         cell.pName.text = sight.name
         cell.pType.text = sight.type
-        cell.pDistance.text = "10 km"
-        cell.pImages = sight.images
+        cell.indexCell = indexPath.row
+        
+        let request = Request(url: URL(string: "https://img-fotki.yandex.ru/get/197852/27854841.58f/0_ef76b_fb4fa46e_XXXL.jpg")!)
+        manager.loadImage(with: request, into: cell.pImage)
+        
+        //cell.pImage.loadImageUsingCacheWithUrlString(urlString: "")
+        
         
         return cell
     }

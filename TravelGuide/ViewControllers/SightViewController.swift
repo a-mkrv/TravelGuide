@@ -14,25 +14,23 @@ class SightViewController: UIViewController {
     
     var sightViewModel: SightViewModel?
     var city_id: NSNumber = 1
-    
+    var showItems = 0
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.sightViewModel = SightViewModel()
         self.sightsCollectionView.delegate = self
         self.sightsCollectionView.dataSource = self
-        
-        self.setupViewModel()
+        self.setupViewModel(city_id)
     }
     
-    
-    func setNewCity(id: NSNumber) {
-        city_id = id
-        self.setupViewModel()
-    }
-    
-    
-    func setupViewModel() {
+    func setupViewModel(_ city_id: NSNumber) {
+        self.city_id = city_id
         sightViewModel?.getAllSights(city_id, completion: {
+            if let count = self.sightViewModel?.sights.count {
+                (count > 15) ? (self.showItems = 15) : (self.showItems = count)
+            }
+            
             self.sightsCollectionView.reloadData()
         })
     }
@@ -42,10 +40,25 @@ class SightViewController: UIViewController {
 extension SightViewController: UICollectionViewDelegate, UICollectionViewDataSource {
    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let count = sightViewModel?.sights.count {
-            return count
+        return showItems
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        
+        if offsetY > contentHeight - scrollView.frame.size.height {
+            if let count = self.sightViewModel?.sights.count, count > showItems {
+                if (count - showItems - 10 >= 0) {
+                    showItems += 10
+                } else {
+                    showItems += (count - showItems)
+                }
+                
+                sightsCollectionView.reloadData()
+            }
         }
-        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

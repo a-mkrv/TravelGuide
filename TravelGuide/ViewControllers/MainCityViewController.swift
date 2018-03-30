@@ -26,7 +26,7 @@ class MainCityViewController: UIViewController, ChangeCity {
 
     func setNewCity(id: NSNumber) {
         let vc = self.tabBarController?.viewControllers![1] as! SightViewController
-        vc.setNewCity(id: id)
+        vc.setupViewModel(id)
     }
 
     

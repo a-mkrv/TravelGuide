@@ -8,23 +8,36 @@
 
 import UIKit
 
+let imageCache = NSCache<AnyObject, AnyObject>()
+
 extension UIImageView {
-    public func imageFromUrl(urlString: String) {
-        if let url = URL(string: urlString) {
-            let request = URLRequest(url: url)
-            
-            URLSession.shared.dataTask(with: request) { data, response, error in
-                if (error == nil) {
-                    if let imageData = data as NSData? {
-                        DispatchQueue.main.async {
-                            self.image = UIImage(data: imageData as Data)
-                        }
-                    }
-                } else {
-                    self.image = UIImage(named: "nn") // change to city template
-                    print("Error image download: \(String(describing: error?.localizedDescription))");
-                }
-            }.resume();
+    
+    func loadImageUsingCacheWithUrlString(urlString : String) {
+        
+        self.image = nil
+        if let cacheImage = imageCache.object(forKey: urlString as AnyObject) as? UIImage {
+            self.image = cacheImage
+            return
         }
+        
+        guard let url = URL(string: urlString) else {
+            return
+        }
+        
+        let request = URLRequest(url: url)
+        URLSession.shared.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) in
+            
+            if error != nil {
+                Logger.error(msg: error!)
+                return
+            }
+            
+            DispatchQueue.main.async {
+                if let downloadedImage = UIImage(data: data!) {
+                    imageCache.setObject(downloadedImage, forKey: urlString as AnyObject)
+                    self.image = downloadedImage
+                }
+            }
+        }).resume()
     }
 }

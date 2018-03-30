@@ -8,6 +8,9 @@
 
 import UIKit
 import CoreLocation
+import Nuke
+
+var manager = Nuke.Manager.shared
 
 fileprivate struct DataKeys {
     static let id = "id_sight"
@@ -28,6 +31,7 @@ struct Sight {
     let cost: Double
     let tags: [String]
     let imagesURL: [String]
+    var imagesJPG: [UIImageView]
     let coordinate: CLLocationCoordinate2D
     let reuseIdentifier = "SightCell"
 }
@@ -52,6 +56,11 @@ extension Sight {
         self.cost = json[DataKeys.cost] as? Double ?? 0
         self.tags = json[DataKeys.tags] as? [String] ?? []
         self.imagesURL = json[DataKeys.imageURL] as? [String] ?? []
+        self.imagesJPG = []
+
+        //if let img = imagesURL.first, img != "" {
+        //var request = Request(url: URL(string: "")!)
+        //manager.loadImage(with: request, into: img)
         
         let lat = (coordinate["lat"] as! NSString).doubleValue
         let long = (coordinate["long"]  as! NSString).doubleValue
