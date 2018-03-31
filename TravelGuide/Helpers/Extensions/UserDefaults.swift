@@ -52,4 +52,11 @@ extension UserDefaults {
     func getUserToken() -> Any {
         return createKey(UserDefaultsKeys.userToken.rawValue)
     }
+    
+    ////
+    
+    func clearAllAppData() {
+        UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
+        synchronize()
+    }
 }

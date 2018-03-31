@@ -18,11 +18,14 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
        
         let sightVC = storyboard.instantiateViewController(withIdentifier: "SightBoard") as? SightViewController
         let mainVC = storyboard.instantiateViewController(withIdentifier: "CityBoard") as? MainCityViewController
+        let profileVC = storyboard.instantiateViewController(withIdentifier: "ProfileBoard") as? ProfileViewController
+
 
         mainVC?.tabBarItem = UITabBarItem(title: "City", image: nil, selectedImage: nil)
         sightVC?.tabBarItem = UITabBarItem(title: "Sight", image: nil, selectedImage: nil)
+        profileVC?.tabBarItem = UITabBarItem(title: "Profile", image: nil, selectedImage: nil)
 
-        let controllers = [mainVC, sightVC]
+        let controllers = [mainVC, sightVC, profileVC]
         viewControllers = controllers as? [UIViewController]
         
         // Loading all data before view
@@ -33,5 +36,9 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = true;
+    }
+    
+    deinit {
+        Logger.info(msg: "Deinit")
     }
 }
