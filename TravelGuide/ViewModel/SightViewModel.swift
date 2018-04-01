@@ -41,11 +41,8 @@ class SightViewModel {
         cell.pType.text = sight.type
         cell.indexCell = indexPath.row
         
-        let request = Request(url: URL(string: "https://img-fotki.yandex.ru/get/197852/27854841.58f/0_ef76b_fb4fa46e_XXXL.jpg")!)
+        let request = Request(url: URL(string: sight.imagesURL.first!)!)
         manager.loadImage(with: request, into: cell.pImage)
-        
-        //cell.pImage.loadImageUsingCacheWithUrlString(urlString: "")
-        
         
         return cell
     }

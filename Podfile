@@ -13,5 +13,6 @@ target 'TravelGuide' do
   pod 'SkyFloatingLabelTextField'
   pod 'SCLAlertView'
   pod 'Nuke'
-
+  pod 'Cluster'
+  
 end

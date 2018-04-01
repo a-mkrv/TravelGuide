@@ -43,19 +43,18 @@ extension Sight {
         guard let json = json,
             let id = json[DataKeys.id] as? NSNumber,
             let name = json[DataKeys.name] as? String,
-            let type = json[DataKeys.type] as? String,
             let coordinate = json[DataKeys.coordinate] as? Json
             else {
                 return nil
         }
-        
+ 
         self.id = id
         self.name = name
-        self.type = type
+        self.type = json[DataKeys.type] as? String ?? "None"
         self.rating = json[DataKeys.rating] as? Double ?? 4.0
         self.cost = json[DataKeys.cost] as? Double ?? 0
         self.tags = json[DataKeys.tags] as? [String] ?? []
-        self.imagesURL = json[DataKeys.imageURL] as? [String] ?? []
+        self.imagesURL = json[DataKeys.imageURL] as? [String] ?? ["https://img-fotki.yandex.ru/get/197852/27854841.58f/0_ef76b_fb4fa46e_XXXL.jpg"]
         self.imagesJPG = []
 
         //if let img = imagesURL.first, img != "" {

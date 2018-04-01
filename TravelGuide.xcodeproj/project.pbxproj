@@ -18,9 +18,12 @@
 		77397B6A205EBDCA008BFCBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77397B69205EBDCA008BFCBA /* Assets.xcassets */; };
 		774D998C2067DDCA00CA0C22 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774D998B2067DDCA00CA0C22 /* UIViewController.swift */; };
 		774D998E2067E13900CA0C22 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774D998D2067E13900CA0C22 /* RegistrationViewController.swift */; };
+		77621127206FECAC00111EBC /* PinAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77621126206FECAC00111EBC /* PinAnnotation.swift */; };
+		7762112B206FF1F600111EBC /* CustomPinAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7762112A206FF1F600111EBC /* CustomPinAnnotationView.swift */; };
 		779DD95720662F3F00F08676 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779DD95620662F3F00F08676 /* LoginViewController.swift */; };
 		779DD9592066331800F08676 /* UIStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779DD9582066331800F08676 /* UIStoryboard.swift */; };
 		77B600F9206EDF2E0076199A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B600F8206EDF2E0076199A /* ProfileViewController.swift */; };
+		77B600FB206F8B600076199A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B600FA206F8B600076199A /* MapViewController.swift */; };
 		77B8B282205FF12B00BDAA75 /* SightCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B8B281205FF12B00BDAA75 /* SightCollectionViewCell.swift */; };
 		77B8B286205FF53B00BDAA75 /* SightModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B8B285205FF53B00BDAA75 /* SightModel.swift */; };
 		77B8B28A2061082A00BDAA75 /* CityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B8B2892061082A00BDAA75 /* CityModel.swift */; };
@@ -59,9 +62,12 @@
 		77397B69205EBDCA008BFCBA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		774D998B2067DDCA00CA0C22 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		774D998D2067E13900CA0C22 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		77621126206FECAC00111EBC /* PinAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinAnnotation.swift; sourceTree = "<group>"; };
+		7762112A206FF1F600111EBC /* CustomPinAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPinAnnotationView.swift; sourceTree = "<group>"; };
 		779DD95620662F3F00F08676 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		779DD9582066331800F08676 /* UIStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoryboard.swift; sourceTree = "<group>"; };
 		77B600F8206EDF2E0076199A /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		77B600FA206F8B600076199A /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		77B8B281205FF12B00BDAA75 /* SightCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightCollectionViewCell.swift; sourceTree = "<group>"; };
 		77B8B285205FF53B00BDAA75 /* SightModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightModel.swift; sourceTree = "<group>"; };
 		77B8B2892061082A00BDAA75 /* CityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityModel.swift; sourceTree = "<group>"; };
@@ -167,6 +173,16 @@
 			path = Authorization;
 			sourceTree = "<group>";
 		};
+		77621125206FEC8100111EBC /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				77B600FA206F8B600076199A /* MapViewController.swift */,
+				77621126206FECAC00111EBC /* PinAnnotation.swift */,
+				7762112A206FF1F600111EBC /* CustomPinAnnotationView.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 		77B8B283205FF4FA00BDAA75 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -197,6 +213,7 @@
 		77B8B2932061390300BDAA75 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				77621125206FEC8100111EBC /* Map */,
 				774D998F2067E14100CA0C22 /* Authorization */,
 				77B8B2AE20615A5800BDAA75 /* SightViewController.swift */,
 				77DF6926206284830094B962 /* MainCityViewController.swift */,
@@ -406,6 +423,7 @@
 				77E9E14D206306940092E70A /* CityViewModel.swift in Sources */,
 				77B8B28C20610D9C00BDAA75 /* TripModel.swift in Sources */,
 				77B8B2AF20615A5800BDAA75 /* SightViewController.swift in Sources */,
+				77621127206FECAC00111EBC /* PinAnnotation.swift in Sources */,
 				779DD95720662F3F00F08676 /* LoginViewController.swift in Sources */,
 				774D998E2067E13900CA0C22 /* RegistrationViewController.swift in Sources */,
 				774D998C2067DDCA00CA0C22 /* UIViewController.swift in Sources */,
@@ -415,9 +433,11 @@
 				77B8B2912061388800BDAA75 /* SightViewModel.swift in Sources */,
 				77DF6927206284830094B962 /* MainCityViewController.swift in Sources */,
 				77DF692D2062946A0094B962 /* CityListViewController.swift in Sources */,
+				77B600FB206F8B600076199A /* MapViewController.swift in Sources */,
 				77F4DA552063F6DD0048B768 /* WelcomeViewController.swift in Sources */,
 				77C0FA8920682A8500A94A8F /* ValidityFieldsProtocol.swift in Sources */,
 				771483F6206CE8F500B9A141 /* ChooseLoginViewController.swift in Sources */,
+				7762112B206FF1F600111EBC /* CustomPinAnnotationView.swift in Sources */,
 				77B8B2A720614D9A00BDAA75 /* APIService.swift in Sources */,
 				779DD9592066331800F08676 /* UIStoryboard.swift in Sources */,
 				77B600F9206EDF2E0076199A /* ProfileViewController.swift in Sources */,

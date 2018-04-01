@@ -34,6 +34,12 @@ class SightViewController: UIViewController {
             self.sightsCollectionView.reloadData()
         })
     }
+    
+    @IBAction func openMapAction(_ sender: Any) {
+        let mapVC = UIStoryboard.loadViewController(from: "Main", named: "MapBoard") as! MapViewController
+        mapVC.sightViewModel = self.sightViewModel        
+        navigationController?.pushViewController(mapVC, animated: true)
+    }
 }
 
 

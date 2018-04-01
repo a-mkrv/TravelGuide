@@ -52,6 +52,30 @@
             </objects>
             <point key="canvasLocation" x="1520.8" y="-159.67016491754123"/>
         </scene>
+        <!--Map View Controller-->
+        <scene sceneID="cCj-v9-iD6">
+            <objects>
+                <viewController storyboardIdentifier="MapBoard" id="Vkp-5V-9xH" customClass="MapViewController" customModule="TravelGuide" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EKb-fa-KCo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="MMM-28-rVD">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Hla-Io-mlG"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="MMM-28-rVD" id="ODr-aS-xR1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hGO-H5-EAY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-306.39999999999998" y="-161.46926536731635"/>
+        </scene>
         <!--Места города-->
         <scene sceneID="1oS-3U-nNe">
             <objects>
@@ -165,6 +189,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uh7-d0-5NN">
+                                <rect key="frame" x="16" y="39" width="118" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Перейти к карте"/>
+                                <connections>
+                                    <action selector="openMapAction:" destination="P9Z-I6-hl8" eventType="touchUpInside" id="FX6-tI-El3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Wfy-uW-V3O"/>
@@ -176,7 +208,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aL2-DY-FKe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="480.80000000000001" y="-158.77061469265368"/>
+            <point key="canvasLocation" x="551" y="-160"/>
         </scene>
         <!--Прогулки-->
         <scene sceneID="a69-q1-62s">
