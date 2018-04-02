@@ -20,6 +20,7 @@
 		774D998E2067E13900CA0C22 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774D998D2067E13900CA0C22 /* RegistrationViewController.swift */; };
 		77621127206FECAC00111EBC /* PinAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77621126206FECAC00111EBC /* PinAnnotation.swift */; };
 		7762112B206FF1F600111EBC /* CustomPinAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7762112A206FF1F600111EBC /* CustomPinAnnotationView.swift */; };
+		7786FE5B2072CFF2004C7877 /* DetailSightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7786FE5A2072CFF2004C7877 /* DetailSightViewController.swift */; };
 		779DD95720662F3F00F08676 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779DD95620662F3F00F08676 /* LoginViewController.swift */; };
 		779DD9592066331800F08676 /* UIStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779DD9582066331800F08676 /* UIStoryboard.swift */; };
 		77B600F9206EDF2E0076199A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B600F8206EDF2E0076199A /* ProfileViewController.swift */; };
@@ -64,6 +65,7 @@
 		774D998D2067E13900CA0C22 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		77621126206FECAC00111EBC /* PinAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinAnnotation.swift; sourceTree = "<group>"; };
 		7762112A206FF1F600111EBC /* CustomPinAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPinAnnotationView.swift; sourceTree = "<group>"; };
+		7786FE5A2072CFF2004C7877 /* DetailSightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSightViewController.swift; sourceTree = "<group>"; };
 		779DD95620662F3F00F08676 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		779DD9582066331800F08676 /* UIStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoryboard.swift; sourceTree = "<group>"; };
 		77B600F8206EDF2E0076199A /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				77DF692C2062946A0094B962 /* CityListViewController.swift */,
 				77DF692820628DA80094B962 /* TabBarViewController.swift */,
 				77B600F8206EDF2E0076199A /* ProfileViewController.swift */,
+				7786FE5A2072CFF2004C7877 /* DetailSightViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				77F4DA532063B6AD0048B768 /* Typealias.swift in Sources */,
 				77397B43205E5345008BFCBA /* AppDelegate.swift in Sources */,
 				77F4DA57206418710048B768 /* UIImage.swift in Sources */,
+				7786FE5B2072CFF2004C7877 /* DetailSightViewController.swift in Sources */,
 				77E9E14B206298EC0092E70A /* CityListTableViewCell.swift in Sources */,
 				77B8B28E2061377A00BDAA75 /* TripCollectionViewCell.swift in Sources */,
 			);

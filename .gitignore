@@ -2,3 +2,4 @@
 *.xcbkptlist
 Pods
 *.png
+IDEWorkspaceChecks.plist
