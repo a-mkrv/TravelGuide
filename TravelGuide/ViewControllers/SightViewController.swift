@@ -70,4 +70,15 @@ extension SightViewController: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         return (sightViewModel?.cellInstance(collectionView, cellForItemAt: indexPath))!
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let detailVC = UIStoryboard.loadViewController(from: "Main", named: "DetailBoard") as? DetailSightViewController
+       
+        if detailVC != nil {
+            detailVC?.sigthModel = self.sightViewModel?.sights[indexPath.row]
+            self.navigationController?.pushViewController(detailVC!, animated: true)
+        }
+    }
+
 }

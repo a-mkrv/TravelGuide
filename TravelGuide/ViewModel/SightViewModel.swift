@@ -19,7 +19,7 @@ class SightViewModel {
         
         APIService.shared.getSights(city_id){ response, error in
             
-            guard error == nil || response != nil || response!["status"] as? String == "error" else {
+            if error != nil || response == nil || response!["status"] as? String == "error"  {
                 return
             }
             
