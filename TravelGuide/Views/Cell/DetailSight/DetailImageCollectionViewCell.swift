@@ -10,4 +10,6 @@ import UIKit
 
 class DetailImageCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var sightImage: UIImageView!
+    
 }

@@ -13,8 +13,6 @@
 		771483F6206CE8F500B9A141 /* ChooseLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771483F5206CE8F500B9A141 /* ChooseLoginViewController.swift */; };
 		772B48372081F8F3006A2539 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772B48362081F8F3006A2539 /* UIView.swift */; };
 		772B483920820AE8006A2539 /* HeaderSightsCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772B483820820AE8006A2539 /* HeaderSightsCollectionReusableView.swift */; };
-		772B483B20820BDA006A2539 /* SightHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772B483A20820BDA006A2539 /* SightHeaderView.swift */; };
-		772B483D20820D9B006A2539 /* SighHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 772B483C20820D9B006A2539 /* SighHeaderView.xib */; };
 		77397B43205E5345008BFCBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77397B42205E5345008BFCBA /* AppDelegate.swift */; };
 		77397B48205E5345008BFCBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77397B46205E5345008BFCBA /* Main.storyboard */; };
 		77397B4D205E5345008BFCBA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77397B4B205E5345008BFCBA /* LaunchScreen.storyboard */; };
@@ -64,8 +62,6 @@
 		771483F5206CE8F500B9A141 /* ChooseLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseLoginViewController.swift; sourceTree = "<group>"; };
 		772B48362081F8F3006A2539 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		772B483820820AE8006A2539 /* HeaderSightsCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSightsCollectionReusableView.swift; sourceTree = "<group>"; };
-		772B483A20820BDA006A2539 /* SightHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightHeaderView.swift; sourceTree = "<group>"; };
-		772B483C20820D9B006A2539 /* SighHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SighHeaderView.xib; sourceTree = "<group>"; };
 		77397B3F205E5345008BFCBA /* TravelGuide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelGuide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77397B42205E5345008BFCBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77397B47205E5345008BFCBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -217,8 +213,6 @@
 			isa = PBXGroup;
 			children = (
 				77E9E14E20637DD20092E70A /* Cell */,
-				772B483A20820BDA006A2539 /* SightHeaderView.swift */,
-				772B483C20820D9B006A2539 /* SighHeaderView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -394,7 +388,6 @@
 				77397B4D205E5345008BFCBA /* LaunchScreen.storyboard in Resources */,
 				77397B6A205EBDCA008BFCBA /* Assets.xcassets in Resources */,
 				77397B48205E5345008BFCBA /* Main.storyboard in Resources */,
-				772B483D20820D9B006A2539 /* SighHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,7 +464,6 @@
 				77B8B28A2061082A00BDAA75 /* CityModel.swift in Sources */,
 				7786FE6020736529004C7877 /* DetailInfoTableViewCell.swift in Sources */,
 				77DF692920628DA80094B962 /* TabBarViewController.swift in Sources */,
-				772B483B20820BDA006A2539 /* SightHeaderView.swift in Sources */,
 				77B8B2912061388800BDAA75 /* SightViewModel.swift in Sources */,
 				77DF692D2062946A0094B962 /* CityListViewController.swift in Sources */,
 				77B600FB206F8B600076199A /* MapViewController.swift in Sources */,

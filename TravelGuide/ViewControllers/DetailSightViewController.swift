@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Nuke
 
 class DetailSightViewController: UIViewController {
 
@@ -16,7 +17,7 @@ class DetailSightViewController: UIViewController {
     var sigthModel: Sight? = nil {
         didSet {
             map[1] = 1
-            if sigthModel?.cost != nil {
+            if sigthModel?.cost == nil {
                 rowCount += 1
                 map[rowCount] = 2
             }
@@ -50,6 +51,17 @@ class DetailSightViewController: UIViewController {
         super.viewDidLoad()
         self.infoTableView.delegate = self
         self.infoTableView.dataSource = self
+        self.infoTableView.rowHeight = UITableViewAutomaticDimension
+        self.infoTableView.estimatedRowHeight = 200
+        
+        self.imagesCollectioView.delegate = self
+        self.imagesCollectioView.dataSource = self
+        
+        if let count = sigthModel?.imagesURL.count, count > 1 {
+            pageControl.numberOfPages = count
+        } else {
+            pageControl.numberOfPages = 0
+        }
         
         navigationController?.isNavigationBarHidden = false
     }
@@ -61,52 +73,88 @@ extension DetailSightViewController: UITableViewDataSource, UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var key = map[indexPath.row + 1]
+        let key = map[indexPath.row + 1]
         switch key {
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "DetailNameCell", for: indexPath) as! DetailNameTableViewCell
-            cell.nameSightLabel.text = "testName"
-            cell.ratingLabel.text = "5"
+            cell.nameSightLabel.text = sigthModel?.name
+            cell.ratingLabel.text = "5.0"
             return cell
             
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "DetailInfoCell", for: indexPath) as! DetailInfoTableViewCell
-            cell.socialInfoLabel.text = String(format: "%f", (sigthModel?.cost)!)
+            cell.imageInfoCell.image = UIImage(named: "ruble")
+            cell.socialInfoLabel.text = "Бесплатное посещение"
+            //cell.socialInfoLabel.text = String(format: "%f", (sigthModel?.cost)!)
             return cell
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "DetailInfoCell", for: indexPath) as! DetailInfoTableViewCell
-            cell.socialInfoLabel.text = sigthModel?.phoneNumber
+            cell.imageInfoCell.image = UIImage(named: "phonenumber")
+            cell.socialInfoLabel.text = "+78318310010"
+            //cell.socialInfoLabel.text = sigthModel?.phoneNumber
             return cell
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "DetailInfoCell", for: indexPath) as! DetailInfoTableViewCell
-            cell.socialInfoLabel.text = sigthModel?.webSite
+            cell.imageInfoCell.image = UIImage(named: "website")
+            cell.socialInfoLabel.text = "test.web-site.ru"
+            //cell.socialInfoLabel.text = sigthModel?.webSite
             return cell
         case 5:
             let cell = tableView.dequeueReusableCell(withIdentifier: "DetailHistoryCell", for: indexPath) as! DetailHistoryDescriptionTableViewCell
             cell.descriptionHeaderLabel.text = "Описание"
-            cell.descriptionLabel.text = sigthModel?.descript
+            cell.descriptionLabel.text = "Центральная площадь – площадь Минина и Пожарского, именно на ней и расположена главная нижегородская достопримечательность - Кремль. Кстати, интересный факт: главная нижегородская площадь одновременно является и центром города и его окраиной: она расположена на высоком берегу Волги, а на другой стороне реки начинается уже другой город – Бор. От площади Минина начинается и центральная пешеходная улица – Большая Покровская."
+            //cell.descriptionLabel.text = sigthModel?.descript
             return cell
         case 6:
             let cell = tableView.dequeueReusableCell(withIdentifier: "DetailHistoryCell", for: indexPath) as! DetailHistoryDescriptionTableViewCell
             cell.descriptionHeaderLabel.text = "Историческая справка"
-            cell.descriptionLabel.text = sigthModel?.history
+            cell.descriptionLabel.text = "Минин и Пожарский для города Нижний Новгород личности очень значимые. Свое сегодняшнее имя центральная площадь получила в середине 20века, в момент установки мемориала К. Минину. Кроме того, народного героя увековечили в бюсте, который водружен неподалеку. До этого площадь уже успела несколько раз переименоваться, под влиянием исторических фатов и событий. Была Верхнепосадской, так как возникла в центре древнего града-посада. Затем – Благовещенской, по наименованию, возведенного в 17веке красавца храма."
+                //sigthModel?.history
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "DetailMapCell", for: indexPath) as! DetailMapTableViewCell
             return cell
         }
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        if map[indexPath.row + 1] == 7 {
+            return 250
+        }
+        return UITableViewAutomaticDimension
+    }
 }
 
 extension DetailSightViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return (self.sigthModel?.imagesURL.count)!
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DetailImageCell", for: indexPath) as! DetailImageCollectionViewCell
+        
+        let request = Request(url: URL(string: (self.sigthModel?.imagesURL[indexPath.row])!)!)
+        Nuke.Manager.shared.loadImage(with: request, into: cell.sightImage)
+        
         return cell
     }
     
-
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: imagesCollectioView.frame.width, height: imagesCollectioView.frame.height)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        view.endEditing(true)
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let pageNumber = Int(targetContentOffset.pointee.x / view.frame.width)
+        pageControl.currentPage = pageNumber
+    
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+    }
+    
 }
