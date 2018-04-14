@@ -23,33 +23,26 @@ class CityListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.isNavigationBarHidden = false;
+        navigationController?.isNavigationBarHidden = true;
         self.cityViewModel = CityViewModel()
         self.tableView.delegate = self
         self.tableView.dataSource = self
 
+        self.setGradientBackground()
         self.setupViewModel()
     }
     
-    @IBAction func confirmСityPushButton(_ sender: Any) {
-        guard let index = selectedIndex else {
-            return
-        }
+    func setGradientBackground() {
+        let colorTop =  UIColor(red: 130.0/255.0, green: 126.0/255.0, blue: 163.0/255.0, alpha: 1.0).cgColor
+        let colorBottom = UIColor(red: 226.0/255.0, green: 232.0/255.0, blue: 246.0/255.0, alpha: 1.0).cgColor
         
-        if UserDefaults.standard.getCurrentCity() == nil {
-            let navigationVC = UINavigationController(rootViewController: TabBarViewController())
-            navigationVC.modalTransitionStyle = .flipHorizontal
-            self.present(navigationVC, animated: true, completion: nil)
-        } else {
-            delegate?.setNewCity(id: (cityViewModel?.cities[index].id)!)
-            UIView.animate(withDuration: 0.5, animations: {
-                UIView.setAnimationCurve(.easeInOut)
-                UIView.setAnimationTransition(.flipFromLeft, for: (self.navigationController?.view)!, cache: false)
-            })
-            self.navigationController?.popViewController(animated: true)
-        }
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop, colorBottom]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = self.view.bounds
         
-        UserDefaults.standard.setCurrentCity(city: (cityViewModel?.cities[index].name)!)
+        self.view.layer.insertSublayer(gradientLayer, at: 0)
+        self.tableView.backgroundColor = .clear
     }
     
     func setupViewModel() {
@@ -62,7 +55,21 @@ class CityListViewController: UIViewController {
 
 extension CityListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedIndex = indexPath.row as Int
+        
+        if UserDefaults.standard.getCurrentCity() == nil {
+            let navigationVC = UINavigationController(rootViewController: TabBarViewController())
+            navigationVC.modalTransitionStyle = .flipHorizontal
+            self.present(navigationVC, animated: true, completion: nil)
+        } else {
+            delegate?.setNewCity(id: (cityViewModel?.cities[indexPath.row].id)!)
+            UIView.animate(withDuration: 0.5, animations: {
+                UIView.setAnimationCurve(.easeInOut)
+                UIView.setAnimationTransition(.flipFromLeft, for: (self.navigationController?.view)!, cache: false)
+            })
+            self.navigationController?.popViewController(animated: true)
+        }
+        
+        UserDefaults.standard.setCurrentCity(city: (cityViewModel?.cities[indexPath.row].name)!)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

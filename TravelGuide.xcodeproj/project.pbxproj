@@ -11,6 +11,10 @@
 		771483F0206B898500B9A141 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771483EF206B898500B9A141 /* Logger.swift */; };
 		771483F2206B8D0900B9A141 /* Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771483F1206B8D0900B9A141 /* Foundation.swift */; };
 		771483F6206CE8F500B9A141 /* ChooseLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771483F5206CE8F500B9A141 /* ChooseLoginViewController.swift */; };
+		772B48372081F8F3006A2539 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772B48362081F8F3006A2539 /* UIView.swift */; };
+		772B483920820AE8006A2539 /* HeaderSightsCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772B483820820AE8006A2539 /* HeaderSightsCollectionReusableView.swift */; };
+		772B483B20820BDA006A2539 /* SightHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772B483A20820BDA006A2539 /* SightHeaderView.swift */; };
+		772B483D20820D9B006A2539 /* SighHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 772B483C20820D9B006A2539 /* SighHeaderView.xib */; };
 		77397B43205E5345008BFCBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77397B42205E5345008BFCBA /* AppDelegate.swift */; };
 		77397B48205E5345008BFCBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77397B46205E5345008BFCBA /* Main.storyboard */; };
 		77397B4D205E5345008BFCBA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77397B4B205E5345008BFCBA /* LaunchScreen.storyboard */; };
@@ -42,7 +46,6 @@
 		77B8B2AF20615A5800BDAA75 /* SightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B8B2AE20615A5800BDAA75 /* SightViewController.swift */; };
 		77C0FA8720681F8900A94A8F /* UIWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C0FA8620681F8900A94A8F /* UIWindow.swift */; };
 		77C0FA8920682A8500A94A8F /* ValidityFieldsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C0FA8820682A8500A94A8F /* ValidityFieldsProtocol.swift */; };
-		77DF6927206284830094B962 /* MainCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DF6926206284830094B962 /* MainCityViewController.swift */; };
 		77DF692920628DA80094B962 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DF692820628DA80094B962 /* TabBarViewController.swift */; };
 		77DF692D2062946A0094B962 /* CityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DF692C2062946A0094B962 /* CityListViewController.swift */; };
 		77E9E14B206298EC0092E70A /* CityListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E9E14A206298EC0092E70A /* CityListTableViewCell.swift */; };
@@ -59,6 +62,10 @@
 		771483EF206B898500B9A141 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		771483F1206B8D0900B9A141 /* Foundation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Foundation.swift; sourceTree = "<group>"; };
 		771483F5206CE8F500B9A141 /* ChooseLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseLoginViewController.swift; sourceTree = "<group>"; };
+		772B48362081F8F3006A2539 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		772B483820820AE8006A2539 /* HeaderSightsCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSightsCollectionReusableView.swift; sourceTree = "<group>"; };
+		772B483A20820BDA006A2539 /* SightHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightHeaderView.swift; sourceTree = "<group>"; };
+		772B483C20820D9B006A2539 /* SighHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SighHeaderView.xib; sourceTree = "<group>"; };
 		77397B3F205E5345008BFCBA /* TravelGuide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelGuide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77397B42205E5345008BFCBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77397B47205E5345008BFCBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -92,7 +99,6 @@
 		77B8B2AE20615A5800BDAA75 /* SightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightViewController.swift; sourceTree = "<group>"; };
 		77C0FA8620681F8900A94A8F /* UIWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindow.swift; sourceTree = "<group>"; };
 		77C0FA8820682A8500A94A8F /* ValidityFieldsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidityFieldsProtocol.swift; sourceTree = "<group>"; };
-		77DF6926206284830094B962 /* MainCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCityViewController.swift; sourceTree = "<group>"; };
 		77DF692820628DA80094B962 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		77DF692C2062946A0094B962 /* CityListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListViewController.swift; sourceTree = "<group>"; };
 		77E9E14A206298EC0092E70A /* CityListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListTableViewCell.swift; sourceTree = "<group>"; };
@@ -211,6 +217,8 @@
 			isa = PBXGroup;
 			children = (
 				77E9E14E20637DD20092E70A /* Cell */,
+				772B483A20820BDA006A2539 /* SightHeaderView.swift */,
+				772B483C20820D9B006A2539 /* SighHeaderView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -240,7 +248,6 @@
 				77621125206FEC8100111EBC /* Map */,
 				774D998F2067E14100CA0C22 /* Authorization */,
 				77B8B2AE20615A5800BDAA75 /* SightViewController.swift */,
-				77DF6926206284830094B962 /* MainCityViewController.swift */,
 				77DF692C2062946A0094B962 /* CityListViewController.swift */,
 				77DF692820628DA80094B962 /* TabBarViewController.swift */,
 				77B600F8206EDF2E0076199A /* ProfileViewController.swift */,
@@ -275,6 +282,7 @@
 				77B8B281205FF12B00BDAA75 /* SightCollectionViewCell.swift */,
 				77E9E14A206298EC0092E70A /* CityListTableViewCell.swift */,
 				77F4DA5A2065702D0048B768 /* WelcomeCollectionViewCell.swift */,
+				772B483820820AE8006A2539 /* HeaderSightsCollectionReusableView.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -298,6 +306,7 @@
 				774D998B2067DDCA00CA0C22 /* UIViewController.swift */,
 				77C0FA8620681F8900A94A8F /* UIWindow.swift */,
 				771483F1206B8D0900B9A141 /* Foundation.swift */,
+				772B48362081F8F3006A2539 /* UIView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -385,6 +394,7 @@
 				77397B4D205E5345008BFCBA /* LaunchScreen.storyboard in Resources */,
 				77397B6A205EBDCA008BFCBA /* Assets.xcassets in Resources */,
 				77397B48205E5345008BFCBA /* Main.storyboard in Resources */,
+				772B483D20820D9B006A2539 /* SighHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,13 +464,15 @@
 				77621127206FECAC00111EBC /* PinAnnotation.swift in Sources */,
 				779DD95720662F3F00F08676 /* LoginViewController.swift in Sources */,
 				774D998E2067E13900CA0C22 /* RegistrationViewController.swift in Sources */,
+				772B48372081F8F3006A2539 /* UIView.swift in Sources */,
+				772B483920820AE8006A2539 /* HeaderSightsCollectionReusableView.swift in Sources */,
 				774D998C2067DDCA00CA0C22 /* UIViewController.swift in Sources */,
 				77B8B29720613B9F00BDAA75 /* HTTPStatusCode.swift in Sources */,
 				77B8B28A2061082A00BDAA75 /* CityModel.swift in Sources */,
 				7786FE6020736529004C7877 /* DetailInfoTableViewCell.swift in Sources */,
 				77DF692920628DA80094B962 /* TabBarViewController.swift in Sources */,
+				772B483B20820BDA006A2539 /* SightHeaderView.swift in Sources */,
 				77B8B2912061388800BDAA75 /* SightViewModel.swift in Sources */,
-				77DF6927206284830094B962 /* MainCityViewController.swift in Sources */,
 				77DF692D2062946A0094B962 /* CityListViewController.swift in Sources */,
 				77B600FB206F8B600076199A /* MapViewController.swift in Sources */,
 				77F4DA552063F6DD0048B768 /* WelcomeViewController.swift in Sources */,

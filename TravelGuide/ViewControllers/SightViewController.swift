@@ -10,7 +10,19 @@ import UIKit
 
 class SightViewController: UIViewController {
     
+    @IBOutlet weak var mapFilterView: UIView!
+    @IBOutlet weak var foggingHeaderView: UIView!
+    @IBOutlet weak var headerView: UIView!
+
     @IBOutlet weak var sightsCollectionView: UICollectionView!
+    
+    @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var headerTopConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var changeFilterButton: UIButton!
+    @IBOutlet weak var openMapButton: UIButton!
+    @IBOutlet weak var cityImage: UIImageView!
+    @IBOutlet weak var cityNameLabel: UILabel!
     
     var sightViewModel: SightViewModel?
     var city_id: NSNumber = 1
@@ -18,9 +30,14 @@ class SightViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.cityImage.image = UIImage(named: "nn")
         self.sightViewModel = SightViewModel()
         self.sightsCollectionView.delegate = self
         self.sightsCollectionView.dataSource = self
+        self.headerView.translatesAutoresizingMaskIntoConstraints = false
+        self.sightsCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.mapFilterView.roundCorners([.topRight, .topLeft, .bottomRight, .bottomLeft], radius: 5, borderWidth: 1, borderColor: .darkGray)
         self.setupViewModel(city_id)
     }
     
@@ -33,6 +50,13 @@ class SightViewController: UIViewController {
             
             self.sightsCollectionView.reloadData()
         })
+    }
+    
+    func animateHeader() {
+        self.headerHeightConstraint.constant = 380
+        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: nil)
     }
     
     @IBAction func openMapAction(_ sender: Any) {
@@ -65,6 +89,91 @@ extension SightViewController: UICollectionViewDelegate, UICollectionViewDataSou
                 sightsCollectionView.reloadData()
             }
         }
+        
+
+        return
+        if (self.sightsCollectionView.frame.origin.y < foggingHeaderView.frame.height + openMapButton.frame.height) {
+            self.headerTopConstraint.constant = -100
+            return
+        }
+        
+        self.headerTopConstraint.constant -= offsetY / 100
+//
+//        if (scrollView.contentOffset.y < 50) {
+//            if (self.sightsCollectionView.frame.origin.y >= headerView.frame.height) {
+//                // self.headerTopConstraint.constant = 380
+//                return
+//            }
+//            
+//            self.headerHeightConstraint.constant += 5
+//            
+//            //            self.headerTopConstraint.constant += scrollView.contentOffset.y / 100
+//            return
+//        }
+//        
+//        if (self.sightsCollectionView.frame.origin.y < foggingHeaderView.frame.height + openMapButton.frame.height) {
+//            return
+//        }
+//
+//        self.headerTopConstraint.constant -= scrollView.contentOffset.y / 100
+//        return
+//        
+//        let n = foggingHeaderView.frame.height + openMapButton.frame.height
+//        if scrollView.contentOffset.y < 0 {
+//            self.headerHeightConstraint.constant += 5
+//            self.incrementColorAlpha(offset: self.headerHeightConstraint.constant)
+//            self.incrementArticleAlpha(offset: self.headerHeightConstraint.constant)
+//        } else if scrollView.contentOffset.y > 0 && self.headerHeightConstraint.constant >= n {
+//            self.headerHeightConstraint.constant -= scrollView.contentOffset.y / 100
+//            self.decrementColorAlpha(offset: scrollView.contentOffset.y)
+//            self.decrementArticleAlpha(offset: self.headerHeightConstraint.constant)
+//            
+//            if self.headerHeightConstraint.constant < n {
+//                self.headerHeightConstraint.constant = n
+//            }
+//        }
+    }
+
+    func decrementColorAlpha(offset: CGFloat) {
+        if self.cityImage.alpha <= 1 {
+            let alphaOffset = (offset/500)/85
+            self.cityImage.alpha += alphaOffset
+        }
+    }
+    
+    func decrementArticleAlpha(offset: CGFloat) {
+        if self.openMapButton.alpha >= 0 {
+            let alphaOffset = max((offset - foggingHeaderView.frame.height + openMapButton.frame.height)/85.0, 0)
+            self.openMapButton.alpha = alphaOffset
+            self.changeFilterButton.alpha = alphaOffset
+        }
+    }
+    func incrementColorAlpha(offset: CGFloat) {
+        if self.cityImage.alpha >= 0.6 {
+            let alphaOffset = (offset/200)/85
+            self.cityImage.alpha -= alphaOffset
+        }
+    }
+    func incrementArticleAlpha(offset: CGFloat) {
+        if self.openMapButton.alpha <= 1 {
+            let alphaOffset = max((offset - foggingHeaderView.frame.height + openMapButton.frame.height)/85, 0)
+            self.openMapButton.alpha = alphaOffset
+            self.changeFilterButton.alpha = alphaOffset
+        }
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if self.headerHeightConstraint.constant >= 380 {
+            self.headerHeightConstraint.constant = 380
+            //animateHeader()
+        }
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if self.headerHeightConstraint.constant >= 380 {
+            self.headerHeightConstraint.constant = 380
+            //animateHeader()
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -79,6 +188,21 @@ extension SightViewController: UICollectionViewDelegate, UICollectionViewDataSou
             detailVC?.sigthModel = self.sightViewModel?.sights[indexPath.row]
             self.navigationController?.pushViewController(detailVC!, animated: true)
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        var reusableView:UICollectionReusableView?
+        if kind == UICollectionElementKindSectionHeader {
+            
+            let headerView:HeaderSightsCollectionReusableView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "HeaderSightView", for: indexPath) as! HeaderSightsCollectionReusableView
+            reusableView =  headerView
+            
+        }
+        
+        return reusableView!
+        
+        return reusableView!
     }
 
 }

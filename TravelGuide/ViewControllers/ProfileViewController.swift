@@ -9,11 +9,22 @@
 import UIKit
 import Nuke
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, ChangeCity {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    }
+    
+    func setNewCity(id: NSNumber) {
+        let vc = self.tabBarController?.viewControllers![0] as! SightViewController
+        vc.setupViewModel(id)
+    }
+    
+    @IBAction func changeCity(_ sender: Any) {
+        let citiesVC = storyboard?.instantiateViewController(withIdentifier: "CitiesBoard") as? CityListViewController
+        citiesVC?.delegate = self
+        self.navigationController?.pushViewController(citiesVC!, animated: true)
     }
     
     

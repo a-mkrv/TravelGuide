@@ -23,6 +23,7 @@ class SightCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        pImage.roundCorners([.topRight, .topLeft, .bottomRight, .bottomLeft], radius: 4)
     }
 
     override func prepareForReuse() {
