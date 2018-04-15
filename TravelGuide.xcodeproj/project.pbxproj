@@ -13,6 +13,7 @@
 		771483F6206CE8F500B9A141 /* ChooseLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771483F5206CE8F500B9A141 /* ChooseLoginViewController.swift */; };
 		772B48372081F8F3006A2539 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772B48362081F8F3006A2539 /* UIView.swift */; };
 		772B483920820AE8006A2539 /* HeaderSightsCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772B483820820AE8006A2539 /* HeaderSightsCollectionReusableView.swift */; };
+		772B483F20834AB4006A2539 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772B483E20834AB4006A2539 /* FilterViewController.swift */; };
 		77397B43205E5345008BFCBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77397B42205E5345008BFCBA /* AppDelegate.swift */; };
 		77397B48205E5345008BFCBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77397B46205E5345008BFCBA /* Main.storyboard */; };
 		77397B4D205E5345008BFCBA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77397B4B205E5345008BFCBA /* LaunchScreen.storyboard */; };
@@ -62,6 +63,7 @@
 		771483F5206CE8F500B9A141 /* ChooseLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseLoginViewController.swift; sourceTree = "<group>"; };
 		772B48362081F8F3006A2539 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		772B483820820AE8006A2539 /* HeaderSightsCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSightsCollectionReusableView.swift; sourceTree = "<group>"; };
+		772B483E20834AB4006A2539 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		77397B3F205E5345008BFCBA /* TravelGuide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelGuide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77397B42205E5345008BFCBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77397B47205E5345008BFCBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				77DF692820628DA80094B962 /* TabBarViewController.swift */,
 				77B600F8206EDF2E0076199A /* ProfileViewController.swift */,
 				7786FE5A2072CFF2004C7877 /* DetailSightViewController.swift */,
+				772B483E20834AB4006A2539 /* FilterViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -446,6 +449,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				772B483F20834AB4006A2539 /* FilterViewController.swift in Sources */,
 				771483F0206B898500B9A141 /* Logger.swift in Sources */,
 				7786FE64207365F7004C7877 /* DetailMapTableViewCell.swift in Sources */,
 				77C0FA8720681F8900A94A8F /* UIWindow.swift in Sources */,
