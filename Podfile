@@ -14,5 +14,6 @@ target 'TravelGuide' do
   pod 'SCLAlertView'
   pod 'Nuke'
   pod 'Cluster'
+  pod 'RealmSwift'
   
 end

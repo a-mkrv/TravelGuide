@@ -16,7 +16,6 @@ class SightCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var pName: UILabel!
     @IBOutlet weak var pType: UILabel!
 
-    let innerCellId = "ScrollImageCell"
     var sightId: NSNumber?
     var indexCell: Int = 0
     var imageURL: String?
