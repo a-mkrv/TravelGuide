@@ -56,8 +56,10 @@ class LoginViewController: UIViewController, ValidityFields {
             
             if response!["status"] as? String == "success" {
                 let token = response!["data"] as! Json
-                UserDefaults.standard.setUserToken(token: token["token"] as! String)
-                UserDefaults.standard.setIsLoggedIn(value: true)
+                CurrentUser.sharedInstance.token = token["token"] as? String
+                CurrentUser.sharedInstance.isLogin = true
+                CurrentUser.sharedInstance.login = login
+
                 self.navigationToChooseCityView()
             }
         }

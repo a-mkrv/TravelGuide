@@ -12,25 +12,35 @@ class CurrentUser {
     
     static let sharedInstance = CurrentUser()
     
-    var login: String?
-    var country: NSNumber?
-    var city: NSNumber?
-    var categories: [String] = []
-    var isLogin: Bool = false
-    
-    private init() {
-        self.isLogin = UserDefaults.standard.isLoggedIn()
-        self.city = UserDefaults.standard.getCurrentCityId()
-        self.country = 1
+    var login: String? = nil {
+        didSet {
+            UserDefaults.standard.setUserLogin(login: login!)
+        }
     }
 
-    
-    func logIn(login: String) {
-        self.login = login
+    var isLogin: Bool = false {
+        didSet {
+            UserDefaults.standard.setIsLoggedIn(value: isLogin)
+        }
     }
     
-    func setCurrentCity(country: NSNumber, city: NSNumber) {
-        self.country = country
-        self.city = country
+    var token: String? = nil {
+        didSet {
+            UserDefaults.standard.setUserToken(token: token!)
+        }
+    }
+    
+    var city: City?
+    var categories: [String] = []
+    
+    private init() {}
+    
+    func setCurrentCity(city: City) {
+        self.city = city
+        UserDefaults.standard.setCurrentCity(cityId: city.id)
+    }
+    
+    func getCurrentCity() -> NSNumber {
+        return UserDefaults.standard.getCurrentCityId()
     }
 }

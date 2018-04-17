@@ -27,8 +27,7 @@ class SightViewController: UIViewController {
     @IBOutlet weak var downloadButton: UIButton!
     
     var sightViewModel: SightViewModel?
-    var city_id: NSNumber = 1
-    var isCityDownloaded = false
+    var city_id: NSNumber = CurrentUser.sharedInstance.getCurrentCity()
     var showItems = 0
     
     override func viewDidLoad() {
@@ -44,22 +43,25 @@ class SightViewController: UIViewController {
         self.setupViewModel(city_id)
     }
     
-    func setupView() {
-        self.cityImage.image = UIImage(named: "nn")
-        if let count = sightViewModel?.results.count, count > 0 {
+    override func viewWillAppear(_ animated: Bool) {
+        if DBManager.sharedInstance.getCityById(id: CurrentUser.sharedInstance.city?.id as! Int) != nil {
             self.downloadButton.setImage(UIImage(named: "cloud-ok"), for: .normal)
         } else {
             self.downloadButton.setImage(UIImage(named: "cloud-no"), for: .normal)
         }
-        
+    }
+    
+    func setupView() {
+        self.cityImage.image = UIImage(named: "nn")
         self.downloadView.layer.cornerRadius = downloadView.frame.width / 2
         self.mapFilterView.roundCorners([.topRight, .topLeft, .bottomRight, .bottomLeft], radius: 5, borderWidth: 1, borderColor: .darkGray)
     }
     
     @IBAction func downloadCity(_ sender: Any) {
-        if !isCityDownloaded {
+        if !(CurrentUser.sharedInstance.city?.isDownload)! {
             self.downloadButton.setImage(UIImage(named: "cloud-ok"), for: .normal)
             self.sightViewModel?.populateRealmSights()
+            CurrentUser.sharedInstance.city?.isDownload = true
         }
     }
     

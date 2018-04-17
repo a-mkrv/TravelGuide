@@ -58,7 +58,8 @@ extension CityListViewController: UITableViewDataSource, UITableViewDelegate {
         
         let city = (cityViewModel?.cities[indexPath.row])!
         
-        if UserDefaults.standard.getCurrentCityId() == 0 {
+        if CurrentUser.sharedInstance.city == nil {
+            CurrentUser.sharedInstance.setCurrentCity(city: city)
             let navigationVC = UINavigationController(rootViewController: TabBarViewController())
             navigationVC.modalTransitionStyle = .flipHorizontal
             self.present(navigationVC, animated: true, completion: nil)
@@ -68,11 +69,10 @@ extension CityListViewController: UITableViewDataSource, UITableViewDelegate {
                 UIView.setAnimationCurve(.easeInOut)
                 UIView.setAnimationTransition(.flipFromLeft, for: (self.navigationController?.view)!, cache: false)
             })
+            
+            CurrentUser.sharedInstance.setCurrentCity(city: city)
             self.navigationController?.popViewController(animated: true)
         }
-        
-        CurrentUser.sharedInstance.setCurrentCity(country: city.country, city: city.id)
-        UserDefaults.standard.setCurrentCity(cityId: city.id)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

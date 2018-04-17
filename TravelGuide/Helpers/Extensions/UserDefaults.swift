@@ -18,6 +18,7 @@ extension UserDefaults {
         case isLoggedIn
         case currentCity
         case userToken
+        case userLogin
     }
     
     func createKey(_ key: String) -> String {
@@ -30,12 +31,17 @@ extension UserDefaults {
         synchronize()
     }
     
+    func setUserLogin(login: String) {
+        set(login, forKey: createKey(UserDefaultsKeys.userLogin.rawValue))
+        synchronize()
+    }
+    
     func setCurrentCity(cityId: NSNumber) {
         set(cityId, forKey: createKey(UserDefaultsKeys.currentCity.rawValue))
         synchronize()
     }
     
-    func setUserToken(token: Any) {
+    func setUserToken(token: String) {
         set(token, forKey: createKey(UserDefaultsKeys.userToken.rawValue))
         synchronize()
     }
@@ -45,12 +51,16 @@ extension UserDefaults {
         return bool(forKey: createKey(UserDefaultsKeys.isLoggedIn.rawValue))
     }
     
-    func getCurrentCityId() -> NSNumber? {
+    func getUserLogin() -> String {
+        return string(forKey: createKey(UserDefaultsKeys.userLogin.rawValue))!
+    }
+    
+    func getCurrentCityId() -> NSNumber {
         return integer(forKey: createKey(UserDefaultsKeys.currentCity.rawValue)) as NSNumber
     }
     
-    func getUserToken() -> Any {
-        return createKey(UserDefaultsKeys.userToken.rawValue)
+    func getUserToken() -> String {
+        return string(forKey: createKey(UserDefaultsKeys.userToken.rawValue))!
     }
     
     ////

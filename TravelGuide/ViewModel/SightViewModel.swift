@@ -33,8 +33,8 @@ class SightViewModel {
         }
         
         let curCity = CityRealmModel()
-        curCity.id = 1
-        curCity.name = "NN"
+        curCity.id = CurrentUser.sharedInstance.city?.id as! Int
+        curCity.name = (CurrentUser.sharedInstance.city?.name)!
         curCity.country = "Russia"
         
         for s in sights {
@@ -49,7 +49,7 @@ class SightViewModel {
         sights.removeAll()
         
         
-        if (CurrentUser.sharedInstance.city == city_id) && (!APIService.isConnectedToInternet || results.count > 0) {
+        if (CurrentUser.sharedInstance.city?.id == city_id) && (!APIService.isConnectedToInternet || results.count > 0) {
             extractRealmSights(byCityId: city_id.intValue)
             completion()
         } else {

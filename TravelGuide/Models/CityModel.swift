@@ -20,6 +20,7 @@ struct City {
     let country: NSNumber
     let name: String
     let sights: [Sight]
+    var isDownload: Bool = false
 }
 
 // Mark: - extension City
