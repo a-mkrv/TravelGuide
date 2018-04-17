@@ -56,12 +56,14 @@ class CityListViewController: UIViewController {
 extension CityListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if UserDefaults.standard.getCurrentCity() == nil {
+        let city = (cityViewModel?.cities[indexPath.row])!
+        
+        if UserDefaults.standard.getCurrentCityId() == 0 {
             let navigationVC = UINavigationController(rootViewController: TabBarViewController())
             navigationVC.modalTransitionStyle = .flipHorizontal
             self.present(navigationVC, animated: true, completion: nil)
         } else {
-            delegate?.setNewCity(id: (cityViewModel?.cities[indexPath.row].id)!)
+            delegate?.setNewCity(id: city.id)
             UIView.animate(withDuration: 0.5, animations: {
                 UIView.setAnimationCurve(.easeInOut)
                 UIView.setAnimationTransition(.flipFromLeft, for: (self.navigationController?.view)!, cache: false)
@@ -69,7 +71,8 @@ extension CityListViewController: UITableViewDataSource, UITableViewDelegate {
             self.navigationController?.popViewController(animated: true)
         }
         
-        UserDefaults.standard.setCurrentCity(city: (cityViewModel?.cities[indexPath.row].name)!)
+        CurrentUser.sharedInstance.setCurrentCity(country: city.country, city: city.id)
+        UserDefaults.standard.setCurrentCity(cityId: city.id)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -13,7 +13,8 @@ class SightViewController: UIViewController {
     @IBOutlet weak var mapFilterView: UIView!
     @IBOutlet weak var foggingHeaderView: UIView!
     @IBOutlet weak var headerView: UIView!
-
+    @IBOutlet weak var downloadView: UIView!
+    
     @IBOutlet weak var sightsCollectionView: UICollectionView!
     
     @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
@@ -23,40 +24,54 @@ class SightViewController: UIViewController {
     @IBOutlet weak var openMapButton: UIButton!
     @IBOutlet weak var cityImage: UIImageView!
     @IBOutlet weak var cityNameLabel: UILabel!
+    @IBOutlet weak var downloadButton: UIButton!
     
     var sightViewModel: SightViewModel?
     var city_id: NSNumber = 1
+    var isCityDownloaded = false
     var showItems = 0
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.cityImage.image = UIImage(named: "nn")
         self.sightViewModel = SightViewModel()
+        
         self.sightsCollectionView.delegate = self
         self.sightsCollectionView.dataSource = self
         self.headerView.translatesAutoresizingMaskIntoConstraints = false
         self.sightsCollectionView.translatesAutoresizingMaskIntoConstraints = false
         
-        self.mapFilterView.roundCorners([.topRight, .topLeft, .bottomRight, .bottomLeft], radius: 5, borderWidth: 1, borderColor: .darkGray)
+        self.setupView()
         self.setupViewModel(city_id)
+    }
+    
+    func setupView() {
+        self.cityImage.image = UIImage(named: "nn")
+        if let count = sightViewModel?.results.count, count > 0 {
+            self.downloadButton.setImage(UIImage(named: "cloud-ok"), for: .normal)
+        } else {
+            self.downloadButton.setImage(UIImage(named: "cloud-no"), for: .normal)
+        }
+        
+        self.downloadView.layer.cornerRadius = downloadView.frame.width / 2
+        self.mapFilterView.roundCorners([.topRight, .topLeft, .bottomRight, .bottomLeft], radius: 5, borderWidth: 1, borderColor: .darkGray)
+    }
+    
+    @IBAction func downloadCity(_ sender: Any) {
+        if !isCityDownloaded {
+            self.downloadButton.setImage(UIImage(named: "cloud-ok"), for: .normal)
+            self.sightViewModel?.populateRealmSights()
+        }
     }
     
     func setupViewModel(_ city_id: NSNumber) {
         self.city_id = city_id
+        
         sightViewModel?.getAllSights(city_id, completion: {
             if let count = self.sightViewModel?.sights.count {
                 (count > 15) ? (self.showItems = 15) : (self.showItems = count)
             }
-            
             self.sightsCollectionView.reloadData()
         })
-    }
-    
-    func animateHeader() {
-        self.headerHeightConstraint.constant = 380
-        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
-            self.view.layoutIfNeeded()
-        }, completion: nil)
     }
     
     @IBAction func openMapAction(_ sender: Any) {
@@ -68,13 +83,13 @@ class SightViewController: UIViewController {
 
 
 extension SightViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-   
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return showItems
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-
+        
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
         
@@ -90,7 +105,7 @@ extension SightViewController: UICollectionViewDelegate, UICollectionViewDataSou
             }
         }
         
-
+        
         return
         if (self.sightsCollectionView.frame.origin.y < foggingHeaderView.frame.height + openMapButton.frame.height) {
             self.headerTopConstraint.constant = -100
@@ -98,42 +113,49 @@ extension SightViewController: UICollectionViewDelegate, UICollectionViewDataSou
         }
         
         self.headerTopConstraint.constant -= offsetY / 100
-//
-//        if (scrollView.contentOffset.y < 50) {
-//            if (self.sightsCollectionView.frame.origin.y >= headerView.frame.height) {
-//                // self.headerTopConstraint.constant = 380
-//                return
-//            }
-//            
-//            self.headerHeightConstraint.constant += 5
-//            
-//            //            self.headerTopConstraint.constant += scrollView.contentOffset.y / 100
-//            return
-//        }
-//        
-//        if (self.sightsCollectionView.frame.origin.y < foggingHeaderView.frame.height + openMapButton.frame.height) {
-//            return
-//        }
-//
-//        self.headerTopConstraint.constant -= scrollView.contentOffset.y / 100
-//        return
-//        
-//        let n = foggingHeaderView.frame.height + openMapButton.frame.height
-//        if scrollView.contentOffset.y < 0 {
-//            self.headerHeightConstraint.constant += 5
-//            self.incrementColorAlpha(offset: self.headerHeightConstraint.constant)
-//            self.incrementArticleAlpha(offset: self.headerHeightConstraint.constant)
-//        } else if scrollView.contentOffset.y > 0 && self.headerHeightConstraint.constant >= n {
-//            self.headerHeightConstraint.constant -= scrollView.contentOffset.y / 100
-//            self.decrementColorAlpha(offset: scrollView.contentOffset.y)
-//            self.decrementArticleAlpha(offset: self.headerHeightConstraint.constant)
-//            
-//            if self.headerHeightConstraint.constant < n {
-//                self.headerHeightConstraint.constant = n
-//            }
-//        }
+        //
+        //        if (scrollView.contentOffset.y < 50) {
+        //            if (self.sightsCollectionView.frame.origin.y >= headerView.frame.height) {
+        //                // self.headerTopConstraint.constant = 380
+        //                return
+        //            }
+        //
+        //            self.headerHeightConstraint.constant += 5
+        //
+        //            //            self.headerTopConstraint.constant += scrollView.contentOffset.y / 100
+        //            return
+        //        }
+        //
+        //        if (self.sightsCollectionView.frame.origin.y < foggingHeaderView.frame.height + openMapButton.frame.height) {
+        //            return
+        //        }
+        //
+        //        self.headerTopConstraint.constant -= scrollView.contentOffset.y / 100
+        //        return
+        //
+        //        let n = foggingHeaderView.frame.height + openMapButton.frame.height
+        //        if scrollView.contentOffset.y < 0 {
+        //            self.headerHeightConstraint.constant += 5
+        //            self.incrementColorAlpha(offset: self.headerHeightConstraint.constant)
+        //            self.incrementArticleAlpha(offset: self.headerHeightConstraint.constant)
+        //        } else if scrollView.contentOffset.y > 0 && self.headerHeightConstraint.constant >= n {
+        //            self.headerHeightConstraint.constant -= scrollView.contentOffset.y / 100
+        //            self.decrementColorAlpha(offset: scrollView.contentOffset.y)
+        //            self.decrementArticleAlpha(offset: self.headerHeightConstraint.constant)
+        //
+        //            if self.headerHeightConstraint.constant < n {
+        //                self.headerHeightConstraint.constant = n
+        //            }
+        //        }
     }
-
+    
+    func animateHeader() {
+        self.headerHeightConstraint.constant = 380
+        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+    }
+    
     func decrementColorAlpha(offset: CGFloat) {
         if self.cityImage.alpha <= 1 {
             let alphaOffset = (offset/500)/85
@@ -183,7 +205,7 @@ extension SightViewController: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let detailVC = UIStoryboard.loadViewController(from: "Main", named: "DetailBoard") as? DetailSightViewController
-       
+        
         if detailVC != nil {
             detailVC?.sigthModel = self.sightViewModel?.sights[indexPath.row]
             self.navigationController?.pushViewController(detailVC!, animated: true)
@@ -201,8 +223,6 @@ extension SightViewController: UICollectionViewDelegate, UICollectionViewDataSou
         }
         
         return reusableView!
-        
-        return reusableView!
     }
-
+    
 }

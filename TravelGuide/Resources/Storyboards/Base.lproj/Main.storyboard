@@ -1052,6 +1052,27 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0pG-MQ-Fwk">
+                                        <rect key="frame" x="315" y="252" width="60" height="60"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kLb-pS-jVi">
+                                                <rect key="frame" x="8" y="8" width="44" height="44"/>
+                                                <state key="normal" image="cloud-no"/>
+                                                <connections>
+                                                    <action selector="downloadCity:" destination="P9Z-I6-hl8" eventType="touchUpInside" id="cVg-bh-Z7E"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="AHE-nQ-Vc0"/>
+                                            <constraint firstItem="kLb-pS-jVi" firstAttribute="leading" secondItem="0pG-MQ-Fwk" secondAttribute="leading" constant="8" id="Dcg-J5-edd"/>
+                                            <constraint firstAttribute="trailing" secondItem="kLb-pS-jVi" secondAttribute="trailing" constant="8" id="GAD-XK-7eU"/>
+                                            <constraint firstItem="kLb-pS-jVi" firstAttribute="top" secondItem="0pG-MQ-Fwk" secondAttribute="top" constant="8" id="OhE-0K-x6i"/>
+                                            <constraint firstAttribute="height" constant="60" id="jaX-oR-MLW"/>
+                                            <constraint firstAttribute="bottom" secondItem="kLb-pS-jVi" secondAttribute="bottom" constant="8" id="vhJ-gW-X2X"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -1059,6 +1080,8 @@
                                     <constraint firstItem="7lu-lE-uXO" firstAttribute="top" secondItem="VBn-Ge-Ms9" secondAttribute="top" id="4CI-JH-q8k"/>
                                     <constraint firstAttribute="trailing" secondItem="nxX-sd-gRK" secondAttribute="trailing" constant="8" id="7iH-Wx-e45"/>
                                     <constraint firstAttribute="height" constant="370" id="BO0-tz-8OV"/>
+                                    <constraint firstAttribute="trailing" secondItem="0pG-MQ-Fwk" secondAttribute="trailing" id="Cii-MC-Bax"/>
+                                    <constraint firstItem="nxX-sd-gRK" firstAttribute="top" secondItem="0pG-MQ-Fwk" secondAttribute="bottom" constant="10" id="Va7-7p-NaW"/>
                                     <constraint firstAttribute="trailing" secondItem="7lu-lE-uXO" secondAttribute="trailing" id="Yk4-f8-AuS"/>
                                     <constraint firstItem="nxX-sd-gRK" firstAttribute="top" secondItem="7lu-lE-uXO" secondAttribute="bottom" constant="10" id="lVv-GT-scW"/>
                                     <constraint firstItem="nxX-sd-gRK" firstAttribute="leading" secondItem="VBn-Ge-Ms9" secondAttribute="leading" constant="8" id="uif-c1-z2a"/>
@@ -1170,6 +1193,8 @@
                         <outlet property="changeFilterButton" destination="JlO-WQ-8GV" id="FwO-r4-IMO"/>
                         <outlet property="cityImage" destination="7lu-lE-uXO" id="IES-Dh-Odu"/>
                         <outlet property="cityNameLabel" destination="WiK-UO-Nc0" id="o9D-Ur-vYD"/>
+                        <outlet property="downloadButton" destination="kLb-pS-jVi" id="CFd-83-Kly"/>
+                        <outlet property="downloadView" destination="0pG-MQ-Fwk" id="4Wq-YT-QjI"/>
                         <outlet property="foggingHeaderView" destination="Lrd-xZ-J5E" id="vF8-6a-Vsn"/>
                         <outlet property="headerHeightConstraint" destination="BO0-tz-8OV" id="17c-V1-NeT"/>
                         <outlet property="headerTopConstraint" destination="Zci-Bb-rDT" id="qGL-0x-YhY"/>
@@ -1181,7 +1206,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aL2-DY-FKe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="479" y="-994"/>
+            <point key="canvasLocation" x="477.60000000000002" y="-994.45277361319347"/>
         </scene>
         <!--Прогулки-->
         <scene sceneID="a69-q1-62s">
@@ -1810,6 +1835,7 @@
         <image name="architecture" width="60" height="60"/>
         <image name="back" width="64" height="64"/>
         <image name="clock" width="256" height="256"/>
+        <image name="cloud-no" width="256" height="256"/>
         <image name="concert" width="60" height="60"/>
         <image name="distance" width="60" height="60"/>
         <image name="entertainment" width="60" height="60"/>

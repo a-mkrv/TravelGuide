@@ -47,6 +47,30 @@ struct Sight {
 // Mark: - extension Sight
 extension Sight {
     
+    init?(sRealm: SightRealmModel?) {
+        guard let realm = sRealm else {
+                return nil
+        }
+        
+        self.id = NSNumber(value: realm.id)
+        self.name = realm.name
+        self.type = realm.type
+        self.rating = realm.rating
+        self.tags = realm.tags.map { $0.stringValue }
+        self.imagesURL = realm.imagesURL.map { $0.stringValue }
+        self.imagesJPG = []
+        
+        self.cost = realm.cost
+        self.phoneNumber = realm.phoneNumber ?? nil
+        self.webSite = realm.webSite ?? nil
+        self.descript = realm.descript ?? nil
+        self.history = realm.history ?? nil
+
+        let lat = realm.latitude
+        let long = realm.longitude
+        self.coordinate = CLLocationCoordinate2D(latitude: lat as CLLocationDegrees, longitude: long as CLLocationDegrees)
+    }
+    
     init?(json: Json?) {
         guard let json = json,
             let id = json[DataKeys.id] as? NSNumber,

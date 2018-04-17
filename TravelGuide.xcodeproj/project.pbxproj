@@ -11,11 +11,15 @@
 		771483F0206B898500B9A141 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771483EF206B898500B9A141 /* Logger.swift */; };
 		771483F2206B8D0900B9A141 /* Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771483F1206B8D0900B9A141 /* Foundation.swift */; };
 		771483F6206CE8F500B9A141 /* ChooseLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771483F5206CE8F500B9A141 /* ChooseLoginViewController.swift */; };
+		7727562E2085EA3900D1EADE /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7727562D2085EA3900D1EADE /* DBManager.swift */; };
+		7727563020862DED00D1EADE /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7727562F20862DED00D1EADE /* CurrentUser.swift */; };
 		772B48372081F8F3006A2539 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772B48362081F8F3006A2539 /* UIView.swift */; };
 		772B483920820AE8006A2539 /* HeaderSightsCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772B483820820AE8006A2539 /* HeaderSightsCollectionReusableView.swift */; };
 		772B483F20834AB4006A2539 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772B483E20834AB4006A2539 /* FilterViewController.swift */; };
 		772B48632084B245006A2539 /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772B48622084B245006A2539 /* FilterCollectionViewCell.swift */; };
 		772B48652084D0AF006A2539 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772B48642084D0AE006A2539 /* UIColor.swift */; };
+		772B48692084E3EA006A2539 /* Sight + Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772B48682084E3EA006A2539 /* Sight + Realm.swift */; };
+		772B486B2084F0E9006A2539 /* City + Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772B486A2084F0E9006A2539 /* City + Realm.swift */; };
 		77397B43205E5345008BFCBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77397B42205E5345008BFCBA /* AppDelegate.swift */; };
 		77397B48205E5345008BFCBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77397B46205E5345008BFCBA /* Main.storyboard */; };
 		77397B4D205E5345008BFCBA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77397B4B205E5345008BFCBA /* LaunchScreen.storyboard */; };
@@ -63,11 +67,15 @@
 		771483EF206B898500B9A141 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		771483F1206B8D0900B9A141 /* Foundation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Foundation.swift; sourceTree = "<group>"; };
 		771483F5206CE8F500B9A141 /* ChooseLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseLoginViewController.swift; sourceTree = "<group>"; };
+		7727562D2085EA3900D1EADE /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
+		7727562F20862DED00D1EADE /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		772B48362081F8F3006A2539 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		772B483820820AE8006A2539 /* HeaderSightsCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSightsCollectionReusableView.swift; sourceTree = "<group>"; };
 		772B483E20834AB4006A2539 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		772B48622084B245006A2539 /* FilterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewCell.swift; sourceTree = "<group>"; };
 		772B48642084D0AE006A2539 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		772B48682084E3EA006A2539 /* Sight + Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sight + Realm.swift"; sourceTree = "<group>"; };
+		772B486A2084F0E9006A2539 /* City + Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "City + Realm.swift"; sourceTree = "<group>"; };
 		77397B3F205E5345008BFCBA /* TravelGuide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelGuide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77397B42205E5345008BFCBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77397B47205E5345008BFCBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -126,6 +134,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		772B48662084E3BA006A2539 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				772B48682084E3EA006A2539 /* Sight + Realm.swift */,
+				772B486A2084F0E9006A2539 /* City + Realm.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
 		77397B36205E5344008BFCBA = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				77397B42205E5345008BFCBA /* AppDelegate.swift */,
+				772B48662084E3BA006A2539 /* Realm */,
 				77B8B2942061391000BDAA75 /* Services */,
 				77B8B284205FF50D00BDAA75 /* Models */,
 				77B8B28F2061386600BDAA75 /* ViewModel */,
@@ -261,6 +279,8 @@
 			isa = PBXGroup;
 			children = (
 				77B8B29E206149D900BDAA75 /* Network */,
+				7727562D2085EA3900D1EADE /* DBManager.swift */,
+				7727562F20862DED00D1EADE /* CurrentUser.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -455,6 +475,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7727563020862DED00D1EADE /* CurrentUser.swift in Sources */,
 				772B483F20834AB4006A2539 /* FilterViewController.swift in Sources */,
 				771483F0206B898500B9A141 /* Logger.swift in Sources */,
 				7786FE64207365F7004C7877 /* DetailMapTableViewCell.swift in Sources */,
@@ -469,6 +490,7 @@
 				774D998E2067E13900CA0C22 /* RegistrationViewController.swift in Sources */,
 				772B48372081F8F3006A2539 /* UIView.swift in Sources */,
 				772B483920820AE8006A2539 /* HeaderSightsCollectionReusableView.swift in Sources */,
+				772B486B2084F0E9006A2539 /* City + Realm.swift in Sources */,
 				774D998C2067DDCA00CA0C22 /* UIViewController.swift in Sources */,
 				77B8B29720613B9F00BDAA75 /* HTTPStatusCode.swift in Sources */,
 				77B8B28A2061082A00BDAA75 /* CityModel.swift in Sources */,
@@ -476,6 +498,7 @@
 				772B48632084B245006A2539 /* FilterCollectionViewCell.swift in Sources */,
 				77DF692920628DA80094B962 /* TabBarViewController.swift in Sources */,
 				77B8B2912061388800BDAA75 /* SightViewModel.swift in Sources */,
+				772B48692084E3EA006A2539 /* Sight + Realm.swift in Sources */,
 				77DF692D2062946A0094B962 /* CityListViewController.swift in Sources */,
 				77B600FB206F8B600076199A /* MapViewController.swift in Sources */,
 				77F4DA552063F6DD0048B768 /* WelcomeViewController.swift in Sources */,
@@ -485,6 +508,7 @@
 				7762112B206FF1F600111EBC /* CustomPinAnnotationView.swift in Sources */,
 				77B8B2A720614D9A00BDAA75 /* APIService.swift in Sources */,
 				772B48652084D0AF006A2539 /* UIColor.swift in Sources */,
+				7727562E2085EA3900D1EADE /* DBManager.swift in Sources */,
 				779DD9592066331800F08676 /* UIStoryboard.swift in Sources */,
 				77B600F9206EDF2E0076199A /* ProfileViewController.swift in Sources */,
 				77B8B282205FF12B00BDAA75 /* SightCollectionViewCell.swift in Sources */,

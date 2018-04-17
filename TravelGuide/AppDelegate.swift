@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,8 +20,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = UIColor.white
         
+
+        var config = Realm.Configuration()
+        config.fileURL = config.fileURL!.deletingLastPathComponent().appendingPathComponent("\(String(describing: Bundle.main.object(forInfoDictionaryKey: "CFBundleName"))).realm")
+        Realm.Configuration.defaultConfiguration = config
+        
         var initialViewController = UIViewController();
         if (isLoggedIn()) {
+            _ = CurrentUser.sharedInstance
             initialViewController = TabBarViewController()
         } else {
             initialViewController = (UIStoryboard.loadViewController(from: "Auth", named: "WelcomeBoard") as? WelcomeViewController)!

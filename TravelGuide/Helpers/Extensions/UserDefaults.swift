@@ -30,8 +30,8 @@ extension UserDefaults {
         synchronize()
     }
     
-    func setCurrentCity(city: String) {
-        set(city, forKey: createKey(UserDefaultsKeys.currentCity.rawValue))
+    func setCurrentCity(cityId: NSNumber) {
+        set(cityId, forKey: createKey(UserDefaultsKeys.currentCity.rawValue))
         synchronize()
     }
     
@@ -45,8 +45,8 @@ extension UserDefaults {
         return bool(forKey: createKey(UserDefaultsKeys.isLoggedIn.rawValue))
     }
     
-    func getCurrentCity() -> String? {
-        return string(forKey: createKey(UserDefaultsKeys.currentCity.rawValue))
+    func getCurrentCityId() -> NSNumber? {
+        return integer(forKey: createKey(UserDefaultsKeys.currentCity.rawValue)) as NSNumber
     }
     
     func getUserToken() -> Any {

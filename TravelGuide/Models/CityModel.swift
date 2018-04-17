@@ -17,8 +17,8 @@ fileprivate struct DataKeys {
 
 struct City {
     let id: NSNumber
+    let country: NSNumber
     let name: String
-    let country: String
     let sights: [Sight]
 }
 
@@ -34,7 +34,7 @@ extension City {
         
         self.id = id
         self.name = name
-        self.country = json[DataKeys.country] as? String ?? "Russia"
+        self.country = json[DataKeys.country] as? NSNumber ?? 1
         self.sights = []
     }
 }

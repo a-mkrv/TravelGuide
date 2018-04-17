@@ -7,28 +7,65 @@
 //
 
 import UIKit
+import RealmSwift
 import Nuke
 
 class SightViewModel {
     
     var sights = [Sight]()
     var manager = Nuke.Manager.shared
+    let results = try! Realm().objects(CityRealmModel.self)
+    
+    func extractRealmSights(byCityId: Int) {
+
+        if let curCity = DBManager.sharedInstance.getCityById(id: byCityId) {
+            for res in curCity.sights {
+                if let sight = Sight(sRealm: res) {
+                    self.sights.append(sight)
+                }
+            }
+        }
+    }
+    
+    func populateRealmSights() {
+        guard sights.count > 0 else {
+            return
+        }
+        
+        let curCity = CityRealmModel()
+        curCity.id = 1
+        curCity.name = "NN"
+        curCity.country = "Russia"
+        
+        for s in sights {
+            let sr = SightRealmModel(sight: s)
+            DBManager.sharedInstance.addSigthToCity(city: curCity, object: sr)
+        }
+        
+        DBManager.sharedInstance.addCity(object: curCity)
+    }
     
     func getAllSights(_ city_id: NSNumber, completion: @escaping () -> ()) {
         sights.removeAll()
         
-        APIService.shared.getSights(city_id){ response, error in
-            
-            if error != nil || response == nil || response!["status"] as? String == "error"  {
-                return
-            }
-            
-            for object in (response!["data"] as? Json)! {
-                if let sight = Sight(json: object.value as? Json) {
-                    self.sights.append(sight)
-                }
-            }
+        
+        if (CurrentUser.sharedInstance.city == city_id) && (!APIService.isConnectedToInternet || results.count > 0) {
+            extractRealmSights(byCityId: city_id.intValue)
             completion()
+        } else {
+            APIService.shared.getSights(city_id){ response, error in
+                
+                if error != nil || response == nil || response!["status"] as? String == "error"  {
+                    return
+                }
+                
+                for object in (response!["data"] as? Json)! {
+                    if let sight = Sight(json: object.value as? Json) {
+                        self.sights.append(sight)
+                    }
+                }
+                completion()
+            }
         }
     }
     
