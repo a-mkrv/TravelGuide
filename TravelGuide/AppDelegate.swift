@@ -8,6 +8,8 @@
 
 import UIKit
 import RealmSwift
+import FBSDKCoreKit
+import VK_ios_sdk
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var config = Realm.Configuration()
         config.fileURL = config.fileURL!.deletingLastPathComponent().appendingPathComponent("\(String(describing: Bundle.main.object(forInfoDictionaryKey: "CFBundleName"))).realm")
         Realm.Configuration.defaultConfiguration = config
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions:launchOptions)
         
         var initialViewController = UIViewController();
         if (isLoggedIn()) {
@@ -41,6 +44,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        VKSdk.processOpen(url, fromApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String)
+        FBSDKApplicationDelegate.sharedInstance().application(app, open: url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String, annotation: nil)
+
+        return true
+    }
+
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool  {
+        VKSdk.processOpen(url, fromApplication: sourceApplication)
+        FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
+
+        return true
+    }
+    
     private func isLoggedIn() -> Bool {
         return UserDefaults.standard.isLoggedIn()
     }

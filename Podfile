@@ -16,4 +16,9 @@ target 'TravelGuide' do
   pod 'Cluster'
   pod 'RealmSwift'
   
+  
+  #Social networks SDK
+  pod 'FBSDKLoginKit'
+  pod "VK-ios-sdk" 
+  
 end

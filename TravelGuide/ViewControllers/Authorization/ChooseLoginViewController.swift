@@ -15,7 +15,26 @@ class ChooseLoginViewController: UIViewController {
         UIApplication.shared.isStatusBarHidden = true;
     }
 
-    @IBAction func defaultLoginButtonPressed(_ sender: Any) {
+    
+    @IBAction func facebookAuthorization(_ sender: Any) {
+        SocialLoginManager.sharedInstance.facebookLogInWithReadPermissions(fromViewController: self, handler: { (result) in
+            print("Facebook result SUCCESS: ", result)
+        }) { (error) in
+            print("Facebook ERROR", error.localizedDescription)
+        }
+    }
+    
+    @IBAction func vkAuthorization(_ sender: Any) {
+        SocialLoginManager.sharedInstance.vkontakteLogInWithReadPermissions(fromViewController: self, handler: { (token) -> Void in
+                print("VK result SUCCESS:", token!.accessToken)
+        })
+        { (error) -> Void in
+            print("VK ERROR", error!.localizedDescription)
+        }
+    }
+    
+    
+    @IBAction func defaultPasswordAuthorization(_ sender: Any) {
         let loginController = UIStoryboard.loadViewController(from: "Auth", named: "AuthBoard") as? LoginViewController
         
         self.present(loginController!, animated: true, completion: nil)
