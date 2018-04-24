@@ -16,7 +16,7 @@ final class APIService {
     static let shared = APIService()
     static let sharedInstance = NetworkReachabilityManager()
     
-    let endpoint = "http://188.225.82.179:5000/api_v1.0/"
+    let endpoint = "http://82.146.44.98:5000/api_v1.0/"
 
     func getCities(completionHandler: @escaping completeRequest) {
         // 1 - id country, while always 1 - Russia
