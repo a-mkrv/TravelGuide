@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Nuke
 
 class ProfileViewController: UIViewController, ChangeCity {
     
@@ -29,9 +28,10 @@ class ProfileViewController: UIViewController, ChangeCity {
     
     
     @IBAction func signOutProfile(_ sender: Any) {
-        UserDefaults.standard.clearAllAppData()
-        Cache.shared.removeAll()
-        
-        self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
+       
+        CurrentUser.sharedInstance.logOut()
+        let loginController = UIStoryboard.loadViewController(from: "Auth", named: "ChooseLoginBoard") as? ChooseLoginViewController
+
+        self.view.window!.switchRootViewController(loginController!)
     }
 }

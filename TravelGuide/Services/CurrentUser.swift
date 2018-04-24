@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Nuke
 
 class CurrentUser {
     
@@ -42,5 +43,13 @@ class CurrentUser {
     
     func getCurrentCity() -> NSNumber {
         return UserDefaults.standard.getCurrentCityId()
+    }
+    
+    func logOut() {
+        city = nil
+        isLogin = false
+        
+        UserDefaults.standard.clearAllAppData()
+        Cache.shared.removeAll()
     }
 }

@@ -62,7 +62,7 @@ extension CityListViewController: UITableViewDataSource, UITableViewDelegate {
             CurrentUser.sharedInstance.setCurrentCity(city: city)
             let navigationVC = UINavigationController(rootViewController: TabBarViewController())
             navigationVC.modalTransitionStyle = .flipHorizontal
-            self.present(navigationVC, animated: true, completion: nil)
+            self.view.window?.switchRootViewController(navigationVC)
         } else {
             delegate?.setNewCity(id: city.id)
             UIView.animate(withDuration: 0.5, animations: {
