@@ -44,6 +44,8 @@ final class APIService {
                 
                 switch response.result {
                 case .success(let value):
+                    // let newResponse = try? JSONDecoder().decode(JSON<SightJson>.self, from: response.data!)
+
                     completionHandler(value as? NSDictionary, nil)
                 case .failure(let error):
                     completionHandler(nil, error)

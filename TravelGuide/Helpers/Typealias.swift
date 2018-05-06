@@ -8,6 +8,11 @@
 
 import Foundation
 
-public typealias Json = [String:AnyObject]
-
+public typealias Json = [String: AnyObject]
 public typealias JsonCollection = [Json]
+
+struct JSON<T : Codable> : Codable {
+    let data: [String: T]
+    let status: String
+    let message: String?
+}
