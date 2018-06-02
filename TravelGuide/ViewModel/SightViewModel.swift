@@ -13,6 +13,8 @@ import Nuke
 class SightViewModel {
     
     var sights = [Sight]()
+    var diplaySights = [Sight]()
+    
     var manager = Nuke.Manager.shared
     let results = try! Realm().objects(CityRealmModel.self)
     
@@ -72,7 +74,7 @@ class SightViewModel {
     func cellInstance(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SightCell", for: indexPath) as! SightCollectionViewCell
         
-        let sight = self.sights[indexPath.row]
+        let sight = self.diplaySights[indexPath.row]
         cell.sightId = sight.id
         cell.pName.text = sight.name
         cell.pType.text = sight.type

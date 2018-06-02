@@ -12,30 +12,29 @@ import Nuke
 class CurrentUser {
     
     static let sharedInstance = CurrentUser()
-    
-    var login: String? = nil {
-        didSet {
-            UserDefaults.standard.setUserLogin(login: login!)
-        }
+    private init() {}
+
+    var login: String? {
+        get { return UserDefaults.standard.getUserLogin() }
+        set { UserDefaults.standard.setUserLogin(login: newValue!) }
     }
 
-    var isLogin: Bool = false {
-        didSet {
-            UserDefaults.standard.setIsLoggedIn(value: isLogin)
-        }
+    var isLogin: Bool {
+        get { return UserDefaults.standard.isLoggedIn() }
+        set { UserDefaults.standard.setIsLoggedIn(value: newValue) }
     }
     
-    var token: String? = nil {
-        didSet {
-            UserDefaults.standard.setUserToken(token: token!)
-        }
+    var token: String? {
+        get { return UserDefaults.standard.getUserToken() }
+        set { UserDefaults.standard.setUserToken(token: newValue!) }
+    }
+    
+    var favoriteCategories: [String] {
+        get { return UserDefaults.standard.getFavoriteCategories() }
+        set { UserDefaults.standard.setFavoriteCategories(categories: newValue) }
     }
     
     var city: City?
-    var categories: [String] = []
-    
-    private init() {}
-    
     func setCurrentCity(city: City) {
         self.city = city
         UserDefaults.standard.setCurrentCity(cityId: city.id)
@@ -46,8 +45,11 @@ class CurrentUser {
     }
     
     func logOut() {
-        city = nil
         isLogin = false
+        city = nil
+        token = nil
+        login = nil
+        favoriteCategories = ["Выбрать все"]
         
         UserDefaults.standard.clearAllAppData()
         Cache.shared.removeAll()

@@ -1112,7 +1112,7 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="GvQ-Hm-WpM" kind="show" id="H4f-mb-xB2"/>
+                                                    <segue destination="GvQ-Hm-WpM" kind="show" identifier="pushFilter" id="H4f-mb-xB2"/>
                                                 </connections>
                                             </button>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="2CD-kD-m3l">
@@ -1648,10 +1648,13 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cXF-z3-Ko3">
-                                        <rect key="frame" x="337" y="40" width="22" height="22"/>
+                                        <rect key="frame" x="330" y="30" width="38" height="39"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="back"/>
+                                        <state key="normal" image="checked"/>
                                         <state key="selected" image="concert"/>
+                                        <connections>
+                                            <action selector="saveChanges:" destination="GvQ-Hm-WpM" eventType="touchUpInside" id="O9Z-K3-Kwx"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.6588235294" green="0.7725490196" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1971,6 +1974,7 @@
         <image name="2" width="512" height="512"/>
         <image name="architecture" width="60" height="60"/>
         <image name="back" width="64" height="64"/>
+        <image name="checked" width="64" height="64"/>
         <image name="clock" width="256" height="256"/>
         <image name="cloud-no" width="256" height="256"/>
         <image name="concert" width="60" height="60"/>

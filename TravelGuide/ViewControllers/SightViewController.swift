@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SightViewController: UIViewController {
+class SightViewController: UIViewController, ChangeSightCategory {
     
     @IBOutlet weak var mapFilterView: UIView!
     @IBOutlet weak var foggingHeaderView: UIView!
@@ -45,12 +45,31 @@ class SightViewController: UIViewController {
         self.setupViewModel(city_id)
     }
     
+    // FIXME: Not called
     override func viewWillAppear(_ animated: Bool) {
         if DBManager.sharedInstance.getCityById(id: CurrentUser.sharedInstance.city?.id as! Int) != nil {
             self.downloadButton.setImage(UIImage(named: "cloud-ok"), for: .normal)
         } else {
             self.downloadButton.setImage(UIImage(named: "cloud-no"), for: .normal)
         }
+    }
+    
+    func updateSightsCollectionView() {
+        let selectedCategories = CurrentUser.sharedInstance.favoriteCategories.map( { $0.lowercased() } ).map({ String($0.prefix(4)) })
+        
+        // FIXME: Fix this mego crutch
+        if selectedCategories.count == 1 && selectedCategories[0] == "выбр" {
+            sightViewModel?.diplaySights = (sightViewModel?.sights)!
+        } else {
+            let isDisplaySights = sightViewModel?.sights.filter( {selectedCategories.contains(String($0.type.prefix(4)))} )
+            sightViewModel?.diplaySights = isDisplaySights!
+        }
+        
+        if let count = sightViewModel?.diplaySights.count {
+            (count > 15) ? (showItems = 15) : (showItems = count)
+        }
+        
+        self.sightsCollectionView.reloadData()
     }
     
     func setupView() {
@@ -73,12 +92,8 @@ class SightViewController: UIViewController {
         }
         
         self.city_id = city_id
-        
         sightViewModel?.getAllSights(city_id, completion: {
-            if let count = self.sightViewModel?.sights.count {
-                (count > 15) ? (self.showItems = 15) : (self.showItems = count)
-            }
-            self.sightsCollectionView.reloadData()
+            self.updateSightsCollectionView()
         })
     }
     
@@ -86,6 +101,14 @@ class SightViewController: UIViewController {
         let mapVC = UIStoryboard.loadViewController(from: "Main", named: "MapBoard") as! MapViewController
         mapVC.sightViewModel = self.sightViewModel        
         navigationController?.pushViewController(mapVC, animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "pushFilter" {
+            if let destination = segue.destination as? FilterViewController {
+                destination.delegate = self
+            }
+        }
     }
 }
 
@@ -102,7 +125,7 @@ extension SightViewController: UICollectionViewDelegate, UICollectionViewDataSou
         let contentHeight = scrollView.contentSize.height
         
         if offsetY > contentHeight - scrollView.frame.size.height {
-            if let count = self.sightViewModel?.sights.count, count > showItems {
+            if let count = self.sightViewModel?.diplaySights.count, count > showItems {
                 if (count - showItems - 10 >= 0) {
                     showItems += 10
                 } else {
@@ -215,7 +238,7 @@ extension SightViewController: UICollectionViewDelegate, UICollectionViewDataSou
         let detailVC = UIStoryboard.loadViewController(from: "Main", named: "DetailBoard") as? DetailSightViewController
         
         if detailVC != nil {
-            detailVC?.sigthModel = self.sightViewModel?.sights[indexPath.row]
+            detailVC?.sigthModel = self.sightViewModel?.diplaySights[indexPath.row]
             self.navigationController?.pushViewController(detailVC!, animated: true)
         }
     }

@@ -19,6 +19,7 @@ extension UserDefaults {
         case currentCity
         case userToken
         case userLogin
+        case categories
     }
     
     func createKey(_ key: String) -> String {
@@ -46,6 +47,11 @@ extension UserDefaults {
         synchronize()
     }
     
+    func setFavoriteCategories(categories: [String]) {
+        set(categories, forKey: createKey(UserDefaultsKeys.categories.rawValue))
+        synchronize()
+    }
+    
     // Chech exist keys
     func isLoggedIn() -> Bool {
         return bool(forKey: createKey(UserDefaultsKeys.isLoggedIn.rawValue))
@@ -61,6 +67,10 @@ extension UserDefaults {
     
     func getUserToken() -> String {
         return string(forKey: createKey(UserDefaultsKeys.userToken.rawValue))!
+    }
+    
+    func getFavoriteCategories() -> [String] {
+        return stringArray(forKey: createKey(UserDefaultsKeys.categories.rawValue)) ?? ["All"]
     }
     
     ////

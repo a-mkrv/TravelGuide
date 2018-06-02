@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol ChangeSightCategory {
+    func updateSightsCollectionView()
+}
+
 struct CategoryModelCell {
     let image: String
     let name: String
@@ -23,6 +27,7 @@ class FilterViewController: UIViewController {
     @IBOutlet weak var distanceButton: UIButton!
     
     let cellID = "FilterCell"
+    var delegate: ChangeSightCategory?
     
     var selectedCat: [CategoryModelCell] = []
     var categories: [CategoryModelCell] = {
@@ -47,6 +52,14 @@ class FilterViewController: UIViewController {
     }
     
     @IBAction func goBack(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func saveChanges(_ sender: Any) {
+        let selectedCategories = self.categories.filter( { $0.isSelect } ).enumerated().compactMap{ $0.element.name }
+        
+        CurrentUser.sharedInstance.favoriteCategories = selectedCategories
+        delegate?.updateSightsCollectionView()
         self.navigationController?.popViewController(animated: true)
     }
 }

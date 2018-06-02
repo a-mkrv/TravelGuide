@@ -24,7 +24,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         navigationController?.isNavigationBarHidden = false;
         
-        for place in (sightViewModel?.sights)! {
+        for place in (sightViewModel?.diplaySights)! {
             let annotation = PinAnnotation()
             annotation.coordinate = place.coordinate
             annotation.title = place.name
