@@ -1232,7 +1232,10 @@
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u3j-6J-Xhn">
                                                     <rect key="frame" x="6" y="7" width="22" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" image="like-2"/>
+                                                    <state key="normal" image="like"/>
+                                                    <connections>
+                                                        <action selector="likePlace:" destination="j2R-W6-BHB" eventType="touchUpInside" id="Hz3-8g-TFK"/>
+                                                    </connections>
                                                 </button>
                                                 <view alpha="0.90000000000000002" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="guJ-nC-8nr">
                                                     <rect key="frame" x="0.0" y="129" width="170" height="51"/>
@@ -1245,22 +1248,22 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="200" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EvX-iU-7aA">
-                                                            <rect key="frame" x="123" y="33" width="21" height="14"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                            <color key="textColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ruble" translatesAutoresizingMaskIntoConstraints="NO" id="aA6-q6-YW1">
                                                             <rect key="frame" x="148" y="32" width="14" height="14"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Категория" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CTl-6Y-Qeo">
-                                                            <rect key="frame" x="6" y="33" width="96" height="14"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Архитектура" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CTl-6Y-Qeo">
+                                                            <rect key="frame" x="6" y="33" width="70" height="14"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                             <color key="textColor" red="0.26666666666666666" green="0.26666666666666666" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EvX-iU-7aA">
+                                                            <rect key="frame" x="114" y="33" width="26" height="14"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                            <color key="textColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -1275,9 +1278,12 @@
                                             <constraint firstAttribute="trailing" secondItem="04l-LL-eeQ" secondAttribute="trailing" id="nMT-6s-uRg"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="cost" destination="EvX-iU-7aA" id="slx-dk-3fW"/>
+                                            <outlet property="likedButton" destination="u3j-6J-Xhn" id="Xc3-bo-LsC"/>
                                             <outlet property="pImage" destination="04l-LL-eeQ" id="0sL-Pb-qtW"/>
                                             <outlet property="pName" destination="jCF-np-rR6" id="Kg5-8q-fvH"/>
                                             <outlet property="pType" destination="CTl-6Y-Qeo" id="NnF-WN-Ik6"/>
+                                            <outlet property="rubleImage" destination="aA6-q6-YW1" id="mhx-wV-vxX"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -17325,7 +17331,7 @@ AAAAAAAAAAAAAAAOC4o
 </mutableData>
         </image>
         <image name="info" width="256" height="256"/>
-        <image name="like-2" width="32" height="32"/>
+        <image name="like" width="32" height="32"/>
         <image name="museum" width="60" height="60"/>
         <image name="nn" width="800" height="600"/>
         <image name="nn2" width="800" height="420"/>

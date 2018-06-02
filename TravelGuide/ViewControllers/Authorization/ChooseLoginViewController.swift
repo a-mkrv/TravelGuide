@@ -14,7 +14,6 @@ class ChooseLoginViewController: UIViewController {
         super.viewDidLoad()
         UIApplication.shared.isStatusBarHidden = true;
     }
-
     
     @IBAction func facebookAuthorization(_ sender: Any) {
         SocialLoginManager.sharedInstance.facebookLogInWithReadPermissions(fromViewController: self, handler: { (result) in
@@ -32,7 +31,6 @@ class ChooseLoginViewController: UIViewController {
             print("VK ERROR", error!.localizedDescription)
         }
     }
-    
     
     @IBAction func defaultPasswordAuthorization(_ sender: Any) {
         let loginController = UIStoryboard.loadViewController(from: "Auth", named: "AuthBoard") as? LoginViewController

@@ -18,7 +18,7 @@ class SightRealmModel: Object {
     @objc dynamic var name = ""
     @objc dynamic var type = ""
     @objc dynamic var rating = 0.0
-    @objc dynamic var cost = 0.0
+    @objc dynamic var cost: String = "0"
     @objc dynamic var phoneNumber: String? = nil
     @objc dynamic var webSite: String? = nil
     @objc dynamic var descript: String? = nil
@@ -40,7 +40,7 @@ class SightRealmModel: Object {
         name = sight.name
         type = sight.type
         rating = sight.rating
-        cost = sight.cost ?? 0
+        cost = sight.cost
         phoneNumber = sight.phoneNumber
         webSite = sight.webSite
         descript = sight.descript

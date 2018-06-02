@@ -14,7 +14,6 @@ class LoginViewController: UIViewController, ValidityFields {
 
     @IBOutlet var loginTextField: SkyFloatingLabelTextField!
     @IBOutlet var passwordTextField: SkyFloatingLabelTextField!
-    
     @IBOutlet var signInButton: UIButton!
     
     override func viewDidLoad() {

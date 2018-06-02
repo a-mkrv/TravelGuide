@@ -78,6 +78,13 @@ class SightViewModel {
         cell.pType.text = sight.type
         cell.indexCell = indexPath.row
         
+        if sight.cost == "" {
+            cell.cost.alpha = 0
+            cell.rubleImage.alpha = 0
+        } else {
+            cell.cost.text = sight.cost
+        }
+        
         let request = Request(url: URL(string: sight.imagesURL.first!)!)
         manager.loadImage(with: request, into: cell.pImage)
         

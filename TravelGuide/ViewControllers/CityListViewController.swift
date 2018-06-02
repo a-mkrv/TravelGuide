@@ -22,8 +22,8 @@ class CityListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         navigationController?.isNavigationBarHidden = true;
+        
         self.cityViewModel = CityViewModel()
         self.tableView.delegate = self
         self.tableView.dataSource = self

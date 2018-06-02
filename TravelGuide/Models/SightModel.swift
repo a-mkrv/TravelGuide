@@ -32,7 +32,7 @@ struct Sight {
     let name: String
     let type: String
     let rating: Double
-    let cost: Double?
+    let cost: String
     let tags: [String]
     let imagesURL: [String]
     var imagesJPG: [UIImageView]
@@ -82,13 +82,22 @@ extension Sight {
  
         self.id = id
         self.name = name
-        self.type = json[DataKeys.type] as? String ?? "None"
+        self.type = json[DataKeys.type] as? String ?? "Памятник"
         self.rating = json[DataKeys.rating] as? Double ?? 4.0
         self.tags = json[DataKeys.tags] as? [String] ?? []
         self.imagesURL = json[DataKeys.imageURL] as? [String] ?? ["https://img-fotki.yandex.ru/get/197852/27854841.58f/0_ef76b_fb4fa46e_XXXL.jpg"]
         self.imagesJPG = []
         
-        self.cost = json[DataKeys.cost] as? Double ?? nil
+        if let cost = json[DataKeys.cost] as? Double {
+            if cost == 0 {
+                self.cost = "0"
+            } else {
+                self.cost = String(format: "%d", Int(cost))
+            }
+        } else {
+            self.cost = ""
+        }
+        
         self.phoneNumber = json[DataKeys.phoneNumber] as? String ?? nil
         self.webSite = json[DataKeys.webSite] as? String ?? nil
         self.descript = json[DataKeys.descript] as? String ?? nil
