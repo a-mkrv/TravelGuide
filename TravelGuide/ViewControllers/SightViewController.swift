@@ -27,12 +27,14 @@ class SightViewController: UIViewController {
     @IBOutlet weak var downloadButton: UIButton!
     
     var sightViewModel: SightViewModel?
+    var weatherViewModel: WeatherViewModel?
     var city_id: NSNumber = CurrentUser.sharedInstance.getCurrentCity()
     var showItems = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.sightViewModel = SightViewModel()
+        self.weatherViewModel = WeatherViewModel()
         
         self.sightsCollectionView.delegate = self
         self.sightsCollectionView.dataSource = self
@@ -66,6 +68,10 @@ class SightViewController: UIViewController {
     }
     
     func setupViewModel(_ city_id: NSNumber) {
+        DispatchQueue.main.async {
+            self.weatherViewModel?.getWeatherOfCity(name: "Moscow", period: .Day)
+        }
+        
         self.city_id = city_id
         
         sightViewModel?.getAllSights(city_id, completion: {

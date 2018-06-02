@@ -24,6 +24,7 @@ class FilterViewController: UIViewController {
     
     let cellID = "FilterCell"
     
+    var selectedCat: [CategoryModelCell] = []
     var categories: [CategoryModelCell] = {
         let cat_1 = CategoryModelCell(image: "selectAll", name: "Выбрать все", isSelect: true)
         let cat_2 = CategoryModelCell(image: "museum", name: "Музеи", isSelect: false)
@@ -38,13 +39,15 @@ class FilterViewController: UIViewController {
         return [cat_1, cat_2, cat_3, cat_4, cat_5, cat_6, cat_7, cat_8, cat_9]
     }()
     
-    var selectedCat: [CategoryModelCell] = []
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         collectionView.delegate = self
         collectionView.dataSource = self
+    }
+    
+    @IBAction func goBack(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
 }
 

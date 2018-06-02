@@ -9,6 +9,11 @@
 import Foundation
 import Alamofire
 
+enum TypeRequest {
+    case external
+    case inner
+}
+
 typealias completeRequest = (NSDictionary?, Error?) -> ()
 
 final class APIService {
@@ -37,15 +42,25 @@ final class APIService {
         makeRequest("login", with: parameters, completionHandler: completionHandler)
     }
     
-    func makeRequest(_ url: String, with parameters: Json, completionHandler: @escaping completeRequest) {
+    func getWeather(url: String, parameters: Json, completionHandler: @escaping completeRequest) {
+        makeRequest(request: .external, url, with: parameters, completionHandler: completionHandler)
+    }
+    
+    func makeRequest(request: TypeRequest = .inner, _ url: String, with parameters: Json, completionHandler: @escaping completeRequest) {
 
-        Alamofire.request(endpoint + url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil)
+        var urlRequest: String = ""
+        switch request {
+        case .external:
+            urlRequest = url
+        case .inner:
+            urlRequest = endpoint + url
+        }
+        
+        Alamofire.request(urlRequest, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil)
             .responseJSON { response in
                 
                 switch response.result {
                 case .success(let value):
-                    // let newResponse = try? JSONDecoder().decode(JSON<SightJson>.self, from: response.data!)
-
                     completionHandler(value as? NSDictionary, nil)
                 case .failure(let error):
                     completionHandler(nil, error)
