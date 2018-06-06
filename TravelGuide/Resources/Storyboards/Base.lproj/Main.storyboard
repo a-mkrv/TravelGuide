@@ -789,6 +789,10 @@
                         <viewLayoutGuide key="safeArea" id="ZwG-wm-tVO"/>
                     </view>
                     <navigationItem key="navigationItem" id="j7T-4Z-68I"/>
+                    <connections>
+                        <outlet property="currentCityLabel" destination="zyr-SR-VWv" id="nZu-pl-iGe"/>
+                        <outlet property="myNameLabel" destination="LW1-gB-pbD" id="tz6-p2-oey"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p0x-9O-Rac" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

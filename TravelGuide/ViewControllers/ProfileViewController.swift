@@ -10,14 +10,18 @@ import UIKit
 
 class ProfileViewController: UIViewController, ChangeCity {
     
+    @IBOutlet weak var currentCityLabel: UILabel!
+    @IBOutlet weak var myNameLabel: UILabel!
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
     
-    func setNewCity(id: NSNumber) {
+    func setNewCity(city: City) {
         let vc = self.tabBarController?.viewControllers![0] as! SightViewController
-        vc.setupViewModel(id)
+        currentCityLabel.text = city.name
+        vc.setupViewModel(city.id)
     }
     
     @IBAction func changeCity(_ sender: Any) {

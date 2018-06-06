@@ -34,23 +34,18 @@ class CurrentUser {
         set { UserDefaults.standard.setFavoriteCategories(categories: newValue) }
     }
     
-    var city: City?
-    func setCurrentCity(city: City) {
-        self.city = city
-        UserDefaults.standard.setCurrentCity(cityId: city.id)
-    }
-    
-    func getCurrentCity() -> NSNumber {
-        return UserDefaults.standard.getCurrentCityId()
+    var city: City? {
+        get {
+            if let properties = UserDefaults.standard.getCurrentCity() {
+                return City(dictionary: properties)
+            }
+            return nil
+        }
+        set { UserDefaults.standard.setCurrentCity(cityProperties: (newValue?.propertyList)!) }
     }
     
     func logOut() {
-        isLogin = false
-        city = nil
-        token = nil
-        login = nil
         favoriteCategories = ["Выбрать все"]
-        
         UserDefaults.standard.clearAllAppData()
         Cache.shared.removeAll()
     }

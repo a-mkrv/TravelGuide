@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ChangeCity {
-    func setNewCity(id: NSNumber)
+    func setNewCity(city: City)
 }
 
 class CityListViewController: UIViewController {
@@ -59,18 +59,18 @@ extension CityListViewController: UITableViewDataSource, UITableViewDelegate {
         let city = (cityViewModel?.cities[indexPath.row])!
         
         if CurrentUser.sharedInstance.city == nil {
-            CurrentUser.sharedInstance.setCurrentCity(city: city)
+            CurrentUser.sharedInstance.city = city
             let navigationVC = UINavigationController(rootViewController: TabBarViewController())
             navigationVC.modalTransitionStyle = .flipHorizontal
             self.view.window?.switchRootViewController(navigationVC)
         } else {
-            delegate?.setNewCity(id: city.id)
+            delegate?.setNewCity(city: city)
             UIView.animate(withDuration: 0.5, animations: {
                 UIView.setAnimationCurve(.easeInOut)
                 UIView.setAnimationTransition(.flipFromLeft, for: (self.navigationController?.view)!, cache: false)
             })
             
-            CurrentUser.sharedInstance.setCurrentCity(city: city)
+            CurrentUser.sharedInstance.city = city
             self.navigationController?.popViewController(animated: true)
         }
     }

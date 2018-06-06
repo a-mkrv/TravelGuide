@@ -22,7 +22,7 @@ class DetailSightViewController: UIViewController {
                 rowCount += 1
                 map[rowCount] = 2
             }
-            if sigthModel?.descript != nil {
+            if sigthModel?.phoneNumber != nil {
                 rowCount += 1
                 map[rowCount] = 3
             }
@@ -30,7 +30,7 @@ class DetailSightViewController: UIViewController {
                 rowCount += 1
                 map[rowCount] = 4
             }
-            if sigthModel?.phoneNumber != nil {
+            if sigthModel?.descript != nil {
                 rowCount += 1
                 map[rowCount] = 5
             }
@@ -87,10 +87,9 @@ extension DetailSightViewController: UITableViewDataSource, UITableViewDelegate 
             let cell = tableView.dequeueReusableCell(withIdentifier: "DetailInfoCell", for: indexPath) as! DetailInfoTableViewCell
             cell.imageInfoCell.image = UIImage(named: "ruble")
             
-            if let cost = sigthModel?.cost {
+            if let cost = sigthModel?.cost, cost != "" {
                 cell.socialInfoLabel.text = cost
             } else {
-                
                 cell.socialInfoLabel.text = "Бесплатное посещение"
             }
             

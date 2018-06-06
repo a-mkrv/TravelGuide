@@ -95,7 +95,7 @@ extension Sight {
                 self.cost = String(format: "%d", Int(cost))
             }
         } else {
-            self.cost = ""
+            self.cost = "0"
         }
         
         self.phoneNumber = json[DataKeys.phoneNumber] as? String ?? nil

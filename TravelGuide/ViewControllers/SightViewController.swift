@@ -28,7 +28,7 @@ class SightViewController: UIViewController, ChangeSightCategory {
     
     var sightViewModel: SightViewModel?
     var weatherViewModel: WeatherViewModel?
-    var city_id: NSNumber = CurrentUser.sharedInstance.getCurrentCity()
+    var city_id: NSNumber!
     var showItems = 0
     
     override func viewDidLoad() {
@@ -42,13 +42,14 @@ class SightViewController: UIViewController, ChangeSightCategory {
         self.sightsCollectionView.translatesAutoresizingMaskIntoConstraints = false
         
         self.setupView()
+        self.city_id = CurrentUser.sharedInstance.city?.id
         self.setupViewModel(city_id)
     }
     
     // FIXME: Not called
     override func viewWillAppear(_ animated: Bool) {
-        if DBManager.sharedInstance.getCityById(id: CurrentUser.sharedInstance.city?.id as! Int) != nil {
-            self.downloadButton.setImage(UIImage(named: "cloud-ok"), for: .normal)
+        if let city = CurrentUser.sharedInstance.city, (DBManager.sharedInstance.getCityById(id: city.id as! Int) != nil) {
+                self.downloadButton.setImage(UIImage(named: "cloud-ok"), for: .normal)
         } else {
             self.downloadButton.setImage(UIImage(named: "cloud-no"), for: .normal)
         }

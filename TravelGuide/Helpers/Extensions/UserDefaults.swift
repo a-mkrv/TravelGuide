@@ -37,11 +37,6 @@ extension UserDefaults {
         synchronize()
     }
     
-    func setCurrentCity(cityId: NSNumber) {
-        set(cityId, forKey: createKey(UserDefaultsKeys.currentCity.rawValue))
-        synchronize()
-    }
-    
     func setUserToken(token: String) {
         set(token, forKey: createKey(UserDefaultsKeys.userToken.rawValue))
         synchronize()
@@ -49,6 +44,11 @@ extension UserDefaults {
     
     func setFavoriteCategories(categories: [String]) {
         set(categories, forKey: createKey(UserDefaultsKeys.categories.rawValue))
+        synchronize()
+    }
+    
+    func setCurrentCity(cityProperties: [String : Any]) {
+        set(cityProperties, forKey: createKey(UserDefaultsKeys.currentCity.rawValue))
         synchronize()
     }
     
@@ -61,10 +61,6 @@ extension UserDefaults {
         return string(forKey: createKey(UserDefaultsKeys.userLogin.rawValue))!
     }
     
-    func getCurrentCityId() -> NSNumber {
-        return integer(forKey: createKey(UserDefaultsKeys.currentCity.rawValue)) as NSNumber
-    }
-    
     func getUserToken() -> String {
         return string(forKey: createKey(UserDefaultsKeys.userToken.rawValue))!
     }
@@ -73,6 +69,10 @@ extension UserDefaults {
         return stringArray(forKey: createKey(UserDefaultsKeys.categories.rawValue)) ?? ["All"]
     }
     
+    func getCurrentCity() -> [String : Any]? {
+        return object(forKey: createKey(UserDefaultsKeys.currentCity.rawValue)) as? [String : Any]
+    }
+   
     ////
     
     func clearAllAppData() {

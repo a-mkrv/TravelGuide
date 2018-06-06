@@ -38,4 +38,17 @@ extension City {
         self.country = json[DataKeys.country] as? NSNumber ?? 1
         self.sights = []
     }
+    
+    init?(dictionary : [String : Any]) {
+        guard let id = dictionary["id"] as? NSNumber,
+            let name = dictionary["name"] as? String,
+            let isDownload = dictionary["isDownload"] as? Bool else { return nil }
+        
+        
+        self.init(id: id, country: 1, name: name, sights: [], isDownload: isDownload)
+    }
+    
+    var propertyList : [String : Any] {
+        return ["id" : id, "name" : name, "isDownload" : isDownload]
+    }
 }
