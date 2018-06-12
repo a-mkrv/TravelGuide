@@ -15,7 +15,7 @@ class ProfileViewController: UIViewController, ChangeCity {
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        currentCityLabel.text = CurrentUser.sharedInstance.city?.name
     }
     
     func setNewCity(city: City) {

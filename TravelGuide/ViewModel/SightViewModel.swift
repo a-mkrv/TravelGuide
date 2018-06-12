@@ -18,13 +18,11 @@ class SightViewModel {
     var manager = Nuke.Manager.shared
     let results = try! Realm().objects(CityRealmModel.self)
     
-    func extractRealmSights(byCityId: Int) {
-
-        if let curCity = DBManager.sharedInstance.getCityById(id: byCityId) {
-            for res in curCity.sights {
-                if let sight = Sight(sRealm: res) {
-                    self.sights.append(sight)
-                }
+    func extractRealmSights(cityRealmModel: CityRealmModel) {
+        
+        for res in cityRealmModel.sights {
+            if let sight = Sight(sRealm: res) {
+                self.sights.append(sight)
             }
         }
     }
@@ -50,9 +48,9 @@ class SightViewModel {
     func getAllSights(_ city_id: NSNumber, completion: @escaping () -> ()) {
         sights.removeAll()
         
-        
-        if (CurrentUser.sharedInstance.city?.id == city_id) && (!APIService.isConnectedToInternet || results.count > 0) {
-            extractRealmSights(byCityId: city_id.intValue)
+        if let cityModel = DBManager.sharedInstance.getCityById(id: Int(truncating: city_id)), CurrentUser.sharedInstance.city?.id == city_id {
+            CurrentUser.sharedInstance.city?.isDownload = true
+            extractRealmSights(cityRealmModel: cityModel)
             completion()
         } else {
             APIService.shared.getSights(city_id){ response, error in

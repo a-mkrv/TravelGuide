@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Nuke
 
 class SightViewController: UIViewController, ChangeSightCategory {
     
@@ -41,18 +42,8 @@ class SightViewController: UIViewController, ChangeSightCategory {
         self.headerView.translatesAutoresizingMaskIntoConstraints = false
         self.sightsCollectionView.translatesAutoresizingMaskIntoConstraints = false
         
-        self.setupView()
         self.city_id = CurrentUser.sharedInstance.city?.id
         self.setupViewModel(city_id)
-    }
-    
-    // FIXME: Not called
-    override func viewWillAppear(_ animated: Bool) {
-        if let city = CurrentUser.sharedInstance.city, (DBManager.sharedInstance.getCityById(id: city.id as! Int) != nil) {
-                self.downloadButton.setImage(UIImage(named: "cloud-ok"), for: .normal)
-        } else {
-            self.downloadButton.setImage(UIImage(named: "cloud-no"), for: .normal)
-        }
     }
     
     func updateSightsCollectionView() {
@@ -74,7 +65,15 @@ class SightViewController: UIViewController, ChangeSightCategory {
     }
     
     func setupView() {
-        self.cityImage.image = UIImage(named: "nn")
+        self.cityNameLabel.text = CurrentUser.sharedInstance.city?.name
+        manager.loadImage(with: Request(url: URL(string: (CurrentUser.sharedInstance.city?.urlImage)!)!), into: cityImage)
+        
+        if (CurrentUser.sharedInstance.city?.isDownload)! {
+            self.downloadButton.setImage(UIImage(named: "cloud-ok"), for: .normal)
+        } else {
+            self.downloadButton.setImage(UIImage(named: "cloud-no"), for: .normal)
+        }
+        
         self.downloadView.layer.cornerRadius = downloadView.frame.width / 2
         self.mapFilterView.roundCorners([.topRight, .topLeft, .bottomRight, .bottomLeft], radius: 5, borderWidth: 1, borderColor: .darkGray)
     }
@@ -95,6 +94,7 @@ class SightViewController: UIViewController, ChangeSightCategory {
         self.city_id = city_id
         sightViewModel?.getAllSights(city_id, completion: {
             self.updateSightsCollectionView()
+            self.setupView()
         })
     }
     
