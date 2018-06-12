@@ -826,7 +826,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="229"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nn2" translatesAutoresizingMaskIntoConstraints="NO" id="Tln-zV-cT3">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nn" translatesAutoresizingMaskIntoConstraints="NO" id="Tln-zV-cT3">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="229"/>
                                                 </imageView>
                                             </subviews>

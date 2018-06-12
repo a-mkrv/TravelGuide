@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import Nuke
 
 class CityViewModel {
     
     var cities = [City]()
+    var manager = Nuke.Manager.shared
     
     func getAllCity(completion: @escaping () -> ()) {
         APIService.shared.getCities{ response, error in
@@ -33,7 +35,7 @@ class CityViewModel {
         
         let city = self.cities[indexPath.row]
         cell.cityName.text = city.name
-        //cell.cityImage.image = UIImage(named: city.imege_url) // change no real image
+        manager.loadImage(with: Request(url: URL(string: city.urlImage)!), into: cell.cityImage)
         
         return cell
     }

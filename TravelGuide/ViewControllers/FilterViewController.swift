@@ -31,7 +31,7 @@ class FilterViewController: UIViewController {
     
     var selectedCat: [CategoryModelCell] = []
     var categories: [CategoryModelCell] = {
-        let cat_1 = CategoryModelCell(image: "selectAll", name: "Выбрать все", isSelect: true)
+        let cat_1 = CategoryModelCell(image: "selectAll", name: "Выбрать все", isSelect: false)
         let cat_2 = CategoryModelCell(image: "museum", name: "Музеи", isSelect: false)
         let cat_3 = CategoryModelCell(image: "galary", name: "Галереи", isSelect: false)
         let cat_4 = CategoryModelCell(image: "architecture", name: "Архитектура", isSelect: false)
@@ -46,7 +46,17 @@ class FilterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        // TODO: Rewrite to filters (.filter, .map)
+        let favCat = CurrentUser.sharedInstance.favoriteCategories
+        for cat in favCat {
+            for i in 0 ..< categories.count {
+                if cat == categories[i].name {
+                    categories[i].isSelect = true
+                }
+            }
+        }
+
         collectionView.delegate = self
         collectionView.dataSource = self
     }

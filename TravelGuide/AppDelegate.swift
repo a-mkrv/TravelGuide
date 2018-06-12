@@ -31,7 +31,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var initialViewController = UIViewController();
         if (isLoggedIn()) {
             _ = CurrentUser.sharedInstance
-            initialViewController = TabBarViewController()
+            
+            if CurrentUser.sharedInstance.city?.id == nil {
+                initialViewController = (UIStoryboard.loadViewController(from: "Main", named: "CitiesBoard") as? CityListViewController)!
+            } else {
+                initialViewController = TabBarViewController()
+            }
         } else {
             initialViewController = (UIStoryboard.loadViewController(from: "Auth", named: "WelcomeBoard") as? WelcomeViewController)!
         }

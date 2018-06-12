@@ -13,6 +13,7 @@ fileprivate struct DataKeys {
     static let name = "name"
     static let country = "country"
     static let sight = "sight"
+    static let urlImage = "url_photo"
 }
 
 struct City {
@@ -21,6 +22,7 @@ struct City {
     let name: String
     let sights: [Sight]
     var isDownload: Bool = false
+    let urlImage: String
 }
 
 // Mark: - extension City
@@ -37,18 +39,19 @@ extension City {
         self.name = name
         self.country = json[DataKeys.country] as? NSNumber ?? 1
         self.sights = []
+        self.urlImage = json[DataKeys.urlImage] as? String ?? "https://img-fotki.yandex.ru/get/197852/27854841.58f/0_ef76b_fb4fa46e_XXXL.jpg"
     }
     
     init?(dictionary : [String : Any]) {
         guard let id = dictionary["id"] as? NSNumber,
             let name = dictionary["name"] as? String,
+            let urlImage = dictionary["url"] as? String,
             let isDownload = dictionary["isDownload"] as? Bool else { return nil }
         
-        
-        self.init(id: id, country: 1, name: name, sights: [], isDownload: isDownload)
+        self.init(id: id, country: 1, name: name, sights: [], isDownload: isDownload, urlImage: urlImage)
     }
     
     var propertyList : [String : Any] {
-        return ["id" : id, "name" : name, "isDownload" : isDownload]
+        return ["id" : id, "name" : name, "isDownload" : isDownload, "url" : urlImage]
     }
 }

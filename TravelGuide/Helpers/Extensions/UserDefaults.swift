@@ -66,7 +66,7 @@ extension UserDefaults {
     }
     
     func getFavoriteCategories() -> [String] {
-        return stringArray(forKey: createKey(UserDefaultsKeys.categories.rawValue)) ?? ["All"]
+        return stringArray(forKey: createKey(UserDefaultsKeys.categories.rawValue)) ?? ["Выбрать все"]
     }
     
     func getCurrentCity() -> [String : Any]? {
