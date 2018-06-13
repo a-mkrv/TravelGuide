@@ -36,10 +36,10 @@ class FilterViewController: UIViewController {
         let cat_3 = CategoryModelCell(image: "galary", name: "Галереи", isSelect: false)
         let cat_4 = CategoryModelCell(image: "architecture", name: "Архитектура", isSelect: false)
         let cat_5 = CategoryModelCell(image: "religion", name: "Религия", isSelect: false)
-        let cat_6 = CategoryModelCell(image: "theater", name: "Театры", isSelect: false)
-        let cat_7 = CategoryModelCell(image: "entertainment", name: "Развлечения", isSelect: false)
+        let cat_6 = CategoryModelCell(image: "monument", name: "Памятники", isSelect: false)
+        let cat_7 = CategoryModelCell(image: "concert", name: "Развлечения", isSelect: false)
         let cat_8 = CategoryModelCell(image: "sport", name: "Спорт", isSelect: false)
-        let cat_9 = CategoryModelCell(image: "concert", name: "Концерты", isSelect: false)
+        let cat_9 = CategoryModelCell(image: "street", name: "Погулять", isSelect: false)
         
         return [cat_1, cat_2, cat_3, cat_4, cat_5, cat_6, cat_7, cat_8, cat_9]
     }()

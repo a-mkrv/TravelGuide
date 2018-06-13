@@ -29,11 +29,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         // Loading all data before view
         for viewController in self.viewControllers! {
             let _ = viewController.view
-        }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.isNavigationBarHidden = true;
+        }    
     }
     
     deinit {

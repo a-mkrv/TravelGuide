@@ -13,16 +13,16 @@ import Nuke
 class MapViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
-    let locationManager = CLLocationManager()
+    @IBOutlet weak var cityNameLabel: UILabel!
     
+    let locationManager = CLLocationManager()
     var sightViewModel: SightViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        cityNameLabel.text = CurrentUser.sharedInstance.city?.name
         mapView.delegate = self
-        
-        navigationController?.isNavigationBarHidden = false;
         
         for place in (sightViewModel?.diplaySights)! {
             let annotation = PinAnnotation()
@@ -65,5 +65,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view:  MKAnnotationView){
         
+    }
+    
+    @IBAction func closeView(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
 }

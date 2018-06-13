@@ -47,10 +47,10 @@ class SightViewController: UIViewController, ChangeSightCategory {
     }
     
     func updateSightsCollectionView() {
-        let selectedCategories = CurrentUser.sharedInstance.favoriteCategories.map( { $0.lowercased() } ).map({ String($0.prefix(4)) })
+        let selectedCategories = CurrentUser.sharedInstance.favoriteCategories.map({ String($0.prefix(4)) })
         
         // FIXME: Fix this mego crutch
-        if selectedCategories.count == 1 && selectedCategories[0] == "выбр" {
+        if selectedCategories.count == 1 && selectedCategories[0] == "Выбр" {
             sightViewModel?.diplaySights = (sightViewModel?.sights)!
         } else {
             let isDisplaySights = sightViewModel?.sights.filter( {selectedCategories.contains(String($0.type.prefix(4)))} )

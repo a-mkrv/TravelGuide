@@ -12,9 +12,10 @@ protocol ChangeCity {
     func setNewCity(city: City)
 }
 
-class CityListViewController: UIViewController {
+class CityListViewController: UIViewController, UIGestureRecognizerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var closeButton: UIButton!
     
     var selectedIndex: Int?
     var cityViewModel: CityViewModel?
@@ -22,7 +23,6 @@ class CityListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.isNavigationBarHidden = true;
         
         self.cityViewModel = CityViewModel()
         self.tableView.delegate = self
@@ -30,6 +30,11 @@ class CityListViewController: UIViewController {
 
         self.setGradientBackground()
         self.setupViewModel()
+        
+        if CurrentUser.sharedInstance.city != nil {
+            closeButton.isHidden = false
+            navigationController?.interactivePopGestureRecognizer?.delegate = self
+        }
     }
     
     func setGradientBackground() {
@@ -50,6 +55,14 @@ class CityListViewController: UIViewController {
             self.tableView.reloadData()
         })
     }
+    
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return (navigationController?.viewControllers.count ?? 0) > 1
+    }
+    
+    @IBAction func closeView(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
 }
 
 
@@ -62,8 +75,8 @@ extension CityListViewController: UITableViewDataSource, UITableViewDelegate {
             CurrentUser.sharedInstance.city = city
             let navigationVC = UINavigationController(rootViewController: TabBarViewController())
             navigationVC.modalTransitionStyle = .flipHorizontal
+            navigationVC.isNavigationBarHidden = true;
             self.view.window?.switchRootViewController(navigationVC)
-            CurrentUser.sharedInstance.city = city
         } else {
             CurrentUser.sharedInstance.city = city
             delegate?.setNewCity(city: city)

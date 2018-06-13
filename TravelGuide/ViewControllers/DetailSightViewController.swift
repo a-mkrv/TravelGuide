@@ -9,9 +9,8 @@
 import UIKit
 import Nuke
 
-class DetailSightViewController: UIViewController {
+class DetailSightViewController: UIViewController, UIGestureRecognizerDelegate {
 
-    // 2 default cell = name / map
     var cachedImage:Result<UIImage>!
     var rowCount = 1
     var map = [Int:Int]()
@@ -26,7 +25,7 @@ class DetailSightViewController: UIViewController {
                 rowCount += 1
                 map[rowCount] = 3
             }
-            if sigthModel?.history != nil {
+            if sigthModel?.webSite != nil {
                 rowCount += 1
                 map[rowCount] = 4
             }
@@ -34,7 +33,7 @@ class DetailSightViewController: UIViewController {
                 rowCount += 1
                 map[rowCount] = 5
             }
-            if sigthModel?.webSite != nil {
+            if sigthModel?.history != nil {
                 rowCount += 1
                 map[rowCount] = 6
             }
@@ -44,6 +43,7 @@ class DetailSightViewController: UIViewController {
     }
    
     
+    @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var imagesCollectioView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var infoTableView: UITableView!
@@ -57,6 +57,7 @@ class DetailSightViewController: UIViewController {
         
         self.imagesCollectioView.delegate = self
         self.imagesCollectioView.dataSource = self
+        self.cityNameLabel.text = CurrentUser.sharedInstance.city?.name
         
         if let count = sigthModel?.imagesURL.count, count > 1 {
             pageControl.numberOfPages = count
@@ -65,7 +66,15 @@ class DetailSightViewController: UIViewController {
         }
         
         downloadImages()
-        navigationController?.isNavigationBarHidden = false
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
+    }
+    
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return (navigationController?.viewControllers.count ?? 0) > 1
+    }
+    
+    @IBAction func closeView(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
 }
 
