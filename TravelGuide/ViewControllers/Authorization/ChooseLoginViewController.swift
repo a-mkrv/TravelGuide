@@ -33,13 +33,13 @@ class ChooseLoginViewController: UIViewController {
     }
     
     @IBAction func defaultPasswordAuthorization(_ sender: Any) {
-        let loginController = UIStoryboard.loadViewController(from: "Auth", named: "AuthBoard") as? LoginViewController
+        let loginController = StaticHelper.loadViewController(from: "Auth", named: "AuthBoard") as? LoginViewController
         
         self.present(loginController!, animated: true, completion: nil)
     }
 
     @IBAction func registrationButtonPressed(_ sender: Any) {
-         let registrationVC = UIStoryboard.loadViewController(from: "Auth", named: "RegistrationBoard") as? RegistrationViewController
+         let registrationVC = StaticHelper.loadViewController(from: "Auth", named: "RegistrationBoard") as? RegistrationViewController
         
         self.present(registrationVC!, animated: true, completion: nil)
     }

@@ -1,5 +1,6 @@
 {
- "language": "objective-c",
+ "language": "swift",
  "osx_image": "xcode9.3",
  "xcode_project": "TravelGuide.xcworkspace"
+ "xcode_scheme": "TravelGuide"
 }

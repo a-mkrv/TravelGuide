@@ -15,7 +15,7 @@ target 'TravelGuide' do
   pod 'Nuke'
   pod 'Cluster'
   pod 'RealmSwift'
-  
+  pod 'NVActivityIndicatorView'
   
   #Social networks SDK
   pod 'FBSDKLoginKit'

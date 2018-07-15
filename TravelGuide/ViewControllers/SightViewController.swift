@@ -99,7 +99,7 @@ class SightViewController: UIViewController, ChangeSightCategory {
     }
     
     @IBAction func openMapAction(_ sender: Any) {
-        let mapVC = UIStoryboard.loadViewController(from: "Main", named: "MapBoard") as! MapViewController
+        let mapVC = StaticHelper.loadViewController(from: "Main", named: "MapBoard") as! MapViewController
         mapVC.sightViewModel = self.sightViewModel        
         navigationController?.pushViewController(mapVC, animated: true)
     }
@@ -236,7 +236,7 @@ extension SightViewController: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let detailVC = UIStoryboard.loadViewController(from: "Main", named: "DetailBoard") as? DetailSightViewController
+        let detailVC = StaticHelper.loadViewController(from: "Main", named: "DetailBoard") as? DetailSightViewController
         
         if detailVC != nil {
             detailVC?.sigthModel = self.sightViewModel?.diplaySights[indexPath.row]

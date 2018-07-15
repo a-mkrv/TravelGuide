@@ -67,7 +67,7 @@ class WelcomeViewController: UIViewController {
     }
     
     @IBAction func presentLoginScreen(_ sender: Any) {
-        let loginController = UIStoryboard.loadViewController(from: "Auth", named: "ChooseLoginBoard") as? ChooseLoginViewController
+        let loginController = StaticHelper.loadViewController(from: "Auth", named: "ChooseLoginBoard") as? ChooseLoginViewController
         self.navigationController?.pushViewController(loginController!, animated: true);
     }
     

@@ -21,7 +21,7 @@ fileprivate struct DataKeys {
     static let tags = "tags"
     static let coordinate = "coordinate"
     static let imageURL = "photo_urls"
-    static let phoneNumber = "phoneNumber"
+    static let phoneNumber = "phone_number"
     static let webSite = "web_site"
     static let descript = "description"
     static let history = "history"

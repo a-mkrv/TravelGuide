@@ -11,6 +11,7 @@
 		771483F0206B898500B9A141 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771483EF206B898500B9A141 /* Logger.swift */; };
 		771483F2206B8D0900B9A141 /* Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771483F1206B8D0900B9A141 /* Foundation.swift */; };
 		771483F6206CE8F500B9A141 /* ChooseLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771483F5206CE8F500B9A141 /* ChooseLoginViewController.swift */; };
+		771D369C20FB5401000EACF9 /* StaticHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771D369B20FB5401000EACF9 /* StaticHelper.swift */; };
 		7727562E2085EA3900D1EADE /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7727562D2085EA3900D1EADE /* DBManager.swift */; };
 		7727563020862DED00D1EADE /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7727562F20862DED00D1EADE /* CurrentUser.swift */; };
 		772B48372081F8F3006A2539 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772B48362081F8F3006A2539 /* UIView.swift */; };
@@ -40,7 +41,6 @@
 		7786FE64207365F7004C7877 /* DetailMapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7786FE63207365F7004C7877 /* DetailMapTableViewCell.swift */; };
 		7786FE6620736675004C7877 /* DetailImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7786FE6520736675004C7877 /* DetailImageCollectionViewCell.swift */; };
 		779DD95720662F3F00F08676 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779DD95620662F3F00F08676 /* LoginViewController.swift */; };
-		779DD9592066331800F08676 /* UIStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779DD9582066331800F08676 /* UIStoryboard.swift */; };
 		77B600F9206EDF2E0076199A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B600F8206EDF2E0076199A /* ProfileViewController.swift */; };
 		77B600FB206F8B600076199A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B600FA206F8B600076199A /* MapViewController.swift */; };
 		77B8B282205FF12B00BDAA75 /* SightCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B8B281205FF12B00BDAA75 /* SightCollectionViewCell.swift */; };
@@ -71,6 +71,7 @@
 		771483EF206B898500B9A141 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		771483F1206B8D0900B9A141 /* Foundation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Foundation.swift; sourceTree = "<group>"; };
 		771483F5206CE8F500B9A141 /* ChooseLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseLoginViewController.swift; sourceTree = "<group>"; };
+		771D369B20FB5401000EACF9 /* StaticHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticHelper.swift; sourceTree = "<group>"; };
 		7727562D2085EA3900D1EADE /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		7727562F20862DED00D1EADE /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		772B48362081F8F3006A2539 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
@@ -102,7 +103,6 @@
 		7786FE63207365F7004C7877 /* DetailMapTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMapTableViewCell.swift; sourceTree = "<group>"; };
 		7786FE6520736675004C7877 /* DetailImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		779DD95620662F3F00F08676 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		779DD9582066331800F08676 /* UIStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoryboard.swift; sourceTree = "<group>"; };
 		77B600F8206EDF2E0076199A /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		77B600FA206F8B600076199A /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		77B8B281205FF12B00BDAA75 /* SightCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -334,6 +334,7 @@
 			children = (
 				77F4DA522063B6AD0048B768 /* Typealias.swift */,
 				771483EF206B898500B9A141 /* Logger.swift */,
+				771D369B20FB5401000EACF9 /* StaticHelper.swift */,
 				77F4DA512063B6570048B768 /* Extensions */,
 			);
 			path = Helpers;
@@ -344,7 +345,6 @@
 			children = (
 				77F4DA56206418710048B768 /* UIImage.swift */,
 				77F4DA5E2065AB610048B768 /* UserDefaults.swift */,
-				779DD9582066331800F08676 /* UIStoryboard.swift */,
 				774D998B2067DDCA00CA0C22 /* UIViewController.swift */,
 				77C0FA8620681F8900A94A8F /* UIWindow.swift */,
 				771483F1206B8D0900B9A141 /* Foundation.swift */,
@@ -464,9 +464,36 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-TravelGuide/Pods-TravelGuide-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/Cluster/Cluster.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
+				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework",
+				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/VK-ios-sdk/VK_ios_sdk.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cluster.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCLAlertView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VK_ios_sdk.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -479,13 +506,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TravelGuide-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -512,6 +542,7 @@
 				774D998E2067E13900CA0C22 /* RegistrationViewController.swift in Sources */,
 				772B48372081F8F3006A2539 /* UIView.swift in Sources */,
 				772B483920820AE8006A2539 /* HeaderSightsCollectionReusableView.swift in Sources */,
+				771D369C20FB5401000EACF9 /* StaticHelper.swift in Sources */,
 				772B486B2084F0E9006A2539 /* City + Realm.swift in Sources */,
 				774D998C2067DDCA00CA0C22 /* UIViewController.swift in Sources */,
 				77B8B29720613B9F00BDAA75 /* HTTPStatusCode.swift in Sources */,
@@ -532,7 +563,6 @@
 				77B8B2A720614D9A00BDAA75 /* APIService.swift in Sources */,
 				772B48652084D0AF006A2539 /* UIColor.swift in Sources */,
 				7727562E2085EA3900D1EADE /* DBManager.swift in Sources */,
-				779DD9592066331800F08676 /* UIStoryboard.swift in Sources */,
 				77B600F9206EDF2E0076199A /* ProfileViewController.swift in Sources */,
 				77B8B282205FF12B00BDAA75 /* SightCollectionViewCell.swift in Sources */,
 				77B8B286205FF53B00BDAA75 /* SightModel.swift in Sources */,

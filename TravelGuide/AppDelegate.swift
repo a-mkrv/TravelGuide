@@ -33,12 +33,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             _ = CurrentUser.sharedInstance
             
             if CurrentUser.sharedInstance.city?.id == nil {
-                initialViewController = (UIStoryboard.loadViewController(from: "Main", named: "CitiesBoard") as? CityListViewController)!
+                initialViewController = (StaticHelper.loadViewController(from: "Main", named: "CitiesBoard") as? CityListViewController)!
             } else {
                 initialViewController = TabBarViewController()
             }
         } else {
-            initialViewController = (UIStoryboard.loadViewController(from: "Auth", named: "WelcomeBoard") as? WelcomeViewController)!
+            initialViewController = (StaticHelper.loadViewController(from: "Auth", named: "WelcomeBoard") as? WelcomeViewController)!
         }
         
         let navigationController = UINavigationController(rootViewController: initialViewController);

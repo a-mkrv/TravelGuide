@@ -34,7 +34,7 @@ class ProfileViewController: UIViewController, ChangeCity {
     @IBAction func signOutProfile(_ sender: Any) {
        
         CurrentUser.sharedInstance.logOut()
-        let loginController = UIStoryboard.loadViewController(from: "Auth", named: "ChooseLoginBoard") as? ChooseLoginViewController
+        let loginController = StaticHelper.loadViewController(from: "Auth", named: "ChooseLoginBoard") as? ChooseLoginViewController
 
         self.view.window!.switchRootViewController(loginController!)
     }

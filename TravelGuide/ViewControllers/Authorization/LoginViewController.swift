@@ -9,13 +9,14 @@
 import UIKit
 import SkyFloatingLabelTextField
 import SCLAlertView
+import NVActivityIndicatorView
 
 class LoginViewController: UIViewController, ValidityFields {
 
     @IBOutlet var loginTextField: SkyFloatingLabelTextField!
     @IBOutlet var passwordTextField: SkyFloatingLabelTextField!
     @IBOutlet var signInButton: UIButton!
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboard()
@@ -36,12 +37,15 @@ class LoginViewController: UIViewController, ValidityFields {
             return
         }
         
+        StaticHelper.showActivity(title: "Секундочку\nОбработка запроса")
         let parameters: Json = ["name" : login as AnyObject, "password" : passwordTextField.text  as AnyObject]
         
         APIService.shared.doLogin(with: parameters) { (response, error) in
             let alertView = SCLAlertView(appearance: SCLAlertView.SCLAppearance(showCloseButton: false))
 
+            StaticHelper.hideActivity()
             guard error == nil || response != nil else {
+                NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
                 alertView.addButton("Попробовать позже") { }
                 alertView.showError("Ошибка сервера", subTitle: "Сервер выключен или ведутся тех.работы. ")
                 return
@@ -65,7 +69,7 @@ class LoginViewController: UIViewController, ValidityFields {
     }
     
     func navigationToChooseCityView() {
-        let citiesVC = UIStoryboard.loadViewController(from: "Main", named: "CitiesBoard") as? CityListViewController
+        let citiesVC = StaticHelper.loadViewController(from: "Main", named: "CitiesBoard") as? CityListViewController
         self.present(citiesVC!, animated: true, completion: nil)
     }
     
