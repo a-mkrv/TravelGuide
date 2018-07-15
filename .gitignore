@@ -1,6 +1,7 @@
-*.json
-*.xcbkptlist
+.xcbkptlist
 Pods
-*.png
 IDEWorkspaceChecks.plist
-*.jpg
+*.xcbkptlist
+*.lock
+TravelGuide.xcodeproj/xcuserdata
+TravelGuide.xcworkspace/xcuserdata
