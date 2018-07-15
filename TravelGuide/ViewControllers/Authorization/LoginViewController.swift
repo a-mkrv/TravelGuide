@@ -23,6 +23,14 @@ class LoginViewController: UIViewController, ValidityFields {
     }
     
     @IBAction func signInAction(_ sender: Any) {
+        
+        guard StaticHelper.checkNetworkStatus() else {
+            let alertView = SCLAlertView(appearance: SCLAlertView.SCLAppearance(showCloseButton: false))
+            alertView.addButton("Повторить") { }
+            alertView.showError("Упс", subTitle: "Кажется вы забыли включить интернет")
+            return
+        }
+        
         guard let login = loginTextField.text, isLoginValid(login)  else {
             let alertView = SCLAlertView(appearance: SCLAlertView.SCLAppearance(showCloseButton: false))
             alertView.addButton("Понятно") { }

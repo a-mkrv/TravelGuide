@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import Alamofire
 import NVActivityIndicatorView
 
 class StaticHelper: NSObject {
     
+    static let networkStateManager = NetworkReachabilityManager()
     static var animationTimer: Timer?
 
     static func loadViewController(from storyboard: String, named name: String) -> UIViewController? {
@@ -45,5 +47,10 @@ class StaticHelper: NSObject {
     
     static func changeTitleActivity(message: String) {
        NVActivityIndicatorPresenter.sharedInstance.setMessage(message)
+    }
+    
+    //MARK: Check Internet Connection
+    static func checkNetworkStatus() -> Bool {
+        return (StaticHelper.networkStateManager?.isReachable)!
     }
 }

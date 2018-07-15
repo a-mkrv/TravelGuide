@@ -19,7 +19,6 @@ typealias completeRequest = (NSDictionary?, Error?) -> ()
 final class APIService {
     
     static let shared = APIService()
-    static let sharedInstance = NetworkReachabilityManager()
     
     let endpoint = "http://82.146.44.98:5000/api_v1.0/"
 
@@ -66,9 +65,5 @@ final class APIService {
                     completionHandler(nil, error)
                 }
         }
-    }
-    
-    static var isConnectedToInternet:Bool {
-        return self.sharedInstance!.isReachable
     }
 }
