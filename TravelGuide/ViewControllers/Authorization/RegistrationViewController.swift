@@ -8,7 +8,6 @@
 
 import UIKit
 import SkyFloatingLabelTextField
-import SCLAlertView
 
 enum AlertType {
     case ERROR
@@ -81,6 +80,11 @@ class RegistrationViewController: UIViewController, ValidityFields {
 
     @IBAction func registerAction(_ sender: Any) {
        
+        guard StaticHelper.checkNetworkStatus() else {
+            StaticHelper.showAlertView(title: "Упс", subTitle: "Кажется вы забыли включить интернет", buttonText: "Повторить", type: .error)
+            return
+        }
+        
         guard let login = loginTextField.text, isLoginValid(login)  else {
             self.showAlert(title: "Упс", description: "Попробуйте в логине использовать буквы или цифры", type: .WARNING)
             return
@@ -98,9 +102,12 @@ class RegistrationViewController: UIViewController, ValidityFields {
         
         let parameters: Json = ["name" : login as AnyObject, "password" : password as AnyObject]
         
+        StaticHelper.showActivity(title: "Секундочку\nОбработка запроса")
         APIService.shared.createUser(with: parameters) { (response, error) in
+            StaticHelper.hideActivity()
+            
             guard error == nil || response != nil else {
-                self.showAlert(title: "Ошибка регистрации", description: "Попробуйте еще раз", type: .SUCCESS)
+                self.showAlert(title: "Ошибка регистрации", description: "Попробуйте еще раз", type: .ERROR)
                 return
             }
             
@@ -121,22 +128,17 @@ class RegistrationViewController: UIViewController, ValidityFields {
     
     func showAlert(title: String, description: String, type: AlertType) {
         
-        let alertView = SCLAlertView(appearance: SCLAlertView.SCLAppearance(showCloseButton: false))
-        
         switch type {
         case .ERROR:
-            alertView.addButton("Понятно") { }
-            alertView.showError(title, subTitle: description)
+            StaticHelper.showAlertView(title: title, subTitle: description, buttonText: "Понятно", type: .error)
             
         case .SUCCESS:
-            alertView.addButton("Понятно") {
+            StaticHelper.showAlertView(title: title, subTitle: description, buttonText: "Понятно", type: .success) {
                 self.dismissWindow()
             }
-            alertView.showSuccess(title, subTitle: description)
             
         case .WARNING:
-            alertView.addButton("Понятно") { }
-            alertView.showWarning(title, subTitle: description)
+            StaticHelper.showAlertView(title: title, subTitle: description, buttonText: "Понятно", type: .warning)
         }
     }
 }

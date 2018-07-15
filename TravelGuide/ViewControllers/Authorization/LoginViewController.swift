@@ -8,8 +8,6 @@
 
 import UIKit
 import SkyFloatingLabelTextField
-import SCLAlertView
-import NVActivityIndicatorView
 
 class LoginViewController: UIViewController, ValidityFields {
 
@@ -25,43 +23,33 @@ class LoginViewController: UIViewController, ValidityFields {
     @IBAction func signInAction(_ sender: Any) {
         
         guard StaticHelper.checkNetworkStatus() else {
-            let alertView = SCLAlertView(appearance: SCLAlertView.SCLAppearance(showCloseButton: false))
-            alertView.addButton("Повторить") { }
-            alertView.showError("Упс", subTitle: "Кажется вы забыли включить интернет")
+            StaticHelper.showAlertView(title: "Упс", subTitle: "Кажется вы забыли включить интернет", buttonText: "Повторить", type: .error)
             return
         }
         
         guard let login = loginTextField.text, isLoginValid(login)  else {
-            let alertView = SCLAlertView(appearance: SCLAlertView.SCLAppearance(showCloseButton: false))
-            alertView.addButton("Понятно") { }
-            alertView.showWarning("Упс", subTitle: "Кажется вы допустили ошибку в логине")
+            StaticHelper.showAlertView(title: "Упс", subTitle: "Кажется вы допустили ошибку в логине", buttonText: "Понятно", type: .warning)
             return
         }
         
         guard let password = passwordTextField.text, isPasswordValid(password) else {
-            let alertView = SCLAlertView(appearance: SCLAlertView.SCLAppearance(showCloseButton: false))
-            alertView.addButton("Понятно") { }
-            alertView.showWarning("Упс", subTitle: "Такой пароль нам не подходит")
+            StaticHelper.showAlertView(title: "Упс", subTitle: "Такой пароль нам не подходит", buttonText: "Понятно", type: .warning)
             return
         }
         
-        StaticHelper.showActivity(title: "Секундочку\nОбработка запроса")
         let parameters: Json = ["name" : login as AnyObject, "password" : passwordTextField.text  as AnyObject]
         
+        StaticHelper.showActivity(title: "Секундочку\nОбработка запроса")
         APIService.shared.doLogin(with: parameters) { (response, error) in
-            let alertView = SCLAlertView(appearance: SCLAlertView.SCLAppearance(showCloseButton: false))
-
             StaticHelper.hideActivity()
+            
             guard error == nil || response != nil else {
-                NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
-                alertView.addButton("Попробовать позже") { }
-                alertView.showError("Ошибка сервера", subTitle: "Сервер выключен или ведутся тех.работы. ")
+                StaticHelper.showAlertView(title: "Ошибка сервера", subTitle: "Сервер выключен или ведутся тех.работы. ", buttonText: "Попробовать позже", type: .warning)
                 return
             }
             
             if response!["status"] as? String == "error" {
-                alertView.addButton("Еще разок") { }
-                alertView.showError("Ошибка авторизации", subTitle: "Неправильный логин / пароль")
+                StaticHelper.showAlertView(title: "Ошибка авторизации", subTitle: "Неправильный логин / пароль", buttonText: "Еще разок", type: .warning)
                 return
             }
             

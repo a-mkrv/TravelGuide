@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SCLAlertView
 import NVActivityIndicatorView
 
 class StaticHelper: NSObject {
@@ -47,6 +48,21 @@ class StaticHelper: NSObject {
     
     static func changeTitleActivity(message: String) {
        NVActivityIndicatorPresenter.sharedInstance.setMessage(message)
+    }
+    
+    static func showAlertView(title: String, subTitle: String, buttonText: String, type: SCLAlertViewStyle = .warning, completion: (() -> Void)? = nil) {
+        
+        let alertView = SCLAlertView(appearance: SCLAlertView.SCLAppearance(showCloseButton: false))
+        alertView.addButton(buttonText) { completion?() }
+        alertView.showWarning(title, subTitle: subTitle)
+        switch type {
+        case .warning:
+            alertView.showWarning(title, subTitle: subTitle)
+        case .error:
+            alertView.showError(title, subTitle: subTitle)
+        default:
+            alertView.showSuccess(title, subTitle: subTitle)
+        }
     }
     
     //MARK: Check Internet Connection
