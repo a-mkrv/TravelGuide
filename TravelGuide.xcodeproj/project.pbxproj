@@ -12,7 +12,7 @@
 		771483F2206B8D0900B9A141 /* Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771483F1206B8D0900B9A141 /* Foundation.swift */; };
 		771483F6206CE8F500B9A141 /* ChooseLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771483F5206CE8F500B9A141 /* ChooseLoginViewController.swift */; };
 		771D369C20FB5401000EACF9 /* StaticHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771D369B20FB5401000EACF9 /* StaticHelper.swift */; };
-		7727562E2085EA3900D1EADE /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7727562D2085EA3900D1EADE /* DBManager.swift */; };
+		7727562E2085EA3900D1EADE /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7727562D2085EA3900D1EADE /* RealmManager.swift */; };
 		7727563020862DED00D1EADE /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7727562F20862DED00D1EADE /* CurrentUser.swift */; };
 		772B48372081F8F3006A2539 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772B48362081F8F3006A2539 /* UIView.swift */; };
 		772B483920820AE8006A2539 /* HeaderSightsCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772B483820820AE8006A2539 /* HeaderSightsCollectionReusableView.swift */; };
@@ -73,7 +73,7 @@
 		771483F1206B8D0900B9A141 /* Foundation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Foundation.swift; sourceTree = "<group>"; };
 		771483F5206CE8F500B9A141 /* ChooseLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseLoginViewController.swift; sourceTree = "<group>"; };
 		771D369B20FB5401000EACF9 /* StaticHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticHelper.swift; sourceTree = "<group>"; };
-		7727562D2085EA3900D1EADE /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
+		7727562D2085EA3900D1EADE /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		7727562F20862DED00D1EADE /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		772B48362081F8F3006A2539 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		772B483820820AE8006A2539 /* HeaderSightsCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSightsCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -303,7 +303,7 @@
 			children = (
 				7783CFDE20C29A88000445E3 /* Weather */,
 				77B8B29E206149D900BDAA75 /* Network */,
-				7727562D2085EA3900D1EADE /* DBManager.swift */,
+				7727562D2085EA3900D1EADE /* RealmManager.swift */,
 				7727562F20862DED00D1EADE /* CurrentUser.swift */,
 			);
 			path = Services;
@@ -568,7 +568,7 @@
 				7762112B206FF1F600111EBC /* CustomPinAnnotationView.swift in Sources */,
 				77B8B2A720614D9A00BDAA75 /* APIService.swift in Sources */,
 				772B48652084D0AF006A2539 /* UIColor.swift in Sources */,
-				7727562E2085EA3900D1EADE /* DBManager.swift in Sources */,
+				7727562E2085EA3900D1EADE /* RealmManager.swift in Sources */,
 				77B600F9206EDF2E0076199A /* ProfileViewController.swift in Sources */,
 				77B8B282205FF12B00BDAA75 /* SightCollectionViewCell.swift in Sources */,
 				77B8B286205FF53B00BDAA75 /* SightModel.swift in Sources */,
