@@ -69,4 +69,35 @@ class StaticHelper: NSObject {
     static func checkNetworkStatus() -> Bool {
         return (StaticHelper.networkStateManager?.isReachable)!
     }
+    
+    static func getCurrentLanguage() -> String {
+        if let language = NSLocale.current.languageCode, language == "ru" {
+            return language
+        }
+        
+        return "en"
+    }
+    
+    // Reading data from files (mostly json)
+    static func readDataFromFile(name: String, and type: String = "json") -> Data? {
+        let path = Bundle.main.path(forResource: name, ofType: type)
+        let url = URL(fileURLWithPath: path!)
+        
+        do {
+            let data = try Data(contentsOf: url)
+            let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+            
+            guard json is [AnyObject] else {
+                assert(false, "Failed to parse")
+                return nil
+            }
+            
+            return data
+            
+        } catch let error {
+            print(error)
+        }
+        
+        return nil
+    }
 }

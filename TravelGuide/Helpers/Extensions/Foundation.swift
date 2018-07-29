@@ -16,3 +16,15 @@ extension Foundation.Date {
         return dateFormatter.string(from: self)
     }
 }
+
+extension String {
+    
+    var localized: String {
+        
+        let local = StaticHelper.getCurrentLanguage()
+        let path = Bundle.main.path(forResource: local, ofType: "lproj")
+        let bundle = Bundle(path: path!)
+        
+        return NSLocalizedString(self, tableName: nil, bundle: bundle!, value: "", comment: "")
+    }
+}

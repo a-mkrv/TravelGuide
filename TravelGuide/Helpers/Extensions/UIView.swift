@@ -24,4 +24,24 @@ extension UIView {
         }
         
     }
+    
+    // Localize
+    @IBInspectable open var localizedText: String? {
+        set {
+            let locString = newValue?.localized
+            
+            if (self is UIButton) {
+                (self as? UIButton)?.setTitle(locString, for: .normal)
+            } else if (self is UILabel) {
+                (self as? UILabel)?.text = locString
+            } else if (self is UITextView) {
+                (self as? UITextView)?.text = locString
+            } else if (self is UITextField) {
+                (self as? UITextField)?.placeholder = locString
+            }
+        }
+        get {
+            return ""
+        }
+    }
 }

@@ -55,6 +55,7 @@
 		77B8B2AF20615A5800BDAA75 /* SightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B8B2AE20615A5800BDAA75 /* SightViewController.swift */; };
 		77C0FA8720681F8900A94A8F /* UIWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C0FA8620681F8900A94A8F /* UIWindow.swift */; };
 		77C0FA8920682A8500A94A8F /* ValidityFieldsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C0FA8820682A8500A94A8F /* ValidityFieldsProtocol.swift */; };
+		77DF2714210DD1F600A0507B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77DF2716210DD1F600A0507B /* Localizable.strings */; };
 		77DF692920628DA80094B962 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DF692820628DA80094B962 /* TabBarViewController.swift */; };
 		77DF692D2062946A0094B962 /* CityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DF692C2062946A0094B962 /* CityListViewController.swift */; };
 		77E9E14B206298EC0092E70A /* CityListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E9E14A206298EC0092E70A /* CityListTableViewCell.swift */; };
@@ -117,6 +118,8 @@
 		77B8B2AE20615A5800BDAA75 /* SightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightViewController.swift; sourceTree = "<group>"; };
 		77C0FA8620681F8900A94A8F /* UIWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindow.swift; sourceTree = "<group>"; };
 		77C0FA8820682A8500A94A8F /* ValidityFieldsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidityFieldsProtocol.swift; sourceTree = "<group>"; };
+		77DF2715210DD1F600A0507B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		77DF2717210DD20900A0507B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		77DF692820628DA80094B962 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		77DF692C2062946A0094B962 /* CityListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListViewController.swift; sourceTree = "<group>"; };
 		77E9E14A206298EC0092E70A /* CityListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListTableViewCell.swift; sourceTree = "<group>"; };
@@ -203,6 +206,7 @@
 				77397B4E205E5345008BFCBA /* Info.plist */,
 				77397B69205EBDCA008BFCBA /* Assets.xcassets */,
 				77397B5F205E745C008BFCBA /* Storyboards */,
+				77DF2716210DD1F600A0507B /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -417,6 +421,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 77397B36205E5344008BFCBA;
 			productRefGroup = 77397B40205E5345008BFCBA /* Products */;
@@ -433,6 +438,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77DF2714210DD1F600A0507B /* Localizable.strings in Resources */,
 				77397B64205E7530008BFCBA /* Auth.storyboard in Resources */,
 				77397B4D205E5345008BFCBA /* LaunchScreen.storyboard in Resources */,
 				77397B6A205EBDCA008BFCBA /* Assets.xcassets in Resources */,
@@ -599,6 +605,15 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		77DF2716210DD1F600A0507B /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				77DF2715210DD1F600A0507B /* en */,
+				77DF2717210DD20900A0507B /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -606,6 +621,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -650,7 +666,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -663,6 +679,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -701,7 +718,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -717,11 +734,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RA8RP8Z7ML;
 				INFOPLIST_FILE = "$(SRCROOT)/TravelGuide/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ITMak.TravelGuide;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -733,11 +751,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RA8RP8Z7ML;
 				INFOPLIST_FILE = "$(SRCROOT)/TravelGuide/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ITMak.TravelGuide;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
