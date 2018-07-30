@@ -64,6 +64,19 @@ class SightViewController: UIViewController, ChangeSightCategory {
         self.sightsCollectionView.reloadData()
     }
     
+    func sortedSights(by: SortSights) {
+        switch by {
+        case .rating:
+            _ = sightViewModel?.sights.sorted(by: { $0.rating > $1.rating } )
+        case .price:
+            _ = sightViewModel?.sights.sorted(by: { $0.cost > $1.cost } )
+        case .comments:
+            break
+        case .distanceFromMe:
+            break
+        }
+    }
+    
     func setupView() {
         self.cityNameLabel.text = CurrentUser.sharedInstance.city?.name
         manager.loadImage(with: Request(url: URL(string: (CurrentUser.sharedInstance.city?.urlImage)!)!), into: cityImage)

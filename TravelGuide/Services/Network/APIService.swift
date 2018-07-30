@@ -19,9 +19,20 @@ typealias completeRequest = (NSDictionary?, Error?) -> ()
 final class APIService {
     
     static let shared = APIService()
-    
-    let endpoint = "http://82.146.44.98:5000/api_v1.0/"
+    private var AlamofireManager = Alamofire.SessionManager(configuration: .default)
+    private let endpoint = "http://82.146.44.98:5000/api_v1.0/"
 
+    init() {
+        changeConfiguration()
+    }
+    
+    func changeConfiguration(timeoutInterval: Double = 15) {
+        let configuration = URLSessionConfiguration.default
+        configuration.timeoutIntervalForRequest = timeoutInterval // seconds
+        self.AlamofireManager = Alamofire.SessionManager(configuration: configuration)
+    }
+
+    // Custom public methods
     func getCities(completionHandler: @escaping completeRequest) {
         // 1 - id country, while always 1 - Russia
         let parameters: Json = ["id_town" : "1" as AnyObject]
@@ -45,7 +56,8 @@ final class APIService {
         makeRequest(request: .external, url, with: parameters, completionHandler: completionHandler)
     }
     
-    func makeRequest(request: TypeRequest = .inner, _ url: String, with parameters: Json, completionHandler: @escaping completeRequest) {
+    // Internal request to perform
+    private func makeRequest(request: TypeRequest = .inner, _ url: String, with parameters: Json, httpMethod: HTTPMethod = .get, completionHandler: @escaping completeRequest) {
 
         var urlRequest: String = ""
         switch request {
@@ -55,7 +67,7 @@ final class APIService {
             urlRequest = endpoint + url
         }
         
-        Alamofire.request(urlRequest, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil)
+        AlamofireManager.request(urlRequest, method: httpMethod, parameters: parameters, encoding: URLEncoding.default, headers: nil)
             .responseJSON { response in
                 
                 switch response.result {

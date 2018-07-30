@@ -8,8 +8,13 @@
 
 import UIKit
 
+enum SortSights: Int {
+    case rating = 0, comments, distanceFromMe, price
+}
+
 protocol ChangeSightCategory {
     func updateSightsCollectionView()
+    func sortedSights(by: SortSights)
 }
 
 struct CategoryModelCell {
@@ -28,6 +33,7 @@ class FilterViewController: UIViewController {
     
     let cellID = "FilterCell"
     var delegate: ChangeSightCategory?
+    var orderButtons: [UIButton] = []
     
     var selectedCat: [CategoryModelCell] = []
     var categories: [CategoryModelCell] = {
@@ -56,9 +62,18 @@ class FilterViewController: UIViewController {
                 }
             }
         }
-
+        
+        orderButtons = [ratingButton, commentButton, distanceButton, priceButton]
+        orderButtons.forEach( { $0.backgroundColor = .clear } )
+        
         collectionView.delegate = self
         collectionView.dataSource = self
+    }
+    
+    @IBAction func orderByTouch(_ sender: UIButton) {
+        orderButtons.forEach( { $0.backgroundColor = .clear } )
+        orderButtons[sender.tag].backgroundColor = UIColor.lightPink
+        delegate?.sortedSights(by: SortSights(rawValue: sender.tag)!)
     }
     
     @IBAction func goBack(_ sender: Any) {

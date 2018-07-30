@@ -50,7 +50,6 @@
 		77B8B28E2061377A00BDAA75 /* TripCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B8B28D2061377A00BDAA75 /* TripCollectionViewCell.swift */; };
 		77B8B2912061388800BDAA75 /* SightViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B8B2902061388800BDAA75 /* SightViewModel.swift */; };
 		77B8B29720613B9F00BDAA75 /* HTTPStatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B8B29620613B9F00BDAA75 /* HTTPStatusCode.swift */; };
-		77B8B2A220614A1000BDAA75 /* RequestMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B8B2A120614A1000BDAA75 /* RequestMethod.swift */; };
 		77B8B2A720614D9A00BDAA75 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B8B2A620614D9A00BDAA75 /* APIService.swift */; };
 		77B8B2AF20615A5800BDAA75 /* SightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B8B2AE20615A5800BDAA75 /* SightViewController.swift */; };
 		77C0FA8720681F8900A94A8F /* UIWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C0FA8620681F8900A94A8F /* UIWindow.swift */; };
@@ -113,7 +112,6 @@
 		77B8B28D2061377A00BDAA75 /* TripCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCollectionViewCell.swift; sourceTree = "<group>"; };
 		77B8B2902061388800BDAA75 /* SightViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightViewModel.swift; sourceTree = "<group>"; };
 		77B8B29620613B9F00BDAA75 /* HTTPStatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPStatusCode.swift; sourceTree = "<group>"; };
-		77B8B2A120614A1000BDAA75 /* RequestMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMethod.swift; sourceTree = "<group>"; };
 		77B8B2A620614D9A00BDAA75 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		77B8B2AE20615A5800BDAA75 /* SightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightViewController.swift; sourceTree = "<group>"; };
 		77C0FA8620681F8900A94A8F /* UIWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindow.swift; sourceTree = "<group>"; };
@@ -314,7 +312,6 @@
 			children = (
 				77B8B2A620614D9A00BDAA75 /* APIService.swift */,
 				77B8B29620613B9F00BDAA75 /* HTTPStatusCode.swift */,
-				77B8B2A120614A1000BDAA75 /* RequestMethod.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -575,7 +572,6 @@
 				77F4DA5F2065AB610048B768 /* UserDefaults.swift in Sources */,
 				7786FE5E207364D1004C7877 /* DetailNameTableViewCell.swift in Sources */,
 				77F4DA5B2065702D0048B768 /* WelcomeCollectionViewCell.swift in Sources */,
-				77B8B2A220614A1000BDAA75 /* RequestMethod.swift in Sources */,
 				77F4DA532063B6AD0048B768 /* Typealias.swift in Sources */,
 				7783CFE020C29BC3000445E3 /* WeatherService.swift in Sources */,
 				77397B43205E5345008BFCBA /* AppDelegate.swift in Sources */,

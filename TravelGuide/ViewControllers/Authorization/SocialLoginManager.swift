@@ -125,11 +125,11 @@ extension SocialLoginManager: VKSdkUIDelegate, VKSdkDelegate {
     
     //MARK: SDK - VKSdkUIDelegate, VKSdkDelegate
     public func vkSdkAccessAuthorizationFinished(with result: VKAuthorizationResult!) {
-        print("vkSdkAccessAuthorizationFinished")
+        Logger.info(msg: "vkSdkAccessAuthorizationFinished")
     }
     
     public func vkSdkUserAuthorizationFailed() {
-        print("vkSdkUserAuthorizationFailed")
+        Logger.error(msg: "vkSdkUserAuthorizationFailed")
     }
     
     public func vkSdkShouldPresent(_ controller: UIViewController!) {

@@ -86,17 +86,17 @@ class RegistrationViewController: UIViewController, ValidityFields {
         }
         
         guard let login = loginTextField.text, isLoginValid(login)  else {
-            self.showAlert(title: "Упс", description: "Попробуйте в логине использовать буквы или цифры", type: .WARNING)
+            StaticHelper.showAlertView(title: "Упс", subTitle: "Попробуйте в логине использовать буквы или цифры", buttonText: "Изменить логин", type: .warning)
             return
         }
         
         guard let password = passwordTextField.text, isPasswordValid(password) else {
-            self.showAlert(title: "Упс", description: "Такой пароль не подходит", type: .WARNING)
+            StaticHelper.showAlertView(title: "Упс", subTitle: "Такой пароль не подходит", buttonText: "Изменить пароль", type: .warning)
             return
         }
         
         if passwordTextField.text != confirmPasswordTextField.text {
-            self.showAlert(title: "Упс", description: "Пароли не совпадают", type: .WARNING)
+            StaticHelper.showAlertView(title: "Упс", subTitle: "Пароли не совпадают", buttonText: "Проверить пароли", type: .warning)
             return
         }
         
@@ -107,38 +107,22 @@ class RegistrationViewController: UIViewController, ValidityFields {
             StaticHelper.hideActivity()
             
             guard error == nil || response != nil else {
-                self.showAlert(title: "Ошибка регистрации", description: "Попробуйте еще раз", type: .ERROR)
+                StaticHelper.showAlertView(title: "Ошибка сервера", subTitle: "Сервер выключен или ведутся тех.работы. ", buttonText: "Попробовать позже", type: .warning)
                 return
             }
-            
+
             if response!["status"] as? String == "error" {
-                self.showAlert(title: "Ошибка регистрации", description: "Такой пользователь уже существует", type: .ERROR)
+                StaticHelper.showAlertView(title: "Ошибка регистрации", subTitle: "Такой пользователь уже существует", buttonText: "Изменить данные", type: .error)
                 return
             }
             
             if response!["status"] as? String == "success" {
-                self.showAlert(title: "Регистрация завершена", description: "Вернуться на экран авторизации", type: .SUCCESS)
+                StaticHelper.showAlertView(title: "Регистрация завершена", subTitle: "Вернуться на экран авторизации", buttonText: "Готово", type: .success)
             }
         }
     }
     
     @IBAction func cancelAction(_ sender: Any) {
         self.dismissWindow()
-    }
-    
-    func showAlert(title: String, description: String, type: AlertType) {
-        
-        switch type {
-        case .ERROR:
-            StaticHelper.showAlertView(title: title, subTitle: description, buttonText: "Понятно", type: .error)
-            
-        case .SUCCESS:
-            StaticHelper.showAlertView(title: title, subTitle: description, buttonText: "Понятно", type: .success) {
-                self.dismissWindow()
-            }
-            
-        case .WARNING:
-            StaticHelper.showAlertView(title: title, subTitle: description, buttonText: "Понятно", type: .warning)
-        }
     }
 }
