@@ -221,10 +221,37 @@
                                     <action selector="facebookAuthorization:" destination="79F-HK-UpQ" eventType="touchUpInside" id="jsg-89-zL0"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K8n-k8-dKe">
+                                <rect key="frame" x="38" y="53" width="298" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hML-yf-hio">
+                                        <rect key="frame" x="268" y="8" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="?"/>
+                                        <connections>
+                                            <action selector="openFeatureDescription:" destination="79F-HK-UpQ" eventType="touchUpInside" id="HoP-Hc-agg"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JsG-Rm-R1d">
+                                        <rect key="frame" x="66" y="8" width="145" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Вход без Интернета"/>
+                                        <connections>
+                                            <action selector="loginWithoutNetwork:" destination="79F-HK-UpQ" eventType="touchUpInside" id="YNF-Rz-u4e"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="b1V-IN-ap3"/>
                     </view>
+                    <connections>
+                        <outlet property="withoutNetworkFeatureView" destination="K8n-k8-dKe" id="22k-L7-xg3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="frz-ok-Qqf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

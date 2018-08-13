@@ -17,6 +17,7 @@ class CityListViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var closeButton: UIButton!
     
+    var openWithoutNetwork = false
     var selectedIndex: Int?
     var cityViewModel: CityViewModel?
     var delegate: ChangeCity?
@@ -24,17 +25,17 @@ class CityListViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.cityViewModel = CityViewModel()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-
         self.setGradientBackground()
-        self.setupViewModel()
-        
+
         if CurrentUser.sharedInstance.city != nil {
             closeButton.isHidden = false
             navigationController?.interactivePopGestureRecognizer?.delegate = self
         }
+        
+        self.cityViewModel = CityViewModel()
+        self.setupViewModel()
     }
     
     func setGradientBackground() {
@@ -51,13 +52,23 @@ class CityListViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func setupViewModel() {
-        cityViewModel?.getAllCity(completion: {
-            self.tableView.reloadData()
-        })
+        if openWithoutNetwork {
+            cityViewModel?.getAllCitiesFromDatabase(completion: {
+                self.tableView.reloadData()
+            })
+        } else {
+            cityViewModel?.getAllCity(completion: {
+                self.tableView.reloadData()
+            })
+        }
     }
     
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         return (navigationController?.viewControllers.count ?? 0) > 1
+    }
+    
+    func loadCitiesFromDatabase() {
+        
     }
     
     @IBAction func closeView(_ sender: Any) {

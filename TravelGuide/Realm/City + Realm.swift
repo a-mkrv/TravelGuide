@@ -12,8 +12,9 @@ class CityRealmModel: Object {
     
     @objc dynamic var id = 0
     @objc dynamic var name = ""
-    @objc dynamic var country = "country"
-    
+    @objc dynamic var country = 0
+    @objc dynamic var image = "image"
+
     var sights = List<SightRealmModel>()
     
     override class func primaryKey() -> String? {

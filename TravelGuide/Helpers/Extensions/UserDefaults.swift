@@ -20,6 +20,7 @@ extension UserDefaults {
         case userToken
         case userLogin
         case categories
+        case savedCities
     }
     
     func createKey(_ key: String) -> String {
@@ -52,7 +53,12 @@ extension UserDefaults {
         synchronize()
     }
     
-    // Chech exist keys
+    func setAllSavedCities(cities: [Int]) {
+        set(cities, forKey: createKey(UserDefaultsKeys.savedCities.rawValue))
+        synchronize()
+    }
+    
+    // Check exist keys
     func isLoggedIn() -> Bool {
         return bool(forKey: createKey(UserDefaultsKeys.isLoggedIn.rawValue))
     }
@@ -73,6 +79,10 @@ extension UserDefaults {
         return object(forKey: createKey(UserDefaultsKeys.currentCity.rawValue)) as? [String : Any]
     }
    
+    func getAllSavedCities() -> [Int] {
+        return array(forKey: createKey(UserDefaultsKeys.savedCities.rawValue)) as? [Int] ?? []
+    }
+    
     ////
     
     func clearAllAppData() {

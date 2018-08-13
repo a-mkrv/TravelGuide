@@ -119,4 +119,12 @@ extension DBManager {
     func removeDataBase() {
         clearAllData()
     }
+    
+    func databaseIsEmpty() -> Bool {
+        if let realm = try? realmObject() {
+            return realm.isEmpty
+        }
+        
+        return true
+    }
 }

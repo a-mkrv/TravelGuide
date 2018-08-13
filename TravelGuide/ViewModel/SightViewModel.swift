@@ -35,7 +35,7 @@ class SightViewModel {
         let curCity = CityRealmModel()
         curCity.id = CurrentUser.sharedInstance.city?.id as! Int
         curCity.name = (CurrentUser.sharedInstance.city?.name)!
-        curCity.country = "Russia"
+        curCity.country = 1
         
         for s in sights {
             let sr = SightRealmModel(sight: s)

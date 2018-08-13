@@ -10,8 +10,10 @@ import UIKit
 
 class ChooseLoginViewController: UIViewController {
 
+    @IBOutlet weak var withoutNetworkFeatureView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.withoutNetworkFeatureView.isHidden = (DBManager.sharedInstance.databaseIsEmpty() && CurrentUser.sharedInstance.allSavedCities.isEmpty)
         UIApplication.shared.isStatusBarHidden = true;
     }
     
@@ -42,5 +44,14 @@ class ChooseLoginViewController: UIViewController {
          let registrationVC = StaticHelper.loadViewController(from: "Auth", named: "RegistrationBoard") as? RegistrationViewController
         
         self.present(registrationVC!, animated: true, completion: nil)
+    }
+    
+    @IBAction func loginWithoutNetwork(_ sender: Any) {
+        let citiesVC = StaticHelper.loadViewController(from: "Main", named: "CitiesBoard") as? CityListViewController
+        citiesVC?.openWithoutNetwork = true
+        self.present(citiesVC!, animated: true, completion: nil)
+    }
+    
+    @IBAction func openFeatureDescription(_ sender: Any) {
     }
 }

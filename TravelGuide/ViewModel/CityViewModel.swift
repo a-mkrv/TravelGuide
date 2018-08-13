@@ -14,6 +14,29 @@ class CityViewModel {
     var cities = [City]()
     var manager = Nuke.Manager.shared
     
+    func getAllCitiesFromDatabase(completion: @escaping () -> ()) {
+        let savedCities = CurrentUser.sharedInstance.allSavedCities
+        var cities: [City]?
+        
+        for cityId in savedCities {
+            guard let city = DBManager.sharedInstance.getCityById(id: cityId) else {
+                continue
+            }
+            
+            var sights = [Sight]()
+            for res in city.sights {
+                if let sight = Sight(sRealm: res) {
+                    sights.append(sight)
+                }
+            }
+
+            let newCity = City(id: NSNumber(integerLiteral: cityId), country: NSNumber(integerLiteral: city.country), name: city.name, sights: sights, isDownload: true, urlImage: city.image)
+            cities?.append(newCity)
+        }
+        
+        completion()
+    }
+    
     func getAllCity(completion: @escaping () -> ()) {
         APIService.shared.getCities{ response, error in
             

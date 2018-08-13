@@ -44,6 +44,11 @@ class CurrentUser {
         set { UserDefaults.standard.setCurrentCity(cityProperties: (newValue?.propertyList)!) }
     }
     
+    var allSavedCities: [Int] {
+        get { return UserDefaults.standard.getAllSavedCities() }
+        set { UserDefaults.standard.setAllSavedCities(cities: newValue) }
+    }
+    
     func logOut() {
         favoriteCategories = ["Выбрать все"]
         UserDefaults.standard.clearAllAppData()
