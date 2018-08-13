@@ -55,6 +55,7 @@
 		77C0FA8720681F8900A94A8F /* UIWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C0FA8620681F8900A94A8F /* UIWindow.swift */; };
 		77C0FA8920682A8500A94A8F /* ValidityFieldsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C0FA8820682A8500A94A8F /* ValidityFieldsProtocol.swift */; };
 		77DF2714210DD1F600A0507B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 77DF2716210DD1F600A0507B /* Localizable.strings */; };
+		77DF2719210F4ED100A0507B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DF2718210F4ED100A0507B /* LocationManager.swift */; };
 		77DF692920628DA80094B962 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DF692820628DA80094B962 /* TabBarViewController.swift */; };
 		77DF692D2062946A0094B962 /* CityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DF692C2062946A0094B962 /* CityListViewController.swift */; };
 		77E9E14B206298EC0092E70A /* CityListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E9E14A206298EC0092E70A /* CityListTableViewCell.swift */; };
@@ -118,6 +119,7 @@
 		77C0FA8820682A8500A94A8F /* ValidityFieldsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidityFieldsProtocol.swift; sourceTree = "<group>"; };
 		77DF2715210DD1F600A0507B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		77DF2717210DD20900A0507B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		77DF2718210F4ED100A0507B /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		77DF692820628DA80094B962 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		77DF692C2062946A0094B962 /* CityListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListViewController.swift; sourceTree = "<group>"; };
 		77E9E14A206298EC0092E70A /* CityListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListTableViewCell.swift; sourceTree = "<group>"; };
@@ -301,8 +303,9 @@
 			children = (
 				7783CFDE20C29A88000445E3 /* Weather */,
 				77B8B29E206149D900BDAA75 /* Network */,
-				7727562D2085EA3900D1EADE /* RealmManager.swift */,
 				7727562F20862DED00D1EADE /* CurrentUser.swift */,
+				7727562D2085EA3900D1EADE /* RealmManager.swift */,
+				77DF2718210F4ED100A0507B /* LocationManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -540,6 +543,7 @@
 				77E9E14D206306940092E70A /* CityViewModel.swift in Sources */,
 				77B8B28C20610D9C00BDAA75 /* TripModel.swift in Sources */,
 				77B8B2AF20615A5800BDAA75 /* SightViewController.swift in Sources */,
+				77DF2719210F4ED100A0507B /* LocationManager.swift in Sources */,
 				77621127206FECAC00111EBC /* PinAnnotation.swift in Sources */,
 				779DD95720662F3F00F08676 /* LoginViewController.swift in Sources */,
 				774D998E2067E13900CA0C22 /* RegistrationViewController.swift in Sources */,
