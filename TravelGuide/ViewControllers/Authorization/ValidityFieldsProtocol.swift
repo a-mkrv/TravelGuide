@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SkyFloatingLabelTextField
 
 protocol ValidityFields {
     
@@ -22,5 +23,10 @@ extension ValidityFields {
     func isLoginValid(_ login : String) -> Bool {
         let validLogin = NSPredicate(format: "SELF MATCHES %@", "[A-Z0-9a-z._]{5,}")
         return validLogin.evaluate(with: login)
+    }
+    
+    func setFieldLineColor(textField: SkyFloatingLabelTextField, _ isValidLine: Bool) {
+        textField.selectedLineColor = isValidLine ? .blue : .red
+        textField.lineColor = isValidLine ? .blue : .red
     }
 }

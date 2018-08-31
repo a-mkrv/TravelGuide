@@ -18,7 +18,8 @@ target 'TravelGuide' do
   pod 'NVActivityIndicatorView'
   pod 'ReachabilitySwift'
   pod 'SwiftMessages'
-  
+  pod "SkeletonView"
+
   #Social networks SDK
   pod 'FBSDKLoginKit'
   pod "VK-ios-sdk" 

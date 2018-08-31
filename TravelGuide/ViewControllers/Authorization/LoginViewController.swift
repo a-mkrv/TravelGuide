@@ -20,6 +20,8 @@ class LoginViewController: UIViewController, ValidityFields {
         self.hideKeyboard()
     }
     
+    // MARK: Actions
+
     @IBAction func signInAction(_ sender: Any) {
         
         guard StaticHelper.checkNetworkStatus() else {
@@ -64,12 +66,32 @@ class LoginViewController: UIViewController, ValidityFields {
         }
     }
     
+
+    @IBAction func cancelAction(_ sender: Any) {
+        self.dismissWindow()
+    }
+    
+    @IBAction func changedTextField(_ sender: SkyFloatingLabelTextField) {
+        
+        // 0 - Login, 1 - Password
+        switch sender.tag {
+        case 0:
+            if let login = loginTextField.text {
+                setFieldLineColor(textField: sender, isLoginValid(login))
+            }
+        case 1:
+            if let password = passwordTextField.text {
+                setFieldLineColor(textField: sender, isPasswordValid(password))
+            }
+        default: break
+        }
+    }
+
+    // MARK: Methods
+
     func navigationToChooseCityView() {
         let citiesVC = StaticHelper.loadViewController(from: "Main", named: "CitiesBoard") as? CityListViewController
         self.present(citiesVC!, animated: true, completion: nil)
     }
     
-    @IBAction func cancelAfction(_ sender: Any) {
-        self.dismissWindow()
-    }
 }
