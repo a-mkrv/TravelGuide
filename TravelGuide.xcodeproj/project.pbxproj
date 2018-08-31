@@ -65,6 +65,7 @@
 		77F4DA57206418710048B768 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F4DA56206418710048B768 /* UIImage.swift */; };
 		77F4DA5B2065702D0048B768 /* WelcomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F4DA5A2065702D0048B768 /* WelcomeCollectionViewCell.swift */; };
 		77F4DA5F2065AB610048B768 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F4DA5E2065AB610048B768 /* UserDefaults.swift */; };
+		8DCBAF9021393650004B2792 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCBAF8F21393650004B2792 /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -129,6 +130,7 @@
 		77F4DA56206418710048B768 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		77F4DA5A2065702D0048B768 /* WelcomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		77F4DA5E2065AB610048B768 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		8DCBAF8F21393650004B2792 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		D2615D3197D8C4962EF42A31 /* Pods-TravelGuide.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelGuide.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TravelGuide/Pods-TravelGuide.debug.xcconfig"; sourceTree = "<group>"; };
 		ED542BF07C5CCC04E99B2E0B /* Pods-TravelGuide.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelGuide.release.xcconfig"; path = "Pods/Target Support Files/Pods-TravelGuide/Pods-TravelGuide.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -286,6 +288,7 @@
 		77B8B2932061390300BDAA75 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				8DCBAF8F21393650004B2792 /* BaseViewController.swift */,
 				77621125206FEC8100111EBC /* Map */,
 				774D998F2067E14100CA0C22 /* Authorization */,
 				77B8B2AE20615A5800BDAA75 /* SightViewController.swift */,
@@ -387,7 +390,6 @@
 				77397B3C205E5345008BFCBA /* Frameworks */,
 				77397B3D205E5345008BFCBA /* Resources */,
 				D097461CB83EE7031C1BA008 /* [CP] Embed Pods Frameworks */,
-				CF3C7FC8FAF659EE76CDCA2E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -449,21 +451,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		CF3C7FC8FAF659EE76CDCA2E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TravelGuide/Pods-TravelGuide-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		D097461CB83EE7031C1BA008 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -478,10 +465,12 @@
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework",
 				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/VK-ios-sdk/VK_ios_sdk.framework",
 			);
@@ -494,10 +483,12 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCLAlertView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VK_ios_sdk.framework",
 			);
@@ -546,6 +537,7 @@
 				77DF2719210F4ED100A0507B /* LocationManager.swift in Sources */,
 				77621127206FECAC00111EBC /* PinAnnotation.swift in Sources */,
 				779DD95720662F3F00F08676 /* LoginViewController.swift in Sources */,
+				8DCBAF9021393650004B2792 /* BaseViewController.swift in Sources */,
 				774D998E2067E13900CA0C22 /* RegistrationViewController.swift in Sources */,
 				772B48372081F8F3006A2539 /* UIView.swift in Sources */,
 				772B483920820AE8006A2539 /* HeaderSightsCollectionReusableView.swift in Sources */,

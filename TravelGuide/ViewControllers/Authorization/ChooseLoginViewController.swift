@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChooseLoginViewController: UIViewController {
+class ChooseLoginViewController: BaseViewController {
 
     @IBOutlet weak var withoutNetworkFeatureView: UIView!
     override func viewDidLoad() {
