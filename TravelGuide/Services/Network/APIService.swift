@@ -20,7 +20,7 @@ final class APIService {
     
     static let shared = APIService()
     private var AlamofireManager = Alamofire.SessionManager(configuration: .default)
-    private let endpoint = "http://82.146.44.98:5000/api_v1.0/"
+    private let endpoint = "http://e1514247.ngrok.io/api_v1.0/"
 
     init() {
         changeConfiguration()

@@ -27,6 +27,11 @@ class SightViewController: UIViewController, ChangeSightCategory {
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var downloadButton: UIButton!
     
+    @IBOutlet weak var temperatureLabel: UILabel!
+    @IBOutlet weak var weatherDetailLabel: UILabel!
+    @IBOutlet weak var weatherDescriptionLabel: UILabel!
+    @IBOutlet weak var weatherPicture: UIImageView!
+    
     var sightViewModel: SightViewModel?
     var weatherViewModel: WeatherViewModel?
     var city_id: NSNumber!
@@ -44,6 +49,13 @@ class SightViewController: UIViewController, ChangeSightCategory {
         
         self.city_id = CurrentUser.sharedInstance.city?.id
         self.setupViewModel(city_id)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        DispatchQueue.main.async {
+            self.weatherViewModel?.getWeatherOfCity(name: "Moscow", period: .Day)
+            self.updateWeatherView()
+        }
     }
     
     func updateSightsCollectionView() {
@@ -100,10 +112,6 @@ class SightViewController: UIViewController, ChangeSightCategory {
     }
     
     func setupViewModel(_ city_id: NSNumber) {
-        DispatchQueue.main.async {
-            self.weatherViewModel?.getWeatherOfCity(name: "Moscow", period: .Day)
-        }
-        
         self.city_id = city_id
         sightViewModel?.getAllSights(city_id, completion: {
             self.updateSightsCollectionView()
@@ -122,6 +130,15 @@ class SightViewController: UIViewController, ChangeSightCategory {
             if let destination = segue.destination as? FilterViewController {
                 destination.delegate = self
             }
+        }
+    }
+    
+    func updateWeatherView() {
+        if let weather = self.weatherViewModel?.weather {
+            temperatureLabel.text = weather.temperature
+            weatherDescriptionLabel.text = weather.description
+            weatherDetailLabel.text = String(weather.pressure) + String(weather.speed)
+            weatherPicture.image = UIImage(named: weather.icon)
         }
     }
 }
