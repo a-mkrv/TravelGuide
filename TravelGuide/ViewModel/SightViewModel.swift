@@ -55,11 +55,11 @@ class SightViewModel {
         } else {
             APIService.shared.getSights(city_id){ response, error in
                 
-                if error != nil || response == nil || response!["status"] as? String == "error"  {
+                if error != nil || response == nil || response?.status == "error"  {
                     return
                 }
                 
-                for object in (response!["data"] as? Json)! {
+                for object in (response?.data as? Json)! {
                     if let sight = Sight(json: object.value as? Json) {
                         self.sights.append(sight)
                     }

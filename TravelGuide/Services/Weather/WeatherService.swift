@@ -26,13 +26,12 @@ class WeatherService {
     
     static let shared = WeatherService()
 
-    func getToday(city: String, completionHandler: @escaping completeRequest) {
+    func getToday(city: String, completionHandler: @escaping completeRequest<WeatherModel>) {
         let parameters: Json = ["APPID" : key as AnyObject, "q" : city as AnyObject]
         APIService.shared.getWeather(url: urlOneDay, parameters: parameters, completionHandler: completionHandler)
     }
     
-    
-    func weeklyForecast(city: String, completionHandler: @escaping completeRequest) {
+    func weeklyForecast(city: String, completionHandler: @escaping completeRequest<WeatherModel>) {
         let regionForecast = city + ",RU"
         let parameters: Json = ["APPID" : key as AnyObject, "q" : regionForecast as AnyObject]
         APIService.shared.getWeather(url: urlOneDay, parameters: parameters, completionHandler: completionHandler)

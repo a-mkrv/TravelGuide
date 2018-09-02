@@ -7,39 +7,30 @@
 //
 
 import Foundation
+import ObjectMapper
 
-fileprivate struct DataKeys {
-    static let id = "id_town"
-    static let name = "name"
-    static let country = "country"
-    static let sight = "sight"
-    static let urlImage = "url_photo"
-}
-
-struct City {
-    let id: NSNumber
-    let country: NSNumber
-    let name: String
-    let sights: [Sight]
+struct City: Mappable {
+    var id: NSNumber!
+    var country: NSNumber!
+    var name: String!
+    var sights: [Sight] = []
+    var urlImage: String!
     var isDownload: Bool = false
-    let urlImage: String
 }
 
 // Mark: - extension City
 extension City {
-    init?(json: Json?) {
-        guard let json = json,
-            let id = json[DataKeys.id] as? NSNumber,
-            let name = json[DataKeys.name] as? String
-            else {
-                return nil
-        }
-        
-        self.id = id
-        self.name = name
-        self.country = json[DataKeys.country] as? NSNumber ?? 1
-        self.sights = []
-        self.urlImage = json[DataKeys.urlImage] as? String ?? "https://img-fotki.yandex.ru/get/197852/27854841.58f/0_ef76b_fb4fa46e_XXXL.jpg"
+    
+    init?(map: Map) {
+        mapping(map: map)
+    }
+    
+    mutating func mapping(map: Map) {
+        id <- map["id_town"]
+        name <- map["name"]
+        country <- map["country"]
+        urlImage <- map["url_photo"]
+        sights = []
     }
     
     init?(dictionary : [String : Any]) {
@@ -48,10 +39,11 @@ extension City {
             let urlImage = dictionary["url"] as? String,
             let isDownload = dictionary["isDownload"] as? Bool else { return nil }
         
-        self.init(id: id, country: 1, name: name, sights: [], isDownload: isDownload, urlImage: urlImage)
+        self.init(id: id, country: 1, name: name, sights: [], urlImage: urlImage, isDownload: isDownload)
     }
     
     var propertyList : [String : Any] {
         return ["id" : id, "name" : name, "isDownload" : isDownload, "url" : urlImage]
     }
 }
+

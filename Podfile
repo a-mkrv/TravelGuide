@@ -15,6 +15,8 @@ target 'TravelGuide' do
   pod 'Nuke'
   pod 'Cluster'
   pod 'RealmSwift'
+  pod 'ObjectMapper'
+  pod 'AlamofireObjectMapper', '~> 5.0'
   pod 'NVActivityIndicatorView'
   pod 'ReachabilitySwift'
   pod 'SwiftMessages'

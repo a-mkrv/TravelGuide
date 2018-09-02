@@ -48,13 +48,13 @@ class LoginViewController: UIViewController, ValidityFields {
                 return
             }
             
-            if response!["status"] as? String == "error" {
+            if response?.status == "error" {
                 StaticHelper.showAlertView(title: "Ошибка авторизации", subTitle: "Неправильный логин / пароль", buttonText: "Еще разок", type: .warning)
                 return
             }
             
-            if response!["status"] as? String == "success" {
-                let token = response!["data"] as! Json
+            if response?.status == "success" {
+                let token = response?.data as! Json
                 CurrentUser.sharedInstance.token = token["token"] as? String
                 CurrentUser.sharedInstance.isLogin = true
                 CurrentUser.sharedInstance.login = login

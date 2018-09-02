@@ -30,7 +30,7 @@ class CityViewModel {
                 }
             }
 
-            let newCity = City(id: NSNumber(integerLiteral: cityId), country: NSNumber(integerLiteral: city.country), name: city.name, sights: sights, isDownload: true, urlImage: city.image)
+            let newCity = City(id: NSNumber(integerLiteral: cityId), country: NSNumber(integerLiteral: city.country), name: city.name, sights: sights, urlImage: city.image, isDownload: true)
             cities?.append(newCity)
         }
         
@@ -40,11 +40,12 @@ class CityViewModel {
     func getAllCity(completion: @escaping () -> ()) {
         APIService.shared.getCities{ response, error in
             
-            guard error == nil || (response != nil && response!["status"] as? String == "error") else {
+            guard error == nil || (response != nil && response?.status == "error") else {
                 return
             }
             
-            for object in (response!["data"] as? Json)! {
+            
+            for object in (response?.data as? Json)! {
                 if let city = City(json: (object.value as! Json)) {
                     self.cities.append(city)
                 }
