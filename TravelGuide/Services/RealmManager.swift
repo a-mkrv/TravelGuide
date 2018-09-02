@@ -101,7 +101,7 @@ extension DBManager {
     }
     
     func getCityById(id: Int) -> CityRealmModel? {
-        return getObjectByID(CityRealmModel.self, id: id) ?? CityRealmModel()
+        return getObjectByID(CityRealmModel.self, id: id)
     }
     
     func addSigthToCity(city: CityRealmModel, object: SightRealmModel) {

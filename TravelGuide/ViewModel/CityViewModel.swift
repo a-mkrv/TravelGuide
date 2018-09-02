@@ -40,7 +40,7 @@ class CityViewModel {
     func getAllCity(completion: @escaping () -> ()) {
         APIService.shared.getCities{ response, error in
             
-            guard error == nil || response != nil || response!["status"] as? String == "error" else {
+            guard error == nil || (response != nil && response!["status"] as? String == "error") else {
                 return
             }
             

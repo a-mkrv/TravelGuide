@@ -32,15 +32,13 @@ class SightViewController: UIViewController, ChangeSightCategory {
     @IBOutlet weak var weatherDescriptionLabel: UILabel!
     @IBOutlet weak var weatherPicture: UIImageView!
     
-    var sightViewModel: SightViewModel?
-    var weatherViewModel: WeatherViewModel?
+    var sightViewModel = SightViewModel()
+    var weatherViewModel = WeatherViewModel()
     var city_id: NSNumber!
     var showItems = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.sightViewModel = SightViewModel()
-        self.weatherViewModel = WeatherViewModel()
         
         self.sightsCollectionView.delegate = self
         self.sightsCollectionView.dataSource = self
@@ -53,8 +51,11 @@ class SightViewController: UIViewController, ChangeSightCategory {
     
     override func viewWillAppear(_ animated: Bool) {
         DispatchQueue.main.async {
-            self.weatherViewModel?.getWeatherOfCity(name: "Moscow", period: .Day)
-            self.updateWeatherView()
+            self.weatherViewModel.getWeatherOfCity(name: "Moscow", period: .Day, callBack: { weather in
+                if let weather = weather {
+                    self.updateWeatherView(weather: weather)
+                }
+            })
         }
     }
     
@@ -63,15 +64,14 @@ class SightViewController: UIViewController, ChangeSightCategory {
         
         // FIXME: Fix this mego crutch
         if selectedCategories.count == 1 && selectedCategories[0] == "Выбр" {
-            sightViewModel?.diplaySights = (sightViewModel?.sights)!
+            sightViewModel.diplaySights = (sightViewModel.sights)
         } else {
-            let isDisplaySights = sightViewModel?.sights.filter( {selectedCategories.contains(String($0.type.prefix(4)))} )
-            sightViewModel?.diplaySights = isDisplaySights!
+            let isDisplaySights = sightViewModel.sights.filter( {selectedCategories.contains(String($0.type.prefix(4)))} )
+            sightViewModel.diplaySights = isDisplaySights
         }
         
-        if let count = sightViewModel?.diplaySights.count {
-            (count > 15) ? (showItems = 15) : (showItems = count)
-        }
+        let count = sightViewModel.diplaySights.count
+        (count > 15) ? (showItems = 15) : (showItems = count)
         
         self.sightsCollectionView.reloadData()
     }
@@ -79,9 +79,9 @@ class SightViewController: UIViewController, ChangeSightCategory {
     func sortedSights(by: SortSights) {
         switch by {
         case .rating:
-            _ = sightViewModel?.sights.sorted(by: { $0.rating > $1.rating } )
+            _ = sightViewModel.sights.sorted(by: { $0.rating > $1.rating } )
         case .price:
-            _ = sightViewModel?.sights.sorted(by: { $0.cost > $1.cost } )
+            _ = sightViewModel.sights.sorted(by: { $0.cost > $1.cost } )
         case .comments:
             break
         case .distanceFromMe:
@@ -106,14 +106,14 @@ class SightViewController: UIViewController, ChangeSightCategory {
     @IBAction func downloadCity(_ sender: Any) {
         if !(CurrentUser.sharedInstance.city?.isDownload)! {
             self.downloadButton.setImage(UIImage(named: "cloud-ok"), for: .normal)
-            self.sightViewModel?.populateRealmSights()
+            self.sightViewModel.populateRealmSights()
             CurrentUser.sharedInstance.city?.isDownload = true
         }
     }
     
     func setupViewModel(_ city_id: NSNumber) {
         self.city_id = city_id
-        sightViewModel?.getAllSights(city_id, completion: {
+        sightViewModel.getAllSights(city_id, completion: {
             self.updateSightsCollectionView()
             self.setupView()
         })
@@ -133,13 +133,11 @@ class SightViewController: UIViewController, ChangeSightCategory {
         }
     }
     
-    func updateWeatherView() {
-        if let weather = self.weatherViewModel?.weather {
-            temperatureLabel.text = weather.temperature
-            weatherDescriptionLabel.text = weather.description
-            weatherDetailLabel.text = String(weather.pressure) + String(weather.speed)
-            weatherPicture.image = UIImage(named: weather.icon)
-        }
+    func updateWeatherView(weather: WeatherModel) {
+        temperatureLabel.text = weather.temperature
+        weatherDescriptionLabel.text = weather.description
+        weatherDetailLabel.text = String(weather.pressure) + String(weather.speed)
+        weatherPicture.image = UIImage(named: weather.icon)
     }
 }
 
@@ -156,7 +154,8 @@ extension SightViewController: UICollectionViewDelegate, UICollectionViewDataSou
         let contentHeight = scrollView.contentSize.height
         
         if offsetY > contentHeight - scrollView.frame.size.height {
-            if let count = self.sightViewModel?.diplaySights.count, count > showItems {
+            let count = self.sightViewModel.diplaySights.count
+            if count > showItems {
                 if (count - showItems - 10 >= 0) {
                     showItems += 10
                 } else {
@@ -261,7 +260,7 @@ extension SightViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return (sightViewModel?.cellInstance(collectionView, cellForItemAt: indexPath))!
+        return (sightViewModel.cellInstance(collectionView, cellForItemAt: indexPath))
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -269,7 +268,7 @@ extension SightViewController: UICollectionViewDelegate, UICollectionViewDataSou
         let detailVC = StaticHelper.loadViewController(from: "Main", named: "DetailBoard") as? DetailSightViewController
         
         if detailVC != nil {
-            detailVC?.sigthModel = self.sightViewModel?.diplaySights[indexPath.row]
+            detailVC?.sigthModel = self.sightViewModel.diplaySights[indexPath.row]
             self.navigationController?.pushViewController(detailVC!, animated: true)
         }
     }

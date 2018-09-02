@@ -10,19 +10,18 @@ import Foundation
 
 class WeatherViewModel {
     
-    var weather: WeatherModel!
-
-    func getWeatherOfCity(name: String, period: WeatherPeriod) {
+    func getWeatherOfCity(name: String, period: WeatherPeriod, callBack: @escaping (WeatherModel?) -> Void) {
         
         switch period {
         case .Day:
             WeatherService.shared.getToday(city: name, completionHandler: { (response, error) in
                 guard error == nil || response != nil else {
                     Logger.error(msg: "Failed to get weather data")
+                    callBack(nil)
                     return
                 }
                 
-                self.weather = WeatherModel(json: response as? Json, name: name)
+                callBack(WeatherModel(json: response as? Json, name: name))
             })
 
         case .Week: break
