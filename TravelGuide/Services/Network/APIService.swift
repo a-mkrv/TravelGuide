@@ -17,13 +17,12 @@ enum TypeRequest {
 }
 
 typealias completeRequest<T> = (_ object: T?, Error?) -> ()
-typealias completeArrayRequest<T> = (_ object: [T]?, Error?) -> ()
 
 final class APIService {
     
     static let shared = APIService()
     private var AlamofireManager = Alamofire.SessionManager(configuration: .default)
-    private let endpoint = "http://e1514247.ngrok.io/api_v1.0/"
+    private let endpoint = "https://travel.truegrom.me/api_v1.0/"
 
     init() {
         changeConfiguration()
@@ -44,16 +43,16 @@ final class APIService {
         makeRequest("get_towns", with: parameters, completionHandler: completionHandler)
     }
     
-    func getSights(_ city_id: NSNumber, completionHandler: @escaping completeRequest<BaseResponseItem<BaseStatus>>) {
+    func getSights(_ city_id: NSNumber, completionHandler: @escaping completeRequest<BaseResponseItem<AuthMappable>>) {
         let parameters: Json = ["id_town" : city_id as AnyObject]
         makeRequest("get_sights", with: parameters, completionHandler: completionHandler)
     }
 
-    func createUser(with parameters: Json, completionHandler: @escaping completeRequest<BaseResponseItem<BaseStatus>>) {
+    func createUser(with parameters: Json, completionHandler: @escaping completeRequest<BaseResponseItem<AuthMappable>>) {
         makeRequest("create_user", with: parameters, completionHandler: completionHandler)
     }
     
-    func doLogin(with parameters: Json, completionHandler: @escaping completeRequest<BaseResponseItem<BaseStatus>>) {
+    func doLogin(with parameters: Json, completionHandler: @escaping completeRequest<BaseResponseItem<AuthMappable>>) {
         makeRequest("login", with: parameters, completionHandler: completionHandler)
     }
     
@@ -62,7 +61,7 @@ final class APIService {
     }
     
     // Internal request to perform
-    private func makeRequest<T: Mappable>(request: TypeRequest = .inner, _ url: String, with parameters: Json, httpMethod: HTTPMethod = .get, completionHandler: @escaping (T?, Error?) -> Void) {
+    private func makeRequest<T: BaseMappable>(request: TypeRequest = .inner, _ url: String, with parameters: Json, httpMethod: HTTPMethod = .get, completionHandler: @escaping (T?, Error?) -> Void) {
 
         var urlRequest: String = ""
         switch request {
@@ -86,9 +85,12 @@ final class APIService {
     }
 }
 
-struct BaseResponseItem<T: Mappable>: Mappable {
+
+// MARK: BaseResponseItem
+struct BaseResponseItem<T: BaseMappable>: Mappable {
     
-    var data: T!
+    var singleData: T!
+    var arrayData: [String : T]?
     var message: String!
     var status: String!
     
@@ -97,21 +99,9 @@ struct BaseResponseItem<T: Mappable>: Mappable {
     }
     
     mutating func mapping(map: Map) {
-        data <- map["data"]
+        singleData <- map["data"]
+        arrayData <- map["data"]
         message <- map["message"]
-        status <- map["status"]
-    }
-}
-
-struct BaseStatus: Mappable {
-    
-    var status: String!
-    
-    init?(map: Map) {
-        mapping(map: map)
-    }
-    
-    mutating func mapping(map: Map) {
         status <- map["status"]
     }
 }

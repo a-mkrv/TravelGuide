@@ -9,7 +9,7 @@
 import Foundation
 import ObjectMapper
 
-struct City: Mappable {
+struct City: ImmutableMappable {
     var id: NSNumber!
     var country: NSNumber!
     var name: String!
@@ -18,21 +18,16 @@ struct City: Mappable {
     var isDownload: Bool = false
 }
 
-// Mark: - extension City
+// MARK: - extension City
 extension City {
     
-    init?(map: Map) {
-        mapping(map: map)
+    init(map: Map) throws {
+        id   = try? map.value("id_town")
+        name = try? map.value("name")
+        country = try? map.value("country")
+        urlImage = (try? map.value("url_photo")) ?? "nn"
     }
-    
-    mutating func mapping(map: Map) {
-        id <- map["id_town"]
-        name <- map["name"]
-        country <- map["country"]
-        urlImage <- map["url_photo"]
-        sights = []
-    }
-    
+
     init?(dictionary : [String : Any]) {
         guard let id = dictionary["id"] as? NSNumber,
             let name = dictionary["name"] as? String,

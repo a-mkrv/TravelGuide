@@ -44,12 +44,7 @@ class CityViewModel {
                 return
             }
             
-            
-            for object in (response?.data as? Json)! {
-                if let city = City(json: (object.value as! Json)) {
-                    self.cities.append(city)
-                }
-            }
+            response?.arrayData?.forEach( { self.cities.append($0.value) })
             completion()
         }
     }

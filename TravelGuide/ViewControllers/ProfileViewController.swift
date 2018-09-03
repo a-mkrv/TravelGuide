@@ -21,7 +21,7 @@ class ProfileViewController: UIViewController, ChangeCity {
     func setNewCity(city: City) {
         let vc = self.tabBarController?.viewControllers![0] as! SightViewController
         currentCityLabel.text = city.name
-        vc.setupViewModel(city.id)
+        vc.setupViewModel(city.id!)
     }
     
     @IBAction func changeCity(_ sender: Any) {

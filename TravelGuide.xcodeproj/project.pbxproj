@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5344FA7AD3E62D9B9AF3731E /* Pods_TravelGuide.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61FE223E218135B477FA2F39 /* Pods_TravelGuide.framework */; };
+		770174B7213C65E600ED92FE /* MappableStructures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770174B6213C65E600ED92FE /* MappableStructures.swift */; };
 		771483F0206B898500B9A141 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771483EF206B898500B9A141 /* Logger.swift */; };
 		771483F2206B8D0900B9A141 /* Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771483F1206B8D0900B9A141 /* Foundation.swift */; };
 		771483F6206CE8F500B9A141 /* ChooseLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771483F5206CE8F500B9A141 /* ChooseLoginViewController.swift */; };
@@ -70,6 +71,7 @@
 
 /* Begin PBXFileReference section */
 		61FE223E218135B477FA2F39 /* Pods_TravelGuide.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TravelGuide.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		770174B6213C65E600ED92FE /* MappableStructures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MappableStructures.swift; sourceTree = "<group>"; };
 		771483EF206B898500B9A141 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		771483F1206B8D0900B9A141 /* Foundation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Foundation.swift; sourceTree = "<group>"; };
 		771483F5206CE8F500B9A141 /* ChooseLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseLoginViewController.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				774D998D2067E13900CA0C22 /* RegistrationViewController.swift */,
 				77C0FA8820682A8500A94A8F /* ValidityFieldsProtocol.swift */,
 				77518162208F0DE800E76B95 /* SocialLoginManager.swift */,
+				770174B6213C65E600ED92FE /* MappableStructures.swift */,
 			);
 			path = Authorization;
 			sourceTree = "<group>";
@@ -541,6 +544,7 @@
 				77DF2719210F4ED100A0507B /* LocationManager.swift in Sources */,
 				77621127206FECAC00111EBC /* PinAnnotation.swift in Sources */,
 				779DD95720662F3F00F08676 /* LoginViewController.swift in Sources */,
+				770174B7213C65E600ED92FE /* MappableStructures.swift in Sources */,
 				8DCBAF9021393650004B2792 /* BaseViewController.swift in Sources */,
 				774D998E2067E13900CA0C22 /* RegistrationViewController.swift in Sources */,
 				772B48372081F8F3006A2539 /* UIView.swift in Sources */,
