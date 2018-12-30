@@ -7,12 +7,10 @@
 //
 
 import UIKit
-import Nuke
 
 class CityViewModel {
     
     var cities = [City]()
-    var manager = Nuke.Manager.shared
     
     func getAllCitiesFromDatabase(completion: @escaping () -> ()) {
         let savedCities = CurrentUser.sharedInstance.allSavedCities
@@ -54,7 +52,9 @@ class CityViewModel {
         
         let city = self.cities[indexPath.row]
         cell.cityName.text = city.name
-        manager.loadImage(with: Request(url: URL(string: city.urlImage)!), into: cell.cityImage)
+        
+        let url = URL(string: city.urlImage)
+        cell.cityImage.kf.setImage(with: url)
         
         return cell
     }

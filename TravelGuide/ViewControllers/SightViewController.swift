@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Nuke
 
 class SightViewController: UIViewController, ChangeSightCategory {
     
@@ -91,7 +90,8 @@ class SightViewController: UIViewController, ChangeSightCategory {
     
     func setupView() {
         self.cityNameLabel.text = CurrentUser.sharedInstance.city?.name
-        manager.loadImage(with: Request(url: URL(string: (CurrentUser.sharedInstance.city?.urlImage)!)!), into: cityImage)
+        let url = URL(string: (CurrentUser.sharedInstance.city?.urlImage)!)
+        cityImage.kf.setImage(with: url)
         
         if (CurrentUser.sharedInstance.city?.isDownload)! {
             self.downloadButton.setImage(UIImage(named: "cloud-ok"), for: .normal)

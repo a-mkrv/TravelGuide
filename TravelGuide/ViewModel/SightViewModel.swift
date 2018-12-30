@@ -8,14 +8,11 @@
 
 import UIKit
 import RealmSwift
-import Nuke
 
 class SightViewModel {
     
     var sights = [Sight]()
-    var diplaySights = [Sight]()
-    
-    var manager = Nuke.Manager.shared
+    var diplaySights = [Sight]()    
     let results = try! Realm().objects(CityRealmModel.self)
     
     func extractRealmSights(cityRealmModel: CityRealmModel) {
@@ -59,11 +56,11 @@ class SightViewModel {
                     return
                 }
                 
-                for object in (response?.data as? Json)! {
-                    if let sight = Sight(json: object.value as? Json) {
-                        self.sights.append(sight)
-                    }
-                }
+//                for object in (response?.data as? Json)! {
+//                    if let sight = Sight(json: object.value as? Json) {
+//                        self.sights.append(sight)
+//                    }
+//                }
                 completion()
             }
         }
@@ -79,8 +76,8 @@ class SightViewModel {
         cell.indexCell = indexPath.row
         cell.cost.text = sight.cost
         
-        let request = Request(url: URL(string: sight.imagesURL.first!)!)
-        manager.loadImage(with: request, into: cell.pImage)
+        let url = URL(string: sight.imagesURL.first!)
+        cell.pImage.kf.setImage(with: url)
         
         return cell
     }

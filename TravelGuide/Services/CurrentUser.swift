@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Nuke
+import Kingfisher
 
 class CurrentUser {
     
@@ -52,6 +52,7 @@ class CurrentUser {
     func logOut() {
         favoriteCategories = ["Выбрать все"]
         UserDefaults.standard.clearAllAppData()
-        Cache.shared.removeAll()
+        ImageCache.default.clearMemoryCache()
+        ImageCache.default.clearDiskCache()
     }
 }
