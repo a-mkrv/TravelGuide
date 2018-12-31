@@ -28,51 +28,21 @@ class RegistrationViewController: UIViewController, ValidityFields {
     
     // TextEdit Handler
     
-    @IBAction func loginEnter(_ sender: Any) {
-        if loginTextField.text?.count == 0 {
-            loginTextField.errorMessage = ""
-            return
-        }
+    @IBAction func changedTextField(_ sender: SkyFloatingLabelTextField) {
         
-        if let textField = loginTextField  {
-            if !isLoginValid(textField.text!) {
-                textField.errorMessage = "Invalid login"
+        // 0 - Login, 1 - Password, 2 - Confirm Password
+        switch sender.tag {
+        case 0:
+            if let login = loginTextField.text {
+                setFieldLineColor(textField: sender, isLoginValid(login))
             }
-            else {
-                textField.errorMessage = ""
+        case 1, 2:
+            if let passwordField = passwordTextField, let password = passwordField.text, let confirm = confirmPasswordTextField {
+                setFieldLineColor(textField: passwordField, isPasswordValid(password))
+                setFieldLineColor(textField: confirm, (password == confirm.text && !(confirm.text?.isEmpty)!))
             }
-        }
-    }
-    
-    @IBAction func passwordEnter(_ sender: Any) {
-        if passwordTextField.text?.count == 0 {
-            passwordTextField.errorMessage = ""
-            return
-        }
-        
-        if let textField = passwordTextField  {
-            if !isLoginValid(textField.text!) {
-                textField.errorMessage = "Invalid password"
-            }
-            else {
-                textField.errorMessage = ""
-            }
-        }
-    }
-    
-    @IBAction func confirmPasswordEnter(_ sender: Any) {
-        if confirmPasswordTextField.text?.count == 0 {
-            confirmPasswordTextField.errorMessage = ""
-            return
-        }
-        
-        if let password = passwordTextField, let confirm = confirmPasswordTextField  {
-            if password.text != confirm.text {
-                confirm.errorMessage = "Don't match"
-            }
-            else {
-                confirm.errorMessage = ""
-            }
+            
+        default: break
         }
     }
     
