@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Nuke
 
 class SightViewController: UIViewController, ChangeSightCategory {
     
@@ -46,7 +45,7 @@ class SightViewController: UIViewController, ChangeSightCategory {
         self.sightsCollectionView.translatesAutoresizingMaskIntoConstraints = false
         
         self.city_id = CurrentUser.sharedInstance.city?.id
-        self.setupViewModel(city_id)
+        //self.setupViewModel(city_id)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -91,7 +90,8 @@ class SightViewController: UIViewController, ChangeSightCategory {
     
     func setupView() {
         self.cityNameLabel.text = CurrentUser.sharedInstance.city?.name
-        manager.loadImage(with: Request(url: URL(string: (CurrentUser.sharedInstance.city?.urlImage)!)!), into: cityImage)
+        let url = URL(string: (CurrentUser.sharedInstance.city?.urlImage)!)
+        cityImage.kf.setImage(with: url)
         
         if (CurrentUser.sharedInstance.city?.isDownload)! {
             self.downloadButton.setImage(UIImage(named: "cloud-ok"), for: .normal)
@@ -134,10 +134,10 @@ class SightViewController: UIViewController, ChangeSightCategory {
     }
     
     func updateWeatherView(weather: WeatherModel) {
-        temperatureLabel.text = weather.temperature
-        weatherDescriptionLabel.text = weather.description
-        weatherDetailLabel.text = String(weather.pressure) + String(weather.speed)
-        weatherPicture.image = UIImage(named: weather.icon)
+        //temperatureLabel.text = String(weather.weather.temp)
+        //weatherDescriptionLabel.text = weather.main.description
+        //weatherDetailLabel.text = String(weather.weather.pressure) + String(weather.speed)
+        //weatherPicture.image = UIImage(named: weather.icon)
     }
 }
 

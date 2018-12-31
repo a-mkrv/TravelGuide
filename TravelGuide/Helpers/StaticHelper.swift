@@ -32,11 +32,11 @@ class StaticHelper: NSObject {
 
         let sizeValue = (40.0 / 375.0) * UIScreen.main.bounds.size.width
         
-        NVActivityIndicatorPresenter.sharedInstance.startAnimating(ActivityData(size:  CGSize(width: sizeValue, height: sizeValue), message: title, messageFont: UIFont.systemFont(ofSize: 16.0), type: type, color: .white, padding: 0.0, displayTimeThreshold: 0, minimumDisplayTime: 0))
+        NVActivityIndicatorPresenter.sharedInstance.startAnimating(ActivityData(size:  CGSize(width: sizeValue, height: sizeValue), message: title, messageFont: UIFont.systemFont(ofSize: 16.0), type: type, color: .white, padding: 0.0, displayTimeThreshold: 0, minimumDisplayTime: 0), nil)
     }
     
     static func hideActivity(){
-        NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+        NVActivityIndicatorPresenter.sharedInstance.stopAnimating(nil)
         animationTimer?.invalidate()
     }
     

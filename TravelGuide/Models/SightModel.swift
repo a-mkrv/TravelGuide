@@ -8,9 +8,8 @@
 
 import UIKit
 import CoreLocation
-import Nuke
 
-var manager = Nuke.Manager.shared
+//var manager = Nuke.Manager.shared
 
 fileprivate struct DataKeys {
     static let id = "id_sight"

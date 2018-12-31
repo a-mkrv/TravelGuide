@@ -8,7 +8,7 @@
 
 import UIKit
 import MapKit
-import Nuke
+import Kingfisher
 
 class MapViewController: UIViewController, MKMapViewDelegate {
     
@@ -30,8 +30,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             annotation.title = place.name
             annotation.image = UIImageView()
             
-            let request = Request(url: URL(string: place.imagesURL.first!)!)
-            Nuke.Manager.shared.loadImage(with: request, into: annotation.image!)
+            let url = URL(string: place.imagesURL.first!)
+            annotation.image!.kf.setImage(with: url)
+            
             mapView.addAnnotation(annotation)
         }
     }

@@ -81,12 +81,12 @@ class RegistrationViewController: UIViewController, ValidityFields {
                 return
             }
 
-            if response!["status"] as? String == "error" {
+            if response?.status == "error" {
                 StaticHelper.showAlertView(title: "Ошибка регистрации", subTitle: "Такой пользователь уже существует", buttonText: "Изменить данные", type: .error)
                 return
             }
             
-            if response!["status"] as? String == "success" {
+            if response?.status == "success" {
                 StaticHelper.showAlertView(title: "Регистрация завершена", subTitle: "Вернуться на экран авторизации", buttonText: "Готово", type: .success)
             }
         }

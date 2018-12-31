@@ -7,51 +7,38 @@
 //
 
 import Foundation
+import ObjectMapper
 
-fileprivate struct DataKeys {
-    static let id = "id_town"
-    static let name = "name"
-    static let country = "country"
-    static let sight = "sight"
-    static let urlImage = "url_photo"
-}
-
-struct City {
-    let id: NSNumber
-    let country: NSNumber
-    let name: String
-    let sights: [Sight]
+struct City: ImmutableMappable {
+    var id: NSNumber!
+    var country: NSNumber!
+    var name: String!
+    var sights: [Sight] = []
+    var urlImage: String!
     var isDownload: Bool = false
-    let urlImage: String
 }
 
-// Mark: - extension City
+// MARK: - extension City
 extension City {
-    init?(json: Json?) {
-        guard let json = json,
-            let id = json[DataKeys.id] as? NSNumber,
-            let name = json[DataKeys.name] as? String
-            else {
-                return nil
-        }
-        
-        self.id = id
-        self.name = name
-        self.country = json[DataKeys.country] as? NSNumber ?? 1
-        self.sights = []
-        self.urlImage = json[DataKeys.urlImage] as? String ?? "https://img-fotki.yandex.ru/get/197852/27854841.58f/0_ef76b_fb4fa46e_XXXL.jpg"
-    }
     
+    init(map: Map) throws {
+        id   = try? map.value("id_town")
+        name = try? map.value("name")
+        country = try? map.value("country")
+        urlImage = (try? map.value("url_photo")) ?? "nn"
+    }
+
     init?(dictionary : [String : Any]) {
         guard let id = dictionary["id"] as? NSNumber,
             let name = dictionary["name"] as? String,
             let urlImage = dictionary["url"] as? String,
             let isDownload = dictionary["isDownload"] as? Bool else { return nil }
         
-        self.init(id: id, country: 1, name: name, sights: [], isDownload: isDownload, urlImage: urlImage)
+        self.init(id: id, country: 1, name: name, sights: [], urlImage: urlImage, isDownload: isDownload)
     }
     
     var propertyList : [String : Any] {
         return ["id" : id, "name" : name, "isDownload" : isDownload, "url" : urlImage]
     }
 }
+

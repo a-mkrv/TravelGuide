@@ -37,7 +37,7 @@ class BaseViewController: UIViewController {
         var config = SwiftMessages.defaultConfig
         config.presentationStyle = style
         config.duration = .seconds(seconds: 3)
-        config.presentationContext = .window(windowLevel: UIWindowLevelNormal)
+        //config.presentationContext = .window(windowLevel: UIWindowLevelNormal)
         
         SwiftMessages.show(config: config, view: messageView)
     }

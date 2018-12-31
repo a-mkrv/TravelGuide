@@ -7,11 +7,10 @@
 //
 
 import UIKit
-import Nuke
+import Kingfisher
 
 class DetailSightViewController: UIViewController, UIGestureRecognizerDelegate {
 
-    var cachedImage:Result<UIImage>!
     var rowCount = 1
     var map = [Int:Int]()
     var sigthModel: Sight? = nil {
@@ -65,7 +64,6 @@ class DetailSightViewController: UIViewController, UIGestureRecognizerDelegate {
             pageControl.numberOfPages = 0
         }
         
-        downloadImages()
         navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     
@@ -144,16 +142,6 @@ extension DetailSightViewController: UITableViewDataSource, UITableViewDelegate 
 
 extension DetailSightViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
-    func downloadImages() {
-        DispatchQueue.main.async {
-            for img in (self.sigthModel?.imagesURL)! {
-                let request = Request(url: URL(string: img)!)
-                Manager.shared.loadImage(with: request, completion: { (result) in
-                    self.cachedImage = result
-                })
-            }
-        }
-    }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return (self.sigthModel?.imagesURL.count)!
     }
@@ -161,8 +149,8 @@ extension DetailSightViewController: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DetailImageCell", for: indexPath) as! DetailImageCollectionViewCell
         
-        let request = Request(url: URL(string: (self.sigthModel?.imagesURL[indexPath.row])!)!)
-        Nuke.Manager.shared.loadImage(with: request, into: cell.sightImage)
+        let url = URL(string: (self.sigthModel?.imagesURL[indexPath.row])!)
+        cell.sightImage.kf.setImage(with: url)
         
         return cell
     }

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ObjectMapper
 
 class WeatherViewModel {
     
@@ -21,7 +22,7 @@ class WeatherViewModel {
                     return
                 }
                 
-                callBack(WeatherModel(json: response as? Json, name: name))
+                callBack(response)
             })
 
         case .Week: break

@@ -7,12 +7,10 @@
 //
 
 import UIKit
-import Nuke
 
 class CityViewModel {
     
     var cities = [City]()
-    var manager = Nuke.Manager.shared
     
     func getAllCitiesFromDatabase(completion: @escaping () -> ()) {
         let savedCities = CurrentUser.sharedInstance.allSavedCities
@@ -30,7 +28,7 @@ class CityViewModel {
                 }
             }
 
-            let newCity = City(id: NSNumber(integerLiteral: cityId), country: NSNumber(integerLiteral: city.country), name: city.name, sights: sights, isDownload: true, urlImage: city.image)
+            let newCity = City(id: NSNumber(integerLiteral: cityId), country: NSNumber(integerLiteral: city.country), name: city.name, sights: sights, urlImage: city.image, isDownload: true)
             cities?.append(newCity)
         }
         
@@ -40,15 +38,11 @@ class CityViewModel {
     func getAllCity(completion: @escaping () -> ()) {
         APIService.shared.getCities{ response, error in
             
-            guard error == nil || (response != nil && response!["status"] as? String == "error") else {
+            guard error == nil || (response != nil && response?.status == "error") else {
                 return
             }
             
-            for object in (response!["data"] as? Json)! {
-                if let city = City(json: (object.value as! Json)) {
-                    self.cities.append(city)
-                }
-            }
+            response?.arrayData?.forEach( { self.cities.append($0.value) })
             completion()
         }
     }
@@ -58,7 +52,9 @@ class CityViewModel {
         
         let city = self.cities[indexPath.row]
         cell.cityName.text = city.name
-        manager.loadImage(with: Request(url: URL(string: city.urlImage)!), into: cell.cityImage)
+        
+        let url = URL(string: city.urlImage)
+        cell.cityImage.kf.setImage(with: url)
         
         return cell
     }
